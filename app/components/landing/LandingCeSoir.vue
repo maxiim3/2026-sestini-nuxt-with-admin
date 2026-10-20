@@ -1,29 +1,50 @@
 <script setup lang="ts">
-const { t } = useI18n()
-const localePath = useLocalePath()
+/**
+ * Variante B, « Ce soir » : page éditoriale, typographie géante, aucune 3D.
+ * Tout part du statut du soir (ouvert, ouvre plus tard, fermé) calculé côté serveur.
+ * Animations : CSS pilotées par le défilement (avec repli), GSAP chargé à la demande.
+ */
+const SOURCE = 'landing-ce-soir'
 </script>
 
 <template>
-  <section class="grain relative grid min-h-dvh place-items-center overflow-hidden px-4 pt-20">
-    <div class="relative text-center">
-      <img
-        src="/brand/logo.svg"
-        alt="Sestini Pizza, la pizza au feu de bois"
-        width="560"
-        height="247"
-        class="mx-auto h-auto w-[min(560px,85vw)]"
-      >
-      <div class="mt-8 flex justify-center">
-        <SiteTonightPill />
-      </div>
-      <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-        <NuxtLink
-          :to="localePath('la-carte')"
-          class="btn-fire"
-        >
-          {{ t('home.seeMenu') }}
-        </NuxtLink>
-      </div>
-    </div>
-  </section>
+  <div class="landing-ce-soir overflow-x-clip bg-charbon-950 text-farine-100">
+    <LandingCeSoirHero :source="SOURCE" />
+    <LandingCeSoirWeek />
+    <LandingCeSoirPoster :source="SOURCE" />
+    <LandingCeSoirMarquee />
+    <LandingCeSoirHowTo :source="SOURCE" />
+    <LandingCeSoirFinale :source="SOURCE" />
+  </div>
 </template>
+
+<style scoped>
+/* Révélations au défilement, en CSS pur quand le navigateur sait faire ; sinon tout reste visible */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .landing-ce-soir :deep(.cs-reveal) {
+      animation: cs-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    .landing-ce-soir :deep(.cs-trace) {
+      transform-origin: left;
+      animation: cs-trace linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+  }
+}
+
+@keyframes cs-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+}
+@keyframes cs-trace {
+  from {
+    transform: scaleX(0);
+  }
+}
+</style>

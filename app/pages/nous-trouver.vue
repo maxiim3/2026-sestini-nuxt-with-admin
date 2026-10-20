@@ -8,9 +8,10 @@ const { hour, date, relativeDay, tr } = useLocalized()
 const { data } = await useSite()
 const contact = useContact()
 
-useSeoMeta({
+usePageSeo({
   title: () => `${t('findUs.title')} · Sestini Pizza`,
-  description: () => `${t('findUs.subtitle')} : ${t('brand.area')}.`,
+  description: () => `${t('findUs.subtitle')} : ${t('brand.area')}. ${t('tonight.orderByPhone')}.`,
+  og: 'nous-trouver',
 })
 
 const days = computed(() => data.value?.week ?? [])

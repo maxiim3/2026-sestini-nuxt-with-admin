@@ -13,9 +13,16 @@ const variant = computed<LandingVariant>(() => {
   return settings['site.landing']?.variant ?? 'four'
 })
 
-useSeoMeta({
-  title: 'Sestini Pizza · Pizza au feu de bois près de Montpellier',
-  description: () => t('brand.pitch'),
+// Mesure : chaque événement PostHog porte la variante affichée, pour comparer les landings
+onMounted(async () => {
+  const { default: posthog } = await import('posthog-js')
+  if (posthog.__loaded) posthog.register({ landing_variant: variant.value })
+})
+
+usePageSeo({
+  title: () => `Sestini Pizza · ${t('brand.tagline')}, ${t('brand.area')}`,
+  description: () => `${t('brand.pitch')} ${t('tonight.orderByPhone')}.`,
+  og: 'home',
 })
 </script>
 

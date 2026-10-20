@@ -9,10 +9,12 @@ const { t } = useI18n()
 const { tr, price } = useLocalized()
 const { data } = await useSite()
 
-useSeoMeta({
+usePageSeo({
   title: () => `${t('menu.title')} · Sestini Pizza`,
-  description: () => t('menu.subtitle'),
+  description: () => `${t('menu.subtitle')}. ${t('brand.pitch')}`,
+  og: 'carte',
 })
+await useJsonLd('menu')
 
 type Category = 'pizzas' | 'drinks' | 'supplements' | 'desserts'
 const category = ref<Category>('pizzas')
