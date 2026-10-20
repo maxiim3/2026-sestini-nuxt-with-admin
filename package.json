@@ -27,7 +27,8 @@
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
     "assets:brand": "node scripts/generate-brand-assets.mjs",
-    "assets:screenshots": "node scripts/generate-screenshots.mjs"
+    "assets:screenshots": "node scripts/generate-screenshots.mjs",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
