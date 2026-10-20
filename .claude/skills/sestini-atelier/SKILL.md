@@ -43,6 +43,7 @@ Sans jeton valide, le serveur répond 401 : demande à l'utilisateur d'en créer
 | Horaires d'été | `get_schedule` → `create season` (dates, priorité 10) + `setScheduleSlots` |
 | Annuler une erreur | `get_history` → `apply_operations [{ op: "restoreRevision", revisionId }]` |
 | Optimiser le site | `get_analytics` (si `source: "demo"`, les chiffres sont fictifs) |
+| Créer un flyer / une affiche | voir ci-dessous |
 
 ## Règles métier
 
@@ -52,3 +53,17 @@ Sans jeton valide, le serveur répond 401 : demande à l'utilisateur d'en créer
 - Tout texte visible doit être traduit (`i18n: { en, es, it }`), ton chaleureux et sobre.
 - Allergènes : déduits des ingrédients (14 allergènes UE) ; ajoute `extraAllergens` si besoin.
 - Prix : `priceEuros` dans les outils dédiés, `priceCents` dans `apply_operations`.
+
+## Créer un flyer / une affiche
+
+1. Le contenu d'abord : le document reprend les données publiées (carte, PDM, exceptions, messages).
+   Pour des congés, crée l'exception `closed` (et son message) ; pour un événement, l'exception
+   `relocated` ou `extra`. Fais valider le brouillon : un brouillon n'apparaît pas à l'impression.
+2. `get_print_document` sans argument liste les modèles et leurs paramètres ; puis appelle-le avec
+   `model`, `format` (A5 flyer, A4, A3 affiche), `orientation`, `theme` (`clair` pour imprimer au bureau,
+   `sombre` pour une affiche à l'écran ou chez l'imprimeur), `lang` et `params`
+   (ex. `{ exception: "<id>" }`, `{ from, to }`, `{ message: "none" }`, `{ title, body }`).
+3. Donne l'URL à l'utilisateur (bouton « Imprimer / Enregistrer en PDF »), ou produis le PDF toi-même
+   avec un navigateur headless : `emulateMedia({ media: 'print' })`, attendre `[data-print-ready="1"]`,
+   puis `page.pdf({ preferCSSPageSize: true, printBackground: true })`. Vérifie qu'il fait une page.
+
