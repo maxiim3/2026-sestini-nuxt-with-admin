@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxtjs/i18n'],
+  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxtjs/i18n', 'nuxt-auth-utils'],
   devtools: { enabled: true },
 
   app: {
@@ -12,10 +12,32 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  ui: {
+    colorMode: false,
+  },
   runtimeConfig: {
     db: {
       url: '',
       authToken: '',
+    },
+    resend: {
+      apiKey: '',
+      from: 'Sestini Pizza <atelier@sestini-pizza.fr>',
+    },
+    blob: {
+      token: '',
+    },
+    posthog: {
+      personalApiKey: '',
+      projectId: '',
+      host: 'https://eu.posthog.com',
+    },
+    public: {
+      posthog: {
+        key: '',
+        host: 'https://eu.i.posthog.com',
+      },
     },
   },
   compatibilityDate: '2026-10-01',
