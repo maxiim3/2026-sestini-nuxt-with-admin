@@ -1,0 +1,1300 @@
+/*
+ * Atelier d'impression : feuilles A5 / A4 / A3 (pages /print/*).
+ * Toutes les tailles internes sont en em : la feuille fixe la taille de base
+ * (3,3 mm en A4, × √2 en A3, ÷ √2 en A5) et un facteur d'ajustement (--fit).
+ * Classes préfixées « pr- » pour ne rien toucher ailleurs.
+ */
+
+/* ─── Polices (auto-hébergées, chargées par main.css) ─────────────────── */
+.pr-html {
+  --pr-display: "Cinzel", Georgia, serif;
+  --pr-deco: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --pr-serif: "Fraunces Variable", Georgia, serif;
+  --pr-sans: "Inter Variable", system-ui, sans-serif;
+}
+
+/* ─── Thèmes ─────────────────────────────────────────────────────────── */
+.pr-theme-clair {
+  --paper: #fcf7ee;
+  --ink: #161514;
+  --ink-soft: #34312d;
+  --muted: #6b665d;
+  --faint: #a9a49b;
+  --gold: #a35f12;
+  --gold-line: #c98a2c;
+  --gold-soft: #e9d3a6;
+  --accent: #b02c18;
+  --leaf: #4d7a3a;
+  --glow: rgb(224 170 62 / 0.14);
+}
+
+.pr-theme-sombre {
+  --paper: #0e1011;
+  --ink: #fcf7ee;
+  --ink-soft: #f1e8d6;
+  --muted: #b9b2a5;
+  --faint: #7d776d;
+  --gold: #ecbc55;
+  --gold-line: #e0aa3e;
+  --gold-soft: #5a4320;
+  --accent: #e8573f;
+  --leaf: #8fc27a;
+  --glow: rgb(224 170 62 / 0.2);
+}
+
+/* ─── Écran : feuille sur fond gris ──────────────────────────────────── */
+.pr-body {
+  margin: 0;
+  background: #6f6b66;
+}
+
+.pr-stage {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 24px 112px;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at top, #8a857e, #5a5652 70%);
+}
+
+.pr-stage--embed {
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.pr-frame {
+  position: relative;
+  flex: none;
+}
+
+.pr-sheet {
+  position: absolute;
+  inset: 0 auto auto 0;
+  transform: scale(var(--zoom, 1));
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.18), 0 24px 60px -12px rgb(0 0 0 / 0.45);
+  font-family: var(--pr-serif);
+  font-size: calc(3.3mm * var(--scale) * var(--fit));
+  line-height: 1.35;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-kerning: normal;
+  font-variant-numeric: lining-nums;
+}
+
+.pr-stage--embed .pr-sheet {
+  box-shadow: none;
+}
+
+/* Cadre double en filets dorés */
+.pr-sheet::before,
+.pr-sheet::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pr-sheet::before {
+  inset: max(5.5mm, calc(6.5mm * var(--scale)));
+  border: calc(0.35mm * var(--scale)) solid var(--gold-line);
+}
+
+.pr-sheet::after {
+  inset: calc(max(5.5mm, calc(6.5mm * var(--scale))) + 1.2mm * var(--scale));
+  border: calc(0.15mm * var(--scale)) solid var(--gold-line);
+  opacity: 0.6;
+}
+
+/* Zone utile : marge de sécurité ≥ 8 mm, à l'intérieur du cadre */
+.pr-page {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  height: 100%;
+  padding: calc(max(5.5mm, calc(6.5mm * var(--scale))) + 1.2mm * var(--scale) + max(4mm, calc(5.5mm * var(--scale))));
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-svg {
+  display: block;
+}
+
+.pr-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ─── Barre d'outils (écran seulement) ───────────────────────────────── */
+.pr-toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 32px);
+  padding: 8px;
+  border-radius: 18px;
+  background: rgb(14 16 17 / 0.92);
+  box-shadow: 0 12px 40px -8px rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(12px);
+  font-family: var(--pr-sans);
+  font-size: 13px;
+  color: #f1e8d6;
+}
+
+.pr-toolbar__group {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.06);
+}
+
+.pr-toolbar button {
+  border: 0;
+  border-radius: 10px;
+  padding: 7px 11px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pr-toolbar__group button:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.pr-toolbar__group button[aria-pressed="true"] {
+  background: #fcf7ee;
+  color: #0e1011;
+}
+
+.pr-toolbar .pr-toolbar__print {
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #0e1011;
+  background: linear-gradient(180deg, #ecbc55, #d08b1f);
+}
+
+/* ─── Impression ─────────────────────────────────────────────────────── */
+@media print {
+  html.pr-html,
+  html.pr-html body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  .pr-stage {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .pr-frame {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .pr-sheet {
+    position: relative;
+    transform: none;
+    box-shadow: none;
+    break-after: avoid;
+    break-inside: avoid;
+  }
+
+  .pr-toolbar,
+  #nuxt-devtools-container,
+  nuxt-devtools-frame,
+  .nuxt-devtools-panel {
+    display: none !important;
+  }
+}
+
+/* ─── Éléments communs ───────────────────────────────────────────────── */
+.pr-eyebrow {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 600;
+  font-size: 0.78em;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pr-ruled {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+}
+
+.pr-ruled::before,
+.pr-ruled::after,
+.pr-rule {
+  content: "";
+  flex: 1;
+  height: max(0.2mm, 0.06em);
+  min-width: 1.5em;
+  background: linear-gradient(90deg, transparent, var(--gold-line) 35%, var(--gold-line) 65%, transparent);
+}
+
+.pr-dot::before {
+  content: "◆";
+  display: inline-block;
+  margin: 0 0.7em;
+  font-size: 0.5em;
+  vertical-align: 0.25em;
+  color: var(--gold-line);
+}
+
+.pr-italic {
+  font-family: var(--pr-serif);
+  font-style: italic;
+}
+
+.pr-display {
+  font-family: var(--pr-display);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.pr-deco {
+  font-family: var(--pr-deco);
+  font-weight: 700;
+}
+
+.pr-rich p {
+  margin: 0 0 0.6em;
+}
+
+.pr-rich p:last-child {
+  margin-bottom: 0;
+}
+
+.pr-rich strong {
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.pr-empty {
+  margin: auto;
+  max-width: 30em;
+  text-align: center;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Marque : emblème + logotype */
+.pr-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7em;
+  break-inside: avoid;
+}
+
+.pr-brand__emblem {
+  width: 9em;
+}
+
+.pr-brand__wordmark {
+  width: 24em;
+}
+
+.pr-brand__tagline {
+  font-size: 0.72em;
+  letter-spacing: 0.34em;
+}
+
+/* Pied de contact */
+.pr-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35em;
+  text-align: center;
+  break-inside: avoid;
+}
+
+.pr-contact__label {
+  font-size: 0.75em;
+}
+
+.pr-contact__phone {
+  margin: 0;
+  font-family: var(--pr-deco);
+  font-weight: 700;
+  font-size: 2.6em;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.pr-contact--sm .pr-contact__phone {
+  font-size: 1.9em;
+}
+
+.pr-contact--lg .pr-contact__phone {
+  font-size: 3.6em;
+}
+
+.pr-contact__meta {
+  margin: 0;
+  font-family: var(--pr-sans);
+  font-size: 0.74em;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* Semaine type groupée par lieu */
+.pr-week {
+  break-inside: avoid;
+}
+
+.pr-week__label {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  font-size: 0.72em;
+}
+
+.pr-week__list {
+  display: flex;
+  justify-content: center;
+  gap: 1.6em;
+  margin: 0.7em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pr-week__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+
+.pr-week__days {
+  font-family: var(--pr-sans);
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pr-week__city {
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.05em;
+  letter-spacing: 0.04em;
+  margin-top: 0.1em;
+}
+
+.pr-week__place {
+  font-style: italic;
+  font-size: 0.78em;
+  color: var(--muted);
+}
+
+/* ─── La carte ───────────────────────────────────────────────────────── */
+.pr-carte__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45em;
+}
+
+.pr-carte__head .pr-brand__emblem {
+  width: 6.2em;
+}
+
+.pr-carte__head .pr-brand__wordmark {
+  width: 22em;
+  margin-top: 0.2em;
+}
+
+.pr-carte__title {
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.pr-carte__tagline {
+  margin: 0;
+  font-size: 0.95em;
+  color: var(--muted);
+}
+
+.pr-carte__main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-sheet--landscape .pr-carte__main {
+  display: grid;
+  grid-template-columns: 3.1fr 1fr;
+  gap: 2.2em;
+}
+
+.pr-carte__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 1.1em;
+  column-count: 2;
+  column-gap: 2.6em;
+  column-fill: balance;
+  column-rule: max(0.15mm, 0.03em) solid color-mix(in oklab, var(--gold-line) 35%, transparent);
+}
+
+.pr-sheet--landscape .pr-carte__body {
+  column-count: 3;
+}
+
+.pr-section {
+  break-inside: avoid-column;
+}
+
+.pr-section__head {
+  margin: 0 0 0.3em;
+  text-align: center;
+  break-after: avoid;
+}
+
+.pr-section + .pr-section,
+.pr-featured + .pr-section {
+  margin-top: 0.9em;
+}
+
+.pr-section__title {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.32em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.pr-section__hint {
+  margin: 0.1em 0 0;
+  font-style: italic;
+  font-size: 0.82em;
+  color: var(--gold);
+}
+
+.pr-pizza {
+  padding: 0.42em 0;
+  break-inside: avoid;
+}
+
+.pr-pizza__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+
+.pr-pizza__name {
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.04em;
+  letter-spacing: 0.035em;
+}
+
+.pr-pizza__veg {
+  font-family: var(--pr-sans);
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  border: max(0.15mm, 0.05em) solid currentColor;
+  border-radius: 1em;
+  padding: 0.05em 0.5em;
+  transform: translateY(-0.15em);
+}
+
+.pr-leader {
+  flex: 1;
+  min-width: 1em;
+  border-bottom: max(0.2mm, 0.07em) dotted var(--faint);
+  transform: translateY(-0.25em);
+}
+
+.pr-pizza__price {
+  font-family: var(--pr-deco);
+  font-weight: 700;
+  font-size: 1.04em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.pr-pizza__desc,
+.pr-pizza__after {
+  margin: 0.12em 0 0;
+  font-size: 0.86em;
+  line-height: 1.32;
+  color: var(--ink-soft);
+}
+
+.pr-pizza__base {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.pr-pizza__after {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.pr-pizza__after-label {
+  font-style: normal;
+  font-family: var(--pr-sans);
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pr-allergens {
+  font-family: var(--pr-sans);
+  font-style: normal;
+  font-size: 0.72em;
+  font-weight: 600;
+  color: var(--faint);
+  white-space: nowrap;
+  margin-left: 0.3em;
+}
+
+.pr-featured {
+  break-inside: avoid;
+  margin-bottom: 0.8em;
+  padding: 0.5em 0.9em 0.3em;
+  border: max(0.25mm, 0.07em) solid var(--gold-line);
+  background: var(--glow);
+}
+
+.pr-featured .pr-eyebrow {
+  text-align: center;
+  font-size: 0.7em;
+}
+
+.pr-carte__extras {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 2.4em;
+  margin-top: 0.9em;
+  padding-top: 0.9em;
+  border-top: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 55%, transparent);
+}
+
+.pr-sheet--landscape .pr-carte__extras {
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 1.2em;
+  margin-top: 1.1em;
+  padding: 0 0 0 2.2em;
+  border-top: 0;
+  border-left: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 55%, transparent);
+  margin-left: -2.2em;
+}
+
+.pr-sheet--landscape .pr-carte__head {
+  gap: 0.25em;
+}
+
+.pr-sheet--landscape .pr-carte__head .pr-brand__emblem {
+  width: 4.6em;
+}
+
+.pr-sheet--landscape .pr-carte__head .pr-brand__wordmark {
+  width: 17em;
+}
+
+.pr-extras__title {
+  margin: 0 0 0.35em;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.pr-extras__note {
+  margin: -0.2em 0 0.4em;
+  font-style: italic;
+  font-size: 0.74em;
+  color: var(--muted);
+}
+
+.pr-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+  font-size: 0.8em;
+  line-height: 1.3;
+  padding: 0.1em 0;
+  break-inside: avoid;
+}
+
+.pr-line__price {
+  font-family: var(--pr-deco);
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.pr-line__label {
+  color: var(--ink-soft);
+}
+
+.pr-line__volume {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.pr-supplement {
+  display: grid;
+  grid-template-columns: 3.3em 1fr;
+  gap: 0.6em;
+}
+
+.pr-supplement .pr-line__price {
+  text-align: right;
+}
+
+.pr-drink-group + .pr-drink-group {
+  margin-top: 0.25em;
+}
+
+.pr-drink-group__name {
+  font-family: var(--pr-sans);
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pr-carte__foot {
+  flex: none;
+  margin-top: 0.9em;
+  padding-top: 0.8em;
+  border-top: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 55%, transparent);
+}
+
+.pr-carte__legal {
+  margin: 0 0 0.9em;
+  text-align: center;
+  font-family: var(--pr-sans);
+  font-size: 0.66em;
+  color: var(--muted);
+}
+
+.pr-carte__legal b {
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.pr-carte__bottom {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  align-items: center;
+  gap: 2.4em;
+}
+
+/* Semaine type en lignes (pied de la carte) */
+.pr-week--rows .pr-week__label {
+  justify-content: flex-start;
+}
+
+.pr-week--rows .pr-week__label .pr-rule:first-child {
+  display: none;
+}
+
+.pr-week--rows .pr-week__list {
+  flex-direction: column;
+  gap: 0.15em;
+  margin-top: 0.45em;
+}
+
+.pr-week--rows .pr-week__item {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.6em;
+  text-align: left;
+}
+
+.pr-week--rows .pr-week__days {
+  flex: none;
+  width: 9em;
+}
+
+.pr-week--rows .pr-week__city {
+  flex: none;
+  margin: 0;
+  font-size: 0.92em;
+}
+
+/* ─── Affiches : structure commune ───────────────────────────────────── */
+.pr-poster {
+  align-items: center;
+  text-align: center;
+}
+
+.pr-poster__main {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  gap: 1.1em;
+  padding: 1em 0;
+  box-sizing: border-box;
+}
+
+.pr-poster__foot {
+  flex: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1em;
+  padding-top: 1.1em;
+}
+
+.pr-poster__eyebrow {
+  width: 100%;
+  max-width: 34em;
+  font-size: 0.95em;
+}
+
+.pr-poster__title {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 4.2em;
+  line-height: 1.02;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.pr-poster__lead {
+  margin: 0;
+  max-width: 26em;
+  font-size: 1.5em;
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-wrap: balance;
+}
+
+.pr-poster__body {
+  max-width: 34em;
+  font-size: 1.22em;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.pr-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  width: 12em;
+  color: var(--gold-line);
+}
+
+.pr-ornament::before,
+.pr-ornament::after {
+  content: "";
+  flex: 1;
+  height: max(0.2mm, 0.06em);
+  background: currentColor;
+}
+
+.pr-ornament span {
+  font-size: 0.8em;
+}
+
+/* Cartouche à double filet */
+.pr-cartouche {
+  position: relative;
+  padding: 1.2em 2.4em 1.3em;
+  border: max(0.3mm, 0.08em) solid var(--gold-line);
+  outline: max(0.15mm, 0.04em) solid var(--gold-line);
+  outline-offset: 0.35em;
+  background: var(--glow);
+  break-inside: avoid;
+}
+
+/* ─── Pizza du moment ────────────────────────────────────────────────── */
+.pr-pdm__visual {
+  position: relative;
+  width: 22em;
+  max-width: 100%;
+  flex: none;
+}
+
+.pr-pdm__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  object-fit: cover;
+  border-radius: 50% 50% 0.4em 0.4em / 42% 42% 0.4em 0.4em;
+  border: max(0.4mm, 0.1em) solid var(--gold-line);
+  outline: max(0.2mm, 0.05em) solid var(--gold-line);
+  outline-offset: 0.4em;
+}
+
+.pr-pdm__halo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1.55;
+}
+
+.pr-pdm__halo::before {
+  content: "";
+  position: absolute;
+  inset: 0 8%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+}
+
+.pr-pdm__halo .pr-svg {
+  position: relative;
+  width: 78%;
+}
+
+.pr-pdm__name {
+  font-size: 4.6em;
+}
+
+.pr-pdm__ingredients {
+  margin: 0;
+  max-width: 28em;
+  font-size: 1.32em;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  text-wrap: balance;
+}
+
+.pr-pdm__base {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.pr-pdm__after {
+  margin: 0;
+  max-width: 28em;
+  font-size: 1.15em;
+  font-style: italic;
+  color: var(--muted);
+  text-wrap: balance;
+}
+
+.pr-pdm__after-label {
+  font-family: var(--pr-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pr-medallion {
+  display: grid;
+  place-items: center;
+  width: 8.6em;
+  height: 8.6em;
+  border-radius: 50%;
+  border: max(0.4mm, 0.1em) solid var(--gold-line);
+  outline: max(0.2mm, 0.05em) solid var(--gold-line);
+  outline-offset: 0.35em;
+  background: var(--glow);
+  flex: none;
+}
+
+.pr-medallion span {
+  font-family: var(--pr-deco);
+  font-weight: 700;
+  font-size: 1.95em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.pr-pdm__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6em;
+}
+
+.pr-pdm__until {
+  margin: 0;
+  font-size: 0.85em;
+}
+
+.pr-pdm__allergens {
+  margin: 0;
+  font-family: var(--pr-sans);
+  font-size: 0.7em;
+  color: var(--muted);
+}
+
+.pr-sheet--landscape .pr-pdm__main {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 2.5em;
+}
+
+.pr-sheet--landscape .pr-pdm__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+/* ─── Fermeture ──────────────────────────────────────────────────────── */
+.pr-closure__dates {
+  margin: 0;
+  font-size: 2.1em;
+  line-height: 1.2;
+  font-style: italic;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.pr-closure__dates b {
+  font-style: normal;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.pr-closure__intro {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 600;
+  font-size: 0.95em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pr-reopen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.pr-reopen__day {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 2em;
+  letter-spacing: 0.04em;
+}
+
+.pr-reopen__place {
+  margin: 0;
+  font-size: 1.2em;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ─── Événement ──────────────────────────────────────────────────────── */
+.pr-event__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.pr-event__weekday {
+  font-family: var(--pr-display);
+  font-weight: 600;
+  font-size: 1.3em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pr-event__day {
+  font-family: var(--pr-deco);
+  font-weight: 700;
+  font-size: 9em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+.pr-event__month {
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.9em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pr-event__time {
+  margin-top: 0.5em;
+  font-size: 1.4em;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.pr-event__place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.pr-event__city {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 2.2em;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+.pr-event__spot {
+  margin: 0;
+  font-size: 1.25em;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.pr-event__address {
+  margin: 0;
+  font-family: var(--pr-sans);
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+.pr-sheet--landscape .pr-event__grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 3em;
+  text-align: left;
+}
+
+.pr-sheet--landscape .pr-event__grid .pr-event__place {
+  align-items: flex-start;
+}
+
+/* ─── Semaine ────────────────────────────────────────────────────────── */
+.pr-semaine__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+  text-align: center;
+}
+
+.pr-semaine__head .pr-brand__emblem {
+  width: 7em;
+}
+
+.pr-semaine__head .pr-brand__wordmark {
+  width: 19em;
+}
+
+.pr-semaine__title {
+  margin: 0.25em 0 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 3.3em;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.pr-semaine__range {
+  margin: 0;
+  font-size: 1.15em;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.pr-days {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  margin: 1.2em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pr-day {
+  display: grid;
+  grid-template-columns: 9.5em 1fr auto;
+  align-items: center;
+  gap: 1.4em;
+  padding: 0.85em 0.4em;
+  border-bottom: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 40%, transparent);
+  break-inside: avoid;
+}
+
+.pr-day:first-child {
+  border-top: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 40%, transparent);
+}
+
+.pr-day__when {
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-day__weekday {
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pr-day__date {
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.pr-day__city {
+  margin: 0;
+  font-family: var(--pr-display);
+  font-weight: 700;
+  font-size: 1.45em;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.pr-day__spot {
+  margin: 0.1em 0 0;
+  font-size: 0.88em;
+  color: var(--ink-soft);
+}
+
+.pr-day__spot span {
+  color: var(--muted);
+}
+
+.pr-day__badge {
+  display: inline-block;
+  margin-left: 0.6em;
+  padding: 0.15em 0.6em;
+  border-radius: 1em;
+  font-family: var(--pr-sans);
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: 0.35em;
+  color: var(--paper);
+  background: var(--accent);
+}
+
+.pr-day__note {
+  margin: 0.2em 0 0;
+  font-size: 0.82em;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.pr-day__time {
+  font-family: var(--pr-serif);
+  font-weight: 650;
+  font-size: 1.3em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.pr-day__time small {
+  font-family: var(--pr-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.7em;
+  color: var(--muted);
+  margin-right: 0.25em;
+}
+
+.pr-day--closed .pr-day__weekday,
+.pr-day--closed .pr-day__city {
+  color: var(--faint);
+}
+
+.pr-day--closed .pr-day__city {
+  font-family: var(--pr-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.pr-sheet--landscape .pr-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-content: center;
+  gap: 0;
+}
+
+.pr-sheet--landscape .pr-day {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  gap: 0.7em;
+  padding: 1em 0.6em;
+  border: 0;
+  border-left: max(0.2mm, 0.05em) solid color-mix(in oklab, var(--gold-line) 40%, transparent);
+}
+
+.pr-sheet--landscape .pr-day:first-child {
+  border-top: 0;
+  border-left: 0;
+}
+
+.pr-sheet--landscape .pr-day__city {
+  font-size: 1.15em;
+}
+
+.pr-event__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4em;
+}
