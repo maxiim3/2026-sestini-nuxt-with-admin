@@ -174,13 +174,12 @@ async function save(mode: 'publish' | 'draft') {
           />
         </UFormField>
         <UFormField
-          label="Photo (URL)"
-          help="Optionnel. Les photos importées dans l'atelier seront proposées ici."
+          label="Photo"
+          help="Optionnel. Affichée sur la carte, l'accueil et les documents imprimés."
         >
-          <UInput
-            v-model="form.imageUrl as string"
-            placeholder="https://…"
-            class="w-full"
+          <AdminMediaPicker
+            v-model="form.imageUrl"
+            tag="pizza"
           />
         </UFormField>
         <AdminTranslationsField

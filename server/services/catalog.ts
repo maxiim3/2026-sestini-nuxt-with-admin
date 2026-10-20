@@ -157,13 +157,16 @@ export async function loadPublicSnapshot(db: Database, now = new Date()) {
 
   const today = isoDateInParis(now)
   const modal = pickModalMessage(messages, now.toISOString())
+  // Règle métier : le public ne voit que l'heure d'ouverture (« dès 18h »), jamais la fermeture
+  const publicDay = <T extends { closesAt: string | null } | null>(day: T): T => (day ? { ...day, closesAt: null } : day)
+  const tonightState = tonight(schedule, now)
   const featuredInModal = featured.filter(f => f.showInModal)
 
   return {
     generatedAt: now.toISOString(),
     settings,
-    tonight: tonight(schedule, now),
-    week: resolveRange(schedule, today, 14),
+    tonight: { ...tonightState, today: publicDay(tonightState.today), next: publicDay(tonightState.next) },
+    week: resolveRange(schedule, today, 14).map(publicDay),
     locations: schedule.locations,
     menu,
     featured,

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const head = useLocaleHead()
+await useJsonLd('restaurant')
 useHead(() => ({
   htmlAttrs: { lang: head.value.htmlAttrs.lang },
   link: head.value.link,

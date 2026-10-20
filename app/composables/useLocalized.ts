@@ -25,7 +25,7 @@ export function useLocalized() {
     if (!hhmm) return ''
     if (locale.value === 'fr') return formatHour(hhmm)
     const [h, m] = hhmm.split(':').map(Number) as [number, number]
-    return new Intl.DateTimeFormat(tag.value, { hour: 'numeric', minute: m ? '2-digit' : undefined, timeZone: 'UTC' })
+    return new Intl.DateTimeFormat(tag.value, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' })
       .format(new Date(Date.UTC(2026, 0, 1, h, m)))
   }
 
