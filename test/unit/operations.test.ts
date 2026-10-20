@@ -85,3 +85,13 @@ describe('moteur d’écriture', () => {
     expect(old?.status).toBe('archived')
   })
 })
+
+describe('instantané public', () => {
+  it('ne publie jamais l’heure de fermeture', async () => {
+    const db = await freshDb()
+    const snap = await loadPublicSnapshot(db, new Date('2026-10-21T16:00:00Z'))
+    expect(snap.tonight.today.closesAt).toBeNull()
+    expect(snap.week.every(d => d.closesAt === null)).toBe(true)
+    expect(snap.tonight.status).toBe('opens-later')
+  })
+})
