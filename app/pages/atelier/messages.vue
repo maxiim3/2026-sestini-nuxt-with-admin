@@ -429,13 +429,13 @@ async function restore(m: Message) {
               />
             </UFormField>
             <UFormField
-              label="Image (URL)"
+              label="Image"
               help="Facultatif."
             >
-              <UInput
-                v-model="form.imageUrl"
-                placeholder="https://…"
-                class="w-full"
+              <AdminMediaPicker
+                :model-value="form.imageUrl || null"
+                tag="message"
+                @update:model-value="v => form.imageUrl = v ?? ''"
               />
             </UFormField>
 
