@@ -12,7 +12,17 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    db: {
+      url: '',
+      authToken: '',
+    },
+  },
   compatibilityDate: '2026-10-01',
+
+  nitro: {
+    serverAssets: [{ baseName: 'migrations', dir: './database/migrations' }],
+  },
 
   eslint: {
     config: { stylistic: true },
