@@ -1,0 +1,14 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    { "type": "TextBlock", "text": "${label}", "weight": "Bolder", "color": "Accent", "size": "Small", "spacing": "None" },
+    { "type": "TextBlock", "text": "${title}", "weight": "Bolder", "size": "ExtraLarge", "wrap": true },
+    { "type": "TextBlock", "text": "${detail}", "wrap": true, "isSubtle": true }
+  ],
+  "actions": [
+    { "type": "Action.OpenUrl", "title": "Appeler", "url": "${phoneHref}" },
+    { "type": "Action.OpenUrl", "title": "Itinéraire", "url": "${directions}" }
+  ]
+}
