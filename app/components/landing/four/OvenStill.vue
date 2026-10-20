@@ -7,7 +7,7 @@
     class="absolute inset-0 overflow-hidden"
     aria-hidden="true"
   >
-    <div class="four-still absolute left-1/2 top-[30%] w-[min(88vw,560px)] -translate-x-1/2 -translate-y-1/2 sm:top-[40%] lg:left-[65%] lg:top-1/2 lg:w-[min(46vw,760px)]">
+    <div class="four-still absolute left-1/2 top-[28%] w-[min(80vw,560px)] -translate-x-1/2 -translate-y-1/2 sm:top-[40%] lg:left-[65%] lg:top-1/2 lg:w-[min(46vw,760px)]">
       <!-- Lueur du foyer, posée sur la flamme de l'emblème -->
       <div class="four-glow absolute left-[48.8%] top-[70%] aspect-square w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(224,170,62,0.42),rgba(208,139,31,0.14)_45%,transparent)]" />
       <div class="absolute left-1/2 top-[98%] h-[18%] w-[110%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgba(224,170,62,0.16),transparent)]" />

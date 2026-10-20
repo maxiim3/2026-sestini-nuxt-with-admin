@@ -272,7 +272,7 @@ onBeforeUnmount(() => {
               <p class="eyebrow mt-6 text-braise-300">
                 {{ c.eyebrow }}
               </p>
-              <h1 class="mt-3 text-balance font-display text-[2.6rem] font-semibold leading-[1.04] tracking-wide text-farine-50 sm:text-6xl lg:text-7xl">
+              <h1 class="mt-3 text-balance font-display lg:text-wrap text-[2.6rem] font-semibold leading-[1.04] tracking-wide text-farine-50 sm:text-6xl lg:text-7xl">
                 {{ t('home.heroTitle') }}
               </h1>
               <p class="mt-5 max-w-md text-pretty font-serif text-lg italic leading-relaxed text-farine-200/85 sm:text-xl">
