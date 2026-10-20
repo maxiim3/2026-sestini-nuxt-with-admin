@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "findUs": "Find us",
+    "call": "Call",
+    "callFull": "Call to order",
+    "language": "Language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skip": "Skip to content"
+  },
+  "brand": {
+    "tagline": "Wood-fired pizza",
+    "pitch": "Homemade dough rested for several days, fresh, local, seasonal ingredients, baked in a wood-fired oven right before your eyes.",
+    "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
+  },
+  "tonight": {
+    "label": "Tonight",
+    "openNow": "Open now",
+    "opensAt": "Opens at {time}",
+    "from": "from {time}",
+    "closedToday": "Closed today",
+    "closedNow": "That's all for tonight",
+    "nextOpen": "Next opening: {day} in {place}",
+    "weAreAt": "We're in {place}",
+    "itinerary": "Directions",
+    "orderByPhone": "Order by phone, pickup on site"
+  },
+  "days": {
+    "today": "Today",
+    "tomorrow": "Tomorrow"
+  },
+  "menu": {
+    "title": "Menu",
+    "subtitle": "Wood-fired pizzas, to take away",
+    "categories": {
+      "pizzas": "Pizzas",
+      "drinks": "Drinks",
+      "desserts": "Desserts",
+      "supplements": "Extras"
+    },
+    "sections": {
+      "rouges": "The reds",
+      "blanches": "The whites",
+      "speciales": "The specials"
+    },
+    "sectionsHint": {
+      "rouges": "Tomato sauce base",
+      "blanches": "Crème fraîche base",
+      "speciales": "Seasonal bases"
+    },
+    "filters": {
+      "title": "Filter",
+      "all": "All",
+      "tomate": "Tomato base",
+      "creme": "Cream base",
+      "speciale": "Special base",
+      "sans": "No base",
+      "vegetarian": "Vegetarian",
+      "meat": "With meat",
+      "fish": "With fish",
+      "reset": "Reset",
+      "empty": "No pizza matches these filters."
+    },
+    "afterBaking": "After baking",
+    "base": "Base",
+    "allergens": "Allergens",
+    "allergensNote": "The dough contains gluten. Please mention any allergy when you order.",
+    "featured": "Pizza of the moment",
+    "supplementsNote": "Add whatever you fancy, priced per ingredient as shown.",
+    "pricesNote": "Prices include tax. Payment on site.",
+    "count": "{n} pizza | {n} pizzas"
+  },
+  "findUs": {
+    "title": "Find us",
+    "subtitle": "One truck, three villages, all week long",
+    "thisWeek": "Next 14 days",
+    "typicalWeek": "Typical week",
+    "closed": "Closed",
+    "exception": "Special date",
+    "openInMaps": "Open in Maps",
+    "mapTitle": "Map of the location: {place}"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaces": "Crustaceans",
+    "oeufs": "Eggs",
+    "poissons": "Fish",
+    "arachides": "Peanuts",
+    "soja": "Soybeans",
+    "lait": "Milk",
+    "fruits-a-coque": "Tree nuts",
+    "celeri": "Celery",
+    "moutarde": "Mustard",
+    "sesame": "Sesame seeds",
+    "sulfites": "Sulphites",
+    "lupin": "Lupin",
+    "mollusques": "Molluscs"
+  },
+  "drinks": {
+    "soft": "Soft drinks",
+    "eau": "Water",
+    "biere": "Beers",
+    "vin": "Wines"
+  },
+  "modal": {
+    "close": "Close"
+  },
+  "reviews": {
+    "title": "What people say",
+    "rating": "{rating} out of 5 · {count} Google reviews",
+    "seeAll": "See all reviews"
+  },
+  "footer": {
+    "contact": "Contact",
+    "follow": "Follow us",
+    "legal": "Legal notice",
+    "rights": "All rights reserved.",
+    "madeWith": "Wood-fired pizza near Montpellier"
+  },
+  "home": {
+    "heroTitle": "Wood-fired pizza",
+    "heroLead": "Dough that takes its time, an oven that sings, ingredients from around here.",
+    "seeMenu": "See the menu",
+    "findUs": "Where are we?"
+  },
+  "legal": {
+    "title": "Legal notice"
+  }
+}

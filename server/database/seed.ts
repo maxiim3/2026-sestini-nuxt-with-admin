@@ -1,6 +1,7 @@
 import { count } from 'drizzle-orm'
 import type { Allergen, BaseKind, DrinkCategory, IngredientKind, MenuSection, Weekday } from '../../shared/domain/constants'
 import legacy from './seed/legacy.json'
+import translationsJson from './seed/translations.json'
 import * as s from './schema'
 import type { Database } from '../utils/db'
 
@@ -24,6 +25,26 @@ interface LegacyData {
 }
 
 const data = legacy as LegacyData
+
+type Tri = { en: string, es: string, it: string }
+const tr = translationsJson as {
+  ingredients: Record<string, Tri>
+  baseLabels: Record<string, Tri>
+  drinks: Record<string, Tri>
+  supplements: Record<string, Tri>
+  menus: Record<string, { name: Tri, tagline?: Tri }>
+  modal: Record<string, { title: Tri, body: Tri }>
+}
+
+/** { name: {en, es, it}, … } → { en: { name }, es: { name }, it: { name } } */
+function i18nOf(fields: Record<string, Tri | undefined>) {
+  const out: Record<'en' | 'es' | 'it', Record<string, string>> = { en: {}, es: {}, it: {} }
+  for (const [field, values] of Object.entries(fields)) {
+    if (!values) continue
+    for (const l of ['en', 'es', 'it'] as const) out[l][field] = values[l]
+  }
+  return out
+}
 const ARCHIVED_AT = '2026-10-20T00:00:00.000Z'
 
 export const SITE_SETTINGS = {
@@ -103,7 +124,7 @@ export async function seedDatabase(db: Database): Promise<boolean> {
     })
 
     // Ingrédients
-    const ingredientRows = await tx.insert(s.ingredients).values(data.ingredients).returning()
+    const ingredientRows = await tx.insert(s.ingredients).values(data.ingredients.map(i => ({ ...i, i18n: i18nOf({ name: tr.ingredients[i.slug] }) }))).returning()
     const ingredientId = new Map(ingredientRows.map(r => [r.slug, r.id]))
 
     // Pizzas
@@ -114,6 +135,7 @@ export async function seedDatabase(db: Database): Promise<boolean> {
       baseLabel: p.baseLabel,
       priceCents: p.priceCents,
       extraAllergens: p.extraAllergens,
+      i18n: i18nOf({ baseLabel: tr.baseLabels[p.baseLabel] }),
       archivedAt: p.archived ? ARCHIVED_AT : null,
     }))).returning()
     const pizzaId = new Map(pizzaRows.map(r => [r.slug, r.id]))
@@ -131,6 +153,7 @@ export async function seedDatabase(db: Database): Promise<boolean> {
         name: menu.name,
         status: menu.status,
         tagline: menu.status === 'active' ? 'Des produits de saison pour accompagner l\'automne et l\'hiver.' : null,
+        i18n: i18nOf({ name: tr.menus[menu.slug]?.name, tagline: tr.menus[menu.slug]?.tagline }),
       }).returning()
       await tx.insert(s.menuItems).values(menu.items.map(item => ({
         menuId: m!.id,
@@ -149,10 +172,11 @@ export async function seedDatabase(db: Database): Promise<boolean> {
       archivedAt: ARCHIVED_AT,
     })))
 
-    await tx.insert(s.drinks).values(data.drinks)
-    await tx.insert(s.supplements).values(data.supplements)
+    await tx.insert(s.drinks).values(data.drinks.map(d => ({ ...d, i18n: i18nOf({ name: tr.drinks[d.name] }) })))
+    await tx.insert(s.supplements).values(data.supplements.map(x => ({ ...x, i18n: i18nOf({ label: tr.supplements[x.label] }) })))
 
     // Messages de la modale
+    const modalI18n = (title: string) => i18nOf({ title: tr.modal[title]?.title, body: tr.modal[title]?.body })
     await tx.insert(s.modalMessages).values([
       {
         kind: 'menu',
@@ -163,6 +187,7 @@ export async function seedDatabase(db: Database): Promise<boolean> {
           { label: 'Nous trouver', href: '/nous-trouver', variant: 'secondary' },
         ],
         priority: 10,
+        i18n: modalI18n('Découvrez la carte Automne-Hiver !'),
       },
       {
         kind: 'event',
@@ -172,6 +197,7 @@ export async function seedDatabase(db: Database): Promise<boolean> {
         startsAt: '2026-09-25T22:00:00.000Z',
         endsAt: '2026-09-26T22:00:00.000Z',
         priority: 100,
+        i18n: modalI18n('Événement exceptionnel'),
       },
     ])
   })

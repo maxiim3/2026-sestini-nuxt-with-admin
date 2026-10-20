@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Il menù",
+    "findUs": "Dove siamo",
+    "call": "Chiama",
+    "callFull": "Chiama per ordinare",
+    "language": "Lingua",
+    "openMenu": "Apri il menù",
+    "closeMenu": "Chiudi il menù",
+    "skip": "Vai al contenuto"
+  },
+  "brand": {
+    "tagline": "La pizza al forno a legna",
+    "pitch": "Impasto artigianale riposato per giorni, ingredienti freschi, locali e di stagione, cotta nel forno a legna davanti a voi.",
+    "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
+  },
+  "tonight": {
+    "label": "Stasera",
+    "openNow": "Aperto ora",
+    "opensAt": "Apre alle {time}",
+    "from": "dalle {time}",
+    "closedToday": "Chiuso oggi",
+    "closedNow": "Per stasera abbiamo finito",
+    "nextOpen": "Prossima apertura: {day} a {place}",
+    "weAreAt": "Siamo a {place}",
+    "itinerary": "Indicazioni",
+    "orderByPhone": "Ordini al telefono, ritiro sul posto"
+  },
+  "days": {
+    "today": "Oggi",
+    "tomorrow": "Domani"
+  },
+  "menu": {
+    "title": "Il menù",
+    "subtitle": "Pizze al forno a legna, da asporto",
+    "categories": {
+      "pizzas": "Pizze",
+      "drinks": "Bevande",
+      "desserts": "Dolci",
+      "supplements": "Aggiunte"
+    },
+    "sections": {
+      "rouges": "Le rosse",
+      "blanches": "Le bianche",
+      "speciales": "Le speciali"
+    },
+    "sectionsHint": {
+      "rouges": "Base di salsa di pomodoro",
+      "blanches": "Base di crème fraîche",
+      "speciales": "Basi del momento"
+    },
+    "filters": {
+      "title": "Filtra",
+      "all": "Tutte",
+      "tomate": "Base pomodoro",
+      "creme": "Base panna",
+      "speciale": "Base speciale",
+      "sans": "Senza base",
+      "vegetarian": "Vegetariana",
+      "meat": "Con carne",
+      "fish": "Con pesce",
+      "reset": "Azzera",
+      "empty": "Nessuna pizza corrisponde a questi filtri."
+    },
+    "afterBaking": "Dopo la cottura",
+    "base": "Base",
+    "allergens": "Allergeni",
+    "allergensNote": "L'impasto contiene glutine. Segnalate eventuali allergie al momento dell'ordine.",
+    "featured": "Pizza del momento",
+    "supplementsNote": "Aggiungete ciò che vi va, al prezzo indicato per ingrediente.",
+    "pricesNote": "Prezzi IVA inclusa. Pagamento sul posto.",
+    "count": "{n} pizza | {n} pizze"
+  },
+  "findUs": {
+    "title": "Dove siamo",
+    "subtitle": "Un furgone, tre paesi, tutta la settimana",
+    "thisWeek": "I prossimi 14 giorni",
+    "typicalWeek": "Settimana tipo",
+    "closed": "Chiuso",
+    "exception": "Eccezionale",
+    "openInMaps": "Apri in Maps",
+    "mapTitle": "Mappa della posizione: {place}"
+  },
+  "allergens": {
+    "gluten": "Glutine",
+    "crustaces": "Crostacei",
+    "oeufs": "Uova",
+    "poissons": "Pesce",
+    "arachides": "Arachidi",
+    "soja": "Soia",
+    "lait": "Latte",
+    "fruits-a-coque": "Frutta a guscio",
+    "celeri": "Sedano",
+    "moutarde": "Senape",
+    "sesame": "Semi di sesamo",
+    "sulfites": "Solfiti",
+    "lupin": "Lupini",
+    "mollusques": "Molluschi"
+  },
+  "drinks": {
+    "soft": "Bibite",
+    "eau": "Acque",
+    "biere": "Birre",
+    "vin": "Vini"
+  },
+  "modal": {
+    "close": "Chiudi"
+  },
+  "reviews": {
+    "title": "Dicono di noi",
+    "rating": "{rating} su 5 · {count} recensioni Google",
+    "seeAll": "Vedi le recensioni"
+  },
+  "footer": {
+    "contact": "Contatti",
+    "follow": "Seguici",
+    "legal": "Note legali",
+    "rights": "Tutti i diritti riservati.",
+    "madeWith": "Pizza al forno a legna vicino a Montpellier"
+  },
+  "home": {
+    "heroTitle": "La pizza al forno a legna",
+    "heroLead": "Un impasto che si prende il suo tempo, un forno che canta, prodotti di qui.",
+    "seeMenu": "Vedi il menù",
+    "findUs": "Dove siamo?"
+  },
+  "legal": {
+    "title": "Note legali"
+  }
+}
