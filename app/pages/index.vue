@@ -13,9 +13,10 @@ const variant = computed<LandingVariant>(() => {
   return settings['site.landing']?.variant ?? 'four'
 })
 
-useSeoMeta({
-  title: 'Sestini Pizza · Pizza au feu de bois près de Montpellier',
-  description: () => t('brand.pitch'),
+usePageSeo({
+  title: () => `Sestini Pizza · ${t('brand.tagline')}, ${t('brand.area')}`,
+  description: () => `${t('brand.pitch')} ${t('tonight.orderByPhone')}.`,
+  og: 'home',
 })
 </script>
 
