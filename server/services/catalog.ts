@@ -42,6 +42,7 @@ export interface PizzaView {
   avant: IngredientView[]
   apres: IngredientView[]
   allergens: Allergen[]
+  extraAllergens: Allergen[]
   tags: { vegetarian: boolean, meat: boolean, fish: boolean }
   i18n: typeof s.pizzas.$inferSelect['i18n']
   archived: boolean
@@ -93,6 +94,7 @@ export async function loadPizzas(db: Database, ids?: string[]): Promise<PizzaVie
       avant,
       apres,
       allergens: [...allergens].sort(),
+      extraAllergens: p.extraAllergens,
       tags: { vegetarian: !meat && !fish, meat, fish },
       i18n: p.i18n,
       archived: Boolean(p.archivedAt),
