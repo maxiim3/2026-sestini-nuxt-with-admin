@@ -69,3 +69,9 @@ test('SEO : données structurées, llms.txt, manifeste', async ({ page, request 
   const manifest = await (await request.get('/manifest.webmanifest')).json()
   expect(manifest.shortcuts).toHaveLength(3)
 })
+
+test('impression : la carte A4 est prête à imprimer', async ({ page }) => {
+  await page.goto('/print/carte?format=A4')
+  await expect(page.locator('[data-print-ready="1"]')).toHaveCount(1, { timeout: 15_000 })
+  await expect(page.getByText('07 88 52 91 78').first()).toBeVisible()
+})
