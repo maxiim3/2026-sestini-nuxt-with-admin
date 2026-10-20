@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-deco: "Cinzel Decorative", "Cinzel", ui-serif, serif;
+
+  /* Charbon : fonds sombres */
+  --color-charbon-50: #f5f5f4;
+  --color-charbon-100: #e7e6e3;
+  --color-charbon-200: #cfccc6;
+  --color-charbon-300: #a9a49b;
+  --color-charbon-400: #7d776d;
+  --color-charbon-500: #5c574f;
+  --color-charbon-600: #46423c;
+  --color-charbon-700: #34312d;
+  --color-charbon-800: #23211f;
+  --color-charbon-900: #161514;
+  --color-charbon-950: #0e1011;
+
+  /* Farine : crèmes */
+  --color-farine-50: #fcf7ee;
+  --color-farine-100: #f9f4ea;
+  --color-farine-200: #f1e8d6;
+  --color-farine-300: #e6d7b9;
+  --color-farine-400: #d6be92;
+
+  /* Braise : ocre doré de la flamme */
+  --color-braise-50: #fdf8eb;
+  --color-braise-100: #f9ebc8;
+  --color-braise-200: #f3d58e;
+  --color-braise-300: #ecbc55;
+  --color-braise-400: #e0aa3e;
+  --color-braise-500: #d08b1f;
+  --color-braise-600: #b26a17;
+  --color-braise-700: #8e4d17;
+  --color-braise-800: #763f19;
+  --color-braise-900: #65351a;
+  --color-braise-950: #3a1a0a;
+
+  /* Tomate : accent */
+  --color-tomate-400: #e8573f;
+  --color-tomate-500: #d13b24;
+  --color-tomate-600: #b02c18;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
