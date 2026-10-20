@@ -203,7 +203,7 @@ async function restore(i: Ingredient) {
       v-else
       :data="rows"
       :columns="columns"
-      class="hidden rounded-xl border border-stone-200 md:block"
+      class="hidden shrink-0 rounded-xl border border-stone-200 md:block"
       :ui="{ th: 'bg-stone-50 text-stone-600', td: 'align-top' }"
     >
       <template #empty>
@@ -295,7 +295,7 @@ async function restore(i: Ingredient) {
 
     <ul
       v-if="status !== 'pending'"
-      class="divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 md:hidden"
+      class="shrink-0 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200 md:hidden"
     >
       <li
         v-for="i in rows"
