@@ -978,7 +978,7 @@ const locationItems = computed(() => liveLocations.value.map(l => ({ label: `${l
       v-model:open="excOpen"
       :title="exc.id ? 'Modifier l\'exception' : 'Nouvelle exception'"
       description="Elle remplace le planning habituel sur les dates choisies."
-      :ui="{ content: 'max-w-xl' }"
+      :ui="{ content: 'sm:max-w-xl' }"
     >
       <template #body>
         <div class="space-y-5">
@@ -1182,7 +1182,7 @@ const locationItems = computed(() => liveLocations.value.map(l => ({ label: `${l
     <USlideover
       v-model:open="locOpen"
       :title="loc.id ? `Modifier ${loc.name}` : 'Nouveau lieu'"
-      :ui="{ content: 'max-w-lg' }"
+      :ui="{ content: 'sm:max-w-lg' }"
     >
       <template #body>
         <div class="space-y-5">

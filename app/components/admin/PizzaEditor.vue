@@ -88,7 +88,7 @@ async function save(mode: 'publish' | 'draft') {
     v-model:open="open"
     :title="isNew ? 'Nouvelle pizza' : `Modifier ${form.name}`"
     description="Les allergènes sont calculés depuis les ingrédients ; ajoutez ici ceux qui manqueraient."
-    :ui="{ content: 'max-w-xl' }"
+    :ui="{ content: 'sm:max-w-xl' }"
   >
     <template #body>
       <div class="space-y-5">

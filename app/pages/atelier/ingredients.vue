@@ -377,7 +377,7 @@ async function restore(i: Ingredient) {
       v-model:open="open"
       :title="form.id ? `Modifier ${form.name}` : 'Nouvel ingrédient'"
       description="Cochez tous les allergènes présents dans l'ingrédient tel qu'il est acheté."
-      :ui="{ content: 'max-w-lg' }"
+      :ui="{ content: 'sm:max-w-lg' }"
     >
       <template #body>
         <div class="space-y-5">

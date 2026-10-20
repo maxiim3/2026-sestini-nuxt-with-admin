@@ -430,7 +430,7 @@ async function endNow(f: Featured) {
       v-model:open="open"
       :title="form.id ? 'Modifier la pizza du moment' : 'Nouvelle pizza du moment'"
       description="Choisissez la pizza, le texte et les dates. Sans dates, elle reste en avant jusqu'à ce que vous l'archiviez."
-      :ui="{ content: 'max-w-xl' }"
+      :ui="{ content: 'sm:max-w-xl' }"
     >
       <template #body>
         <div class="space-y-5">

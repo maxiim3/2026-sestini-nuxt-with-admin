@@ -495,7 +495,7 @@ async function restore(kind: Kind, id: string, name: string) {
     <USlideover
       v-model:open="open"
       :title="TITLES[form.kind][form.id ? 1 : 0]"
-      :ui="{ content: 'max-w-md' }"
+      :ui="{ content: 'sm:max-w-md' }"
     >
       <template #body>
         <div class="space-y-5">
