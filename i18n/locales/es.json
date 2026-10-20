@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "menu": "La carta",
+    "findUs": "Dónde estamos",
+    "call": "Llamar",
+    "callFull": "Llamar para pedir",
+    "language": "Idioma",
+    "openMenu": "Abrir el menú",
+    "closeMenu": "Cerrar el menú",
+    "skip": "Ir al contenido"
+  },
+  "brand": {
+    "tagline": "Pizza al horno de leña",
+    "pitch": "Masa casera reposada varios días, ingredientes frescos, locales y de temporada, cocida al horno de leña delante de usted.",
+    "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
+  },
+  "tonight": {
+    "label": "Esta noche",
+    "openNow": "Abierto ahora",
+    "opensAt": "Abre a las {time}",
+    "from": "desde las {time}",
+    "closedToday": "Cerrado hoy",
+    "closedNow": "Por esta noche hemos terminado",
+    "nextOpen": "Próxima apertura: {day} en {place}",
+    "weAreAt": "Estamos en {place}",
+    "itinerary": "Cómo llegar",
+    "orderByPhone": "Pedidos por teléfono, recogida en el local"
+  },
+  "days": {
+    "today": "Hoy",
+    "tomorrow": "Mañana"
+  },
+  "menu": {
+    "title": "La carta",
+    "subtitle": "Pizzas al horno de leña, para llevar",
+    "categories": {
+      "pizzas": "Pizzas",
+      "drinks": "Bebidas",
+      "desserts": "Postres",
+      "supplements": "Extras"
+    },
+    "sections": {
+      "rouges": "Las rojas",
+      "blanches": "Las blancas",
+      "speciales": "Las especiales"
+    },
+    "sectionsHint": {
+      "rouges": "Base de salsa de tomate",
+      "blanches": "Base de crème fraîche",
+      "speciales": "Bases de temporada"
+    },
+    "filters": {
+      "title": "Filtrar",
+      "all": "Todas",
+      "tomate": "Base de tomate",
+      "creme": "Base de crema",
+      "speciale": "Base especial",
+      "sans": "Sin base",
+      "vegetarian": "Vegetariana",
+      "meat": "Con carne",
+      "fish": "Con pescado",
+      "reset": "Restablecer",
+      "empty": "Ninguna pizza coincide con estos filtros."
+    },
+    "afterBaking": "Tras la cocción",
+    "base": "Base",
+    "allergens": "Alérgenos",
+    "allergensNote": "La masa contiene gluten. Indique cualquier alergia al hacer su pedido.",
+    "featured": "Pizza del momento",
+    "supplementsNote": "Añada lo que le apetezca, al precio indicado por ingrediente.",
+    "pricesNote": "Precios con impuestos incluidos. Pago en el local.",
+    "count": "{n} pizza | {n} pizzas"
+  },
+  "findUs": {
+    "title": "Dónde estamos",
+    "subtitle": "Un camión, tres pueblos, toda la semana",
+    "thisWeek": "Los próximos 14 días",
+    "typicalWeek": "Semana tipo",
+    "closed": "Cerrado",
+    "exception": "Excepcional",
+    "openInMaps": "Abrir en Maps",
+    "mapTitle": "Mapa de la ubicación: {place}"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaces": "Crustáceos",
+    "oeufs": "Huevos",
+    "poissons": "Pescado",
+    "arachides": "Cacahuetes",
+    "soja": "Soja",
+    "lait": "Leche",
+    "fruits-a-coque": "Frutos de cáscara",
+    "celeri": "Apio",
+    "moutarde": "Mostaza",
+    "sesame": "Granos de sésamo",
+    "sulfites": "Sulfitos",
+    "lupin": "Altramuces",
+    "mollusques": "Moluscos"
+  },
+  "drinks": {
+    "soft": "Refrescos",
+    "eau": "Aguas",
+    "biere": "Cervezas",
+    "vin": "Vinos"
+  },
+  "modal": {
+    "close": "Cerrar"
+  },
+  "reviews": {
+    "title": "Lo que dicen de nosotros",
+    "rating": "{rating} sobre 5 · {count} opiniones en Google",
+    "seeAll": "Ver las opiniones"
+  },
+  "footer": {
+    "contact": "Contacto",
+    "follow": "Síguenos",
+    "legal": "Aviso legal",
+    "rights": "Todos los derechos reservados.",
+    "madeWith": "Pizza al horno de leña cerca de Montpellier"
+  },
+  "home": {
+    "heroTitle": "Pizza al horno de leña",
+    "heroLead": "Una masa que se toma su tiempo, un horno que canta, productos de aquí.",
+    "seeMenu": "Ver la carta",
+    "findUs": "¿Dónde estamos?"
+  },
+  "legal": {
+    "title": "Aviso legal"
+  }
+}

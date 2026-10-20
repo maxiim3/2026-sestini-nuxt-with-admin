@@ -1,0 +1,492 @@
+{
+  "ingredients": {
+    "amandes-effilees": {
+      "en": "Sliced almonds",
+      "es": "Almendras laminadas",
+      "it": "Mandorle a lamelle"
+    },
+    "anchois-marines-a-l-huile": {
+      "en": "Anchovies marinated in oil",
+      "es": "Anchoas marinadas en aceite",
+      "it": "Acciughe marinate sott'olio"
+    },
+    "artichaut-marine": {
+      "en": "Marinated artichoke",
+      "es": "Alcachofa marinada",
+      "it": "Carciofi marinati"
+    },
+    "bleu-d-auvergne": {
+      "en": "Bleu d'Auvergne",
+      "es": "Bleu d'Auvergne",
+      "it": "Bleu d'Auvergne"
+    },
+    "burrata-a-la-truffe": {
+      "en": "Truffle Burrata",
+      "es": "Burrata a la trufa",
+      "it": "Burrata al tartufo"
+    },
+    "camembert-au-lait-de-bufflonne": {
+      "en": "Water buffalo milk Camembert",
+      "es": "Camembert de leche de búfala",
+      "it": "Camembert di latte di bufala"
+    },
+    "capres-au-sel": {
+      "en": "Salted capers",
+      "es": "Alcaparras en sal",
+      "it": "Capperi sotto sale"
+    },
+    "chevre": {
+      "en": "Goat cheese",
+      "es": "Queso de cabra",
+      "it": "Formaggio di capra"
+    },
+    "chiffonnade-de-jambon-cuit": {
+      "en": "Shredded cooked ham",
+      "es": "Jamón cocido en tiras finas",
+      "it": "Prosciutto cotto a julienne"
+    },
+    "chiffonnade-de-jambon-cuit-a-la-truffe": {
+      "en": "Shredded truffle cooked ham",
+      "es": "Jamón cocido en tiras finas con trufa",
+      "it": "Prosciutto cotto al tartufo a julienne"
+    },
+    "ciboulette-fraiche": {
+      "en": "Fresh chives",
+      "es": "Cebollino fresco",
+      "it": "Erba cipollina fresca"
+    },
+    "confit-d-oignons-fait-maison": {
+      "en": "Homemade onion confit",
+      "es": "Confitura de cebolla casera",
+      "it": "Confettura di cipolle fatta in casa"
+    },
+    "coppa": {
+      "en": "Coppa",
+      "es": "Coppa",
+      "it": "Coppa"
+    },
+    "courgette-rotie": {
+      "en": "Roasted zucchini",
+      "es": "Calabacín asado",
+      "it": "Zucchine arrosto"
+    },
+    "creme-balsamique": {
+      "en": "Balsamic glaze",
+      "es": "Crema balsámica",
+      "it": "Crema di aceto balsamico"
+    },
+    "eclats-de-pistache": {
+      "en": "Pistachio pieces",
+      "es": "Trocitos de pistacho",
+      "it": "Granella di pistacchio"
+    },
+    "eminces-de-champignons": {
+      "en": "Sliced mushrooms",
+      "es": "Champiñones laminados",
+      "it": "Funghi a lamelle"
+    },
+    "epinards-en-branches": {
+      "en": "Whole-leaf spinach",
+      "es": "Espinacas en hoja",
+      "it": "Spinaci in foglia"
+    },
+    "feuilles-de-basilic-frais": {
+      "en": "Fresh basil leaves",
+      "es": "Hojas de albahaca fresca",
+      "it": "Foglie di basilico fresco"
+    },
+    "filet-d-huile-d-olive-artisanale-a-la-truffe": {
+      "en": "Drizzle of artisanal truffle olive oil",
+      "es": "Hilo de aceite de oliva artesanal con trufa",
+      "it": "Filo d'olio d'oliva artigianale al tartufo"
+    },
+    "filet-d-huile-d-olive-producteur": {
+      "en": "Drizzle of olive oil from a local producer",
+      "es": "Hilo de aceite de oliva de productor local",
+      "it": "Filo d'olio d'oliva di produttore locale"
+    },
+    "filet-de-creme-balsamique": {
+      "en": "Drizzle of balsamic glaze",
+      "es": "Hilo de crema balsámica",
+      "it": "Filo di crema di aceto balsamico"
+    },
+    "filet-de-creme-fraiche": {
+      "en": "Drizzle of crème fraîche",
+      "es": "Hilo de crème fraîche",
+      "it": "Filo di panna fresca"
+    },
+    "filet-de-poulet-origine-france": {
+      "en": "Chicken breast (from France)",
+      "es": "Pechuga de pollo (origen Francia)",
+      "it": "Filetto di pollo (origine Francia)"
+    },
+    "fines-tranches-de-jambon-sec-serrano": {
+      "en": "Thin slices of Serrano cured ham",
+      "es": "Finas lonchas de jamón serrano",
+      "it": "Fettine sottili di prosciutto crudo Serrano"
+    },
+    "foie-gras-de-canard-origine-france": {
+      "en": "Duck foie gras (from France)",
+      "es": "Foie gras de pato (origen Francia)",
+      "it": "Foie gras d'anatra (origine Francia)"
+    },
+    "gorgonzola": {
+      "en": "Gorgonzola",
+      "es": "Gorgonzola",
+      "it": "Gorgonzola"
+    },
+    "gorgonzola-dop": {
+      "en": "Gorgonzola DOP",
+      "es": "Gorgonzola DOP",
+      "it": "Gorgonzola DOP"
+    },
+    "grana-padano-dop": {
+      "en": "Grana Padano DOP",
+      "es": "Grana Padano DOP",
+      "it": "Grana Padano DOP"
+    },
+    "guanciale": {
+      "en": "Guanciale",
+      "es": "Guanciale",
+      "it": "Guanciale"
+    },
+    "herbes-de-provence": {
+      "en": "Herbes de Provence",
+      "es": "Hierbas provenzales",
+      "it": "Erbe di Provenza"
+    },
+    "jambon-de-parme-24-mois-dop": {
+      "en": "Parma ham 24 months DOP",
+      "es": "Jamón de Parma 24 meses DOP",
+      "it": "Prosciutto di Parma 24 mesi DOP"
+    },
+    "jaune-d-oeuf-coulant": {
+      "en": "Runny egg yolk",
+      "es": "Yema de huevo líquida",
+      "it": "Tuorlo d'uovo morbido"
+    },
+    "lardons-fumes": {
+      "en": "Smoked bacon bits",
+      "es": "Panceta ahumada en dados",
+      "it": "Pancetta affumicata a cubetti"
+    },
+    "mache": {
+      "en": "Lamb's lettuce",
+      "es": "Canónigos",
+      "it": "Songino"
+    },
+    "magret-de-canard-seche-fait-maison-au-torchon-origine-france": {
+      "en": "Homemade cloth-cured duck breast (from France)",
+      "es": "Magret de pato curado casero al paño (origen Francia)",
+      "it": "Magret d'anatra stagionato in casa nel canovaccio (origine Francia)"
+    },
+    "miel-producteur-sur-demande": {
+      "en": "Honey from a local producer (on request)",
+      "es": "Miel de productor local (bajo petición)",
+      "it": "Miele di produttore locale (su richiesta)"
+    },
+    "mortadelle": {
+      "en": "Mortadella",
+      "es": "Mortadela",
+      "it": "Mortadella"
+    },
+    "mozzarella-di-bufala": {
+      "en": "Mozzarella di Bufala",
+      "es": "Mozzarella di Bufala",
+      "it": "Mozzarella di Bufala"
+    },
+    "mozzarella-di-bufala-campana-dop": {
+      "en": "Mozzarella di Bufala Campana DOP",
+      "es": "Mozzarella di Bufala Campana DOP",
+      "it": "Mozzarella di Bufala Campana DOP"
+    },
+    "mozzarella-di-bufala-dop": {
+      "en": "Mozzarella di Bufala DOP",
+      "es": "Mozzarella di Bufala DOP",
+      "it": "Mozzarella di Bufala DOP"
+    },
+    "mozzarella-fior-di-latte": {
+      "en": "Mozzarella Fior di Latte",
+      "es": "Mozzarella Fior di Latte",
+      "it": "Mozzarella Fior di Latte"
+    },
+    "noisettes-concassees": {
+      "en": "Crushed hazelnuts",
+      "es": "Avellanas troceadas",
+      "it": "Nocciole tritate"
+    },
+    "noix-concassees": {
+      "en": "Crushed walnuts",
+      "es": "Nueces troceadas",
+      "it": "Noci tritate"
+    },
+    "oeuf-coulant-origine-herault": {
+      "en": "Runny egg (from Hérault)",
+      "es": "Huevo líquido (origen Hérault)",
+      "it": "Uovo morbido (origine Hérault)"
+    },
+    "oignons-rouges": {
+      "en": "Red onions",
+      "es": "Cebollas rojas",
+      "it": "Cipolle rosse"
+    },
+    "olives-noires-producteur": {
+      "en": "Black olives from a local producer",
+      "es": "Aceitunas negras de productor local",
+      "it": "Olive nere di produttore locale"
+    },
+    "origan": {
+      "en": "Oregano",
+      "es": "Orégano",
+      "it": "Origano"
+    },
+    "parmigiano-reggiano-24-mois-dop": {
+      "en": "Parmigiano Reggiano 24 months DOP",
+      "es": "Parmigiano Reggiano 24 meses DOP",
+      "it": "Parmigiano Reggiano 24 mesi DOP"
+    },
+    "pepperoni": {
+      "en": "Pepperoni",
+      "es": "Pepperoni",
+      "it": "Pepperoni"
+    },
+    "perles-de-mozzarella": {
+      "en": "Mozzarella pearls",
+      "es": "Perlas de mozzarella",
+      "it": "Perle di mozzarella"
+    },
+    "poivre-noir-moulu": {
+      "en": "Ground black pepper",
+      "es": "Pimienta negra molida",
+      "it": "Pepe nero macinato"
+    },
+    "pomme-de-terre-grenailles": {
+      "en": "Baby potatoes",
+      "es": "Patatas baby",
+      "it": "Patatine novelle"
+    },
+    "pommes-de-terre-grenailles-roties": {
+      "en": "Roasted baby potatoes",
+      "es": "Patatas baby asadas",
+      "it": "Patatine novelle arrosto"
+    },
+    "pousses-d-epinards": {
+      "en": "Baby spinach",
+      "es": "Brotes de espinaca",
+      "it": "Spinacini freschi"
+    },
+    "reblochon-de-savoie-au-lait-cru-aop": {
+      "en": "Reblochon de Savoie raw milk AOP",
+      "es": "Reblochon de Savoie de leche cruda AOP",
+      "it": "Reblochon de Savoie al latte crudo AOP"
+    },
+    "sauce-basilic": {
+      "en": "Basil sauce",
+      "es": "Salsa de albahaca",
+      "it": "Salsa al basilico"
+    },
+    "sauce-persillade": {
+      "en": "Persillade sauce",
+      "es": "Salsa persillade (ajo y perejil)",
+      "it": "Salsa persillade (aglio e prezzemolo)"
+    },
+    "saumon-fume-origine-norvege": {
+      "en": "Smoked salmon (from Norway)",
+      "es": "Salmón ahumado (origen Noruega)",
+      "it": "Salmone affumicato (origine Norvegia)"
+    },
+    "spianata-piccante": {
+      "en": "Spianata Piccante",
+      "es": "Spianata Piccante",
+      "it": "Spianata Piccante"
+    },
+    "stracciatella": {
+      "en": "Stracciatella",
+      "es": "Stracciatella",
+      "it": "Stracciatella"
+    },
+    "tomates-cerises": {
+      "en": "Cherry tomatoes",
+      "es": "Tomates cherry",
+      "it": "Pomodorini"
+    },
+    "tomates-semi-sechees": {
+      "en": "Semi-dried tomatoes",
+      "es": "Tomates semisecos",
+      "it": "Pomodori semisecchi"
+    },
+    "tranches-de-jambon-sec-serrano-finement-coupees": {
+      "en": "Finely cut slices of Serrano cured ham",
+      "es": "Lonchas de jamón serrano cortadas finas",
+      "it": "Fette di prosciutto crudo Serrano tagliate sottili"
+    },
+    "viande-hachee-origine-france": {
+      "en": "Ground beef (from France)",
+      "es": "Carne picada (origen Francia)",
+      "it": "Carne macinata (origine Francia)"
+    }
+  },
+  "baseLabels": {
+    "Base mozzarella": {
+      "en": "Mozzarella base",
+      "es": "Base de mozzarella",
+      "it": "Base di mozzarella"
+    },
+    "Crème de champignons": {
+      "en": "Mushroom cream",
+      "es": "Crema de champiñones",
+      "it": "Crema di funghi"
+    },
+    "Crème de pesto": {
+      "en": "Pesto cream",
+      "es": "Crema de pesto",
+      "it": "Crema di pesto"
+    },
+    "Crème de potimarron": {
+      "en": "Pumpkin cream",
+      "es": "Crema de calabaza",
+      "it": "Crema di zucca"
+    },
+    "Crème de ricotta": {
+      "en": "Ricotta cream",
+      "es": "Crema de ricotta",
+      "it": "Crema di ricotta"
+    },
+    "Crème fraîche": {
+      "en": "Crème fraîche",
+      "es": "Crème fraîche",
+      "it": "Panna fresca"
+    },
+    "Sauce tomate": {
+      "en": "Tomato sauce",
+      "es": "Salsa de tomate",
+      "it": "Salsa di pomodoro"
+    }
+  },
+  "drinks": {
+    "Ice Tea": {
+      "en": "Iced tea",
+      "es": "Té helado",
+      "it": "Tè freddo"
+    },
+    "Coca Cola": {
+      "en": "Coca-Cola",
+      "es": "Coca-Cola",
+      "it": "Coca-Cola"
+    },
+    "Cola Italien": {
+      "en": "Italian cola",
+      "es": "Cola italiana",
+      "it": "Cola italiana"
+    },
+    "Eau": {
+      "en": "Water",
+      "es": "Agua",
+      "it": "Acqua"
+    },
+    "Limonade Italienne": {
+      "en": "Italian lemonade",
+      "es": "Limonada italiana",
+      "it": "Limonata italiana"
+    },
+    "Bière Italienne": {
+      "en": "Italian beer",
+      "es": "Cerveza italiana",
+      "it": "Birra italiana"
+    },
+    "Vin Rouge Local": {
+      "en": "Local red wine",
+      "es": "Vino tinto local",
+      "it": "Vino rosso locale"
+    },
+    "Vin Rosé Local": {
+      "en": "Local rosé wine",
+      "es": "Vino rosado local",
+      "it": "Vino rosato locale"
+    }
+  },
+  "supplements": {
+    "Feuilles de basilic frais, Filet d'huile d'olive producteur, Sauce tomate, Crème fraîche, Poivre noir, Herbes de Provence": {
+      "en": "Fresh basil leaves, olive oil drizzle from a local producer, tomato sauce, crème fraîche, black pepper, Herbes de Provence",
+      "es": "Hojas de albahaca fresca, hilo de aceite de oliva de productor local, salsa de tomate, crème fraîche, pimienta negra, hierbas provenzales",
+      "it": "Foglie di basilico fresco, filo d'olio d'oliva di produttore locale, salsa di pomodoro, panna fresca, pepe nero, erbe di Provenza"
+    },
+    "Olives noires producteur, Miel producteur, Sauce basilic": {
+      "en": "Black olives from a local producer, honey from a local producer, basil sauce",
+      "es": "Aceitunas negras de productor local, miel de productor local, salsa de albahaca",
+      "it": "Olive nere di produttore locale, miele di produttore locale, salsa al basilico"
+    },
+    "Jaune d'œuf coulant (plein air origine Hérault), Noix, Filet de crème balsamique": {
+      "en": "Runny egg yolk (free-range, from Hérault), walnuts, drizzle of balsamic glaze",
+      "es": "Yema de huevo líquida (campero, origen Hérault), nueces, hilo de crema balsámica",
+      "it": "Tuorlo d'uovo morbido (ruspante, origine Hérault), noci, filo di crema di aceto balsamico"
+    },
+    "Légumes, Crème de potimarron, Crème de pesto, Amandes effilées": {
+      "en": "Vegetables, pumpkin cream, pesto cream, sliced almonds",
+      "es": "Verduras, crema de calabaza, crema de pesto, almendras laminadas",
+      "it": "Verdure, crema di zucca, crema di pesto, mandorle a lamelle"
+    },
+    "Fromages, Charcuteries, Viandes": {
+      "en": "Cheeses, cured meats, meats",
+      "es": "Quesos, embutidos, carnes",
+      "it": "Formaggi, salumi, carni"
+    },
+    "Tomates semi-séchées, Reblochon de Savoie au lait cru AOP": {
+      "en": "Semi-dried tomatoes, Reblochon de Savoie raw milk AOP",
+      "es": "Tomates semisecos, Reblochon de Savoie de leche cruda AOP",
+      "it": "Pomodori semisecchi, Reblochon de Savoie al latte crudo AOP"
+    },
+    "Guanciale, Artichaut mariné, Camembert au lait de Bufflonne, Mozzarella di Bufala Campana DOP": {
+      "en": "Guanciale, marinated artichoke, water buffalo milk Camembert, Mozzarella di Bufala Campana DOP",
+      "es": "Guanciale, alcachofa marinada, Camembert de leche de búfala, Mozzarella di Bufala Campana DOP",
+      "it": "Guanciale, carciofi marinati, Camembert di latte di bufala, Mozzarella di Bufala Campana DOP"
+    }
+  },
+  "menus": {
+    "automne-hiver-2026": {
+      "name": {
+        "en": "Autumn-Winter 2026",
+        "es": "Otoño-Invierno 2026",
+        "it": "Autunno-Inverno 2026"
+      },
+      "tagline": {
+        "en": "Seasonal produce to go with autumn and winter.",
+        "es": "Productos de temporada para acompañar el otoño y el invierno.",
+        "it": "Prodotti di stagione per accompagnare autunno e inverno."
+      }
+    },
+    "hiver-2024-2025": {
+      "name": {
+        "en": "Winter 2024-2025",
+        "es": "Invierno 2024-2025",
+        "it": "Inverno 2024-2025"
+      }
+    }
+  },
+  "modal": {
+    "Découvrez la carte Automne-Hiver !": {
+      "title": {
+        "en": "Discover the Autumn-Winter menu!",
+        "es": "¡Descubre la carta de Otoño-Invierno!",
+        "it": "Scopri il menu Autunno-Inverno!"
+      },
+      "body": {
+        "en": "Treat yourself to our **brand-new menu**, homemade and designed to delight you.\n\nSeasonal produce to go with autumn and winter.\n\nFind all your favorite pizzas, red, white and special, with a homemade menu made for the whole season.",
+        "es": "Déjate tentar por nuestra **carta totalmente nueva**, casera y pensada para que disfrutes.\n\nProductos de temporada para acompañar el otoño y el invierno.\n\nEncuentra todas tus pizzas favoritas, rojas, blancas y especiales, con una carta casera pensada para toda la temporada.",
+        "it": "Lasciati tentare dal nostro **menu tutto nuovo**, fatto in casa e pensato per farti stare bene a tavola.\n\nProdotti di stagione per accompagnare autunno e inverno.\n\nRitrova tutte le tue pizze preferite, rosse, bianche e speciali, con un menu artigianale pensato per tutta la stagione."
+      }
+    },
+    "Événement exceptionnel": {
+      "title": {
+        "en": "Special event",
+        "es": "Evento excepcional",
+        "it": "Evento straordinario"
+      },
+      "body": {
+        "en": "Today you can find us exceptionally in the **cultural center parking lot** in Villeneuve-lès-Maguelone.\n\nYou can order pizzas by phone from 6 pm with a reduced menu.",
+        "es": "Hoy nos encontrarás excepcionalmente en el **aparcamiento del centro cultural** de Villeneuve-lès-Maguelone.\n\nPuedes pedir pizzas por teléfono a partir de las 18:00 con una carta reducida.",
+        "it": "Oggi ci trovi in via eccezionale nel **parcheggio del centro culturale** di Villeneuve-lès-Maguelone.\n\nÈ possibile ordinare le pizze per telefono a partire dalle 18:00 con un menu ridotto."
+      }
+    }
+  }
+}

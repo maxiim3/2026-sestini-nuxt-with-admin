@@ -1,0 +1,1303 @@
+{
+ "ingredients": [
+  {
+   "slug": "amandes-effilees",
+   "name": "Amandes effilées",
+   "kind": "autre",
+   "allergens": [
+    "fruits-a-coque"
+   ]
+  },
+  {
+   "slug": "anchois-marines-a-l-huile",
+   "name": "Anchois marinés à l'Huile",
+   "kind": "poisson",
+   "allergens": [
+    "poissons"
+   ]
+  },
+  {
+   "slug": "artichaut-marine",
+   "name": "Artichaut mariné",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "bleu-d-auvergne",
+   "name": "Bleu d'Auvergne",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "burrata-a-la-truffe",
+   "name": "Burrata à la truffe",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "camembert-au-lait-de-bufflonne",
+   "name": "Camembert au lait de Bufflonne",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "capres-au-sel",
+   "name": "Câpres au sel",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "chevre",
+   "name": "Chèvre",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "chiffonnade-de-jambon-cuit",
+   "name": "Chiffonnade de jambon cuit",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "chiffonnade-de-jambon-cuit-a-la-truffe",
+   "name": "Chiffonnade de jambon cuit à la truffe",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "ciboulette-fraiche",
+   "name": "Ciboulette fraîche",
+   "kind": "herbe",
+   "allergens": []
+  },
+  {
+   "slug": "confit-d-oignons-fait-maison",
+   "name": "Confit d'oignons fait maison",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "coppa",
+   "name": "Coppa",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "courgette-rotie",
+   "name": "Courgette rôtie",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "creme-balsamique",
+   "name": "Crème balsamique",
+   "kind": "sauce",
+   "allergens": [
+    "sulfites"
+   ]
+  },
+  {
+   "slug": "eclats-de-pistache",
+   "name": "Éclats de pistache",
+   "kind": "autre",
+   "allergens": [
+    "fruits-a-coque"
+   ]
+  },
+  {
+   "slug": "eminces-de-champignons",
+   "name": "Émincés de champignons",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "epinards-en-branches",
+   "name": "Épinards en branches",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "feuilles-de-basilic-frais",
+   "name": "Feuilles de basilic frais",
+   "kind": "herbe",
+   "allergens": []
+  },
+  {
+   "slug": "filet-d-huile-d-olive-artisanale-a-la-truffe",
+   "name": "Filet d'huile d'olive artisanale à la truffe",
+   "kind": "sauce",
+   "allergens": []
+  },
+  {
+   "slug": "filet-d-huile-d-olive-producteur",
+   "name": "Filet d'huile d'olive producteur",
+   "kind": "sauce",
+   "allergens": []
+  },
+  {
+   "slug": "filet-de-creme-balsamique",
+   "name": "Filet de crème balsamique",
+   "kind": "sauce",
+   "allergens": [
+    "sulfites"
+   ]
+  },
+  {
+   "slug": "filet-de-creme-fraiche",
+   "name": "Filet de crème fraîche",
+   "kind": "sauce",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "filet-de-poulet-origine-france",
+   "name": "Filet de Poulet (Origine France)",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "fines-tranches-de-jambon-sec-serrano",
+   "name": "Fines tranches de jambon sec Serrano",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "foie-gras-de-canard-origine-france",
+   "name": "Foie gras de canard (Origine France)",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "gorgonzola",
+   "name": "Gorgonzola",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "gorgonzola-dop",
+   "name": "Gorgonzola DOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "grana-padano-dop",
+   "name": "Grana Padano DOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "guanciale",
+   "name": "Guanciale",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "herbes-de-provence",
+   "name": "Herbes de Provence",
+   "kind": "herbe",
+   "allergens": []
+  },
+  {
+   "slug": "jambon-de-parme-24-mois-dop",
+   "name": "Jambon de Parme 24 mois DOP",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "jaune-d-oeuf-coulant",
+   "name": "Jaune d'œuf coulant",
+   "kind": "autre",
+   "allergens": [
+    "oeufs"
+   ]
+  },
+  {
+   "slug": "lardons-fumes",
+   "name": "Lardons fumés",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "mache",
+   "name": "Mâche",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "magret-de-canard-seche-fait-maison-au-torchon-origine-france",
+   "name": "Magret de canard séché fait maison au torchon (Origine France)",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "miel-producteur-sur-demande",
+   "name": "Miel producteur (sur demande)",
+   "kind": "sauce",
+   "allergens": []
+  },
+  {
+   "slug": "mortadelle",
+   "name": "Mortadelle",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "mozzarella-di-bufala",
+   "name": "Mozzarella di Bufala",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "mozzarella-di-bufala-campana-dop",
+   "name": "Mozzarella di Bufala Campana DOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "mozzarella-di-bufala-dop",
+   "name": "Mozzarella di Bufala DOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "mozzarella-fior-di-latte",
+   "name": "Mozzarella Fior di Latte",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "noisettes-concassees",
+   "name": "Noisettes concassées",
+   "kind": "autre",
+   "allergens": [
+    "fruits-a-coque"
+   ]
+  },
+  {
+   "slug": "noix-concassees",
+   "name": "Noix concassées",
+   "kind": "autre",
+   "allergens": [
+    "fruits-a-coque"
+   ]
+  },
+  {
+   "slug": "oeuf-coulant-origine-herault",
+   "name": "Oeuf coulant (Origine Hérault)",
+   "kind": "autre",
+   "allergens": [
+    "oeufs"
+   ]
+  },
+  {
+   "slug": "oignons-rouges",
+   "name": "Oignons rouges",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "olives-noires-producteur",
+   "name": "Olives noires producteur",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "origan",
+   "name": "Origan",
+   "kind": "herbe",
+   "allergens": []
+  },
+  {
+   "slug": "parmigiano-reggiano-24-mois-dop",
+   "name": "Parmigiano Reggiano 24 mois DOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "pepperoni",
+   "name": "Pepperoni",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "perles-de-mozzarella",
+   "name": "Perles de mozzarella",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "poivre-noir-moulu",
+   "name": "Poivre noir moulu",
+   "kind": "herbe",
+   "allergens": []
+  },
+  {
+   "slug": "pomme-de-terre-grenailles",
+   "name": "Pomme de terre grenailles",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "pommes-de-terre-grenailles-roties",
+   "name": "Pommes de terre grenailles rôties",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "pousses-d-epinards",
+   "name": "Pousses d'épinards",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "reblochon-de-savoie-au-lait-cru-aop",
+   "name": "Reblochon de Savoie au lait cru AOP",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "sauce-basilic",
+   "name": "Sauce basilic",
+   "kind": "sauce",
+   "allergens": []
+  },
+  {
+   "slug": "sauce-persillade",
+   "name": "Sauce persillade",
+   "kind": "sauce",
+   "allergens": []
+  },
+  {
+   "slug": "saumon-fume-origine-norvege",
+   "name": "Saumon fumé (Origine Norvège)",
+   "kind": "poisson",
+   "allergens": [
+    "poissons"
+   ]
+  },
+  {
+   "slug": "spianata-piccante",
+   "name": "Spianata Piccante",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "stracciatella",
+   "name": "Stracciatella",
+   "kind": "fromage",
+   "allergens": [
+    "lait"
+   ]
+  },
+  {
+   "slug": "tomates-cerises",
+   "name": "Tomates cerises",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "tomates-semi-sechees",
+   "name": "Tomates semi-séchées",
+   "kind": "legume",
+   "allergens": []
+  },
+  {
+   "slug": "tranches-de-jambon-sec-serrano-finement-coupees",
+   "name": "Tranches de jambon sec Serrano finement coupées",
+   "kind": "viande",
+   "allergens": []
+  },
+  {
+   "slug": "viande-hachee-origine-france",
+   "name": "Viande hachée (Origine France)",
+   "kind": "viande",
+   "allergens": []
+  }
+ ],
+ "pizzas": [
+  {
+   "slug": "la-margherita",
+   "name": "La Margherita",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1150,
+   "avant": [
+    "mozzarella-fior-di-latte"
+   ],
+   "apres": [
+    "feuilles-de-basilic-frais",
+    "filet-d-huile-d-olive-producteur"
+   ],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-pizza-de-bufflonne",
+   "name": "La Pizza de Bufflonne",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1400,
+   "avant": [],
+   "apres": [
+    "mozzarella-di-bufala-campana-dop",
+    "feuilles-de-basilic-frais",
+    "filet-d-huile-d-olive-producteur"
+   ],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-prosciutto",
+   "name": "La Prosciutto",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1350,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "chiffonnade-de-jambon-cuit"
+   ],
+   "apres": [
+    "filet-d-huile-d-olive-producteur"
+   ],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-regina",
+   "name": "La Regina",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1450,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "eminces-de-champignons",
+    "chiffonnade-de-jambon-cuit",
+    "olives-noires-producteur",
+    "origan"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-vegetariana",
+   "name": "La Vegetariana",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1500,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "eminces-de-champignons",
+    "oignons-rouges",
+    "tomates-semi-sechees",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-pepperoni-d-hiver",
+   "name": "La Pepperoni d'Hiver",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1550,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "pepperoni",
+    "tomates-semi-sechees",
+    "oignons-rouges",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-capricciosa",
+   "name": "La Capricciosa",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1550,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "eminces-de-champignons",
+    "chiffonnade-de-jambon-cuit",
+    "artichaut-marine",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-carnee",
+   "name": "La Carnée",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1550,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "viande-hachee-origine-france",
+    "oignons-rouges",
+    "tomates-semi-sechees",
+    "grana-padano-dop"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "l-italia",
+   "name": "L'Italia",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1650,
+   "avant": [],
+   "apres": [
+    "mozzarella-di-bufala-campana-dop",
+    "tranches-de-jambon-sec-serrano-finement-coupees",
+    "mache",
+    "tomates-semi-sechees",
+    "sauce-basilic"
+   ],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-4-formaggi",
+   "name": "La 4 Formaggi",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1450,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "gorgonzola-dop",
+    "grana-padano-dop",
+    "chevre"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-biquette",
+   "name": "La Biquette",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1400,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "chevre",
+    "miel-producteur-sur-demande"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-montagna",
+   "name": "La Montagna",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1600,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "pommes-de-terre-grenailles-roties",
+    "lardons-fumes",
+    "oignons-rouges",
+    "herbes-de-provence",
+    "reblochon-de-savoie-au-lait-cru-aop"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": false
+  },
+  {
+   "slug": "la-camembert-de-bufflonne",
+   "name": "La Camembert de Bufflonne",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1650,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "pommes-de-terre-grenailles-roties",
+    "lardons-fumes",
+    "camembert-au-lait-de-bufflonne"
+   ],
+   "apres": [
+    "noix-concassees",
+    "ciboulette-fraiche"
+   ],
+   "extraAllergens": [
+    "fruits-a-coque"
+   ],
+   "archived": false
+  },
+  {
+   "slug": "la-carbonara",
+   "name": "La Carbonara",
+   "baseKind": "sans",
+   "baseLabel": "Base mozzarella",
+   "priceCents": 1550,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "guanciale",
+    "oignons-rouges"
+   ],
+   "apres": [
+    "jaune-d-oeuf-coulant",
+    "poivre-noir-moulu",
+    "grana-padano-dop"
+   ],
+   "extraAllergens": [
+    "oeufs"
+   ],
+   "archived": false
+  },
+  {
+   "slug": "la-zucca",
+   "name": "La Zucca",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de potimarron",
+   "priceCents": 1650,
+   "avant": [
+    "mozzarella-fior-di-latte"
+   ],
+   "apres": [
+    "coppa",
+    "mache",
+    "noix-concassees",
+    "filet-de-creme-balsamique"
+   ],
+   "extraAllergens": [
+    "fruits-a-coque",
+    "sulfites"
+   ],
+   "archived": false
+  },
+  {
+   "slug": "la-pesto-d-inverno",
+   "name": "La Pesto d'Inverno",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de pesto",
+   "priceCents": 1650,
+   "avant": [],
+   "apres": [
+    "mozzarella-di-bufala-campana-dop",
+    "tranches-de-jambon-sec-serrano-finement-coupees",
+    "mache",
+    "amandes-effilees"
+   ],
+   "extraAllergens": [
+    "fruits-a-coque"
+   ],
+   "archived": false
+  },
+  {
+   "slug": "le-calzone-de-sestini",
+   "name": "Le Calzone de Sestini",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1400,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "chiffonnade-de-jambon-cuit",
+    "eminces-de-champignons",
+    "oeuf-coulant-origine-herault"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "l-italienne-d-hiver",
+   "name": "L'Italienne d'hiver",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1500,
+   "avant": [],
+   "apres": [
+    "mozzarella-di-bufala-dop",
+    "jambon-de-parme-24-mois-dop",
+    "parmigiano-reggiano-24-mois-dop",
+    "tomates-semi-sechees",
+    "sauce-basilic"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-piccante",
+   "name": "La Piccante",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1350,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "spianata-piccante",
+    "oignons-rouges",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-napoletana",
+   "name": "La Napoletana",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1350,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "anchois-marines-a-l-huile",
+    "capres-au-sel",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "l-auvergna",
+   "name": "L'Auvergna",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1400,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "chiffonnade-de-jambon-cuit",
+    "bleu-d-auvergne",
+    "filet-de-creme-fraiche"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-bolognaise",
+   "name": "La Bolognaise",
+   "baseKind": "tomate",
+   "baseLabel": "Sauce tomate",
+   "priceCents": 1450,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "viande-hachee-origine-france",
+    "tomates-semi-sechees",
+    "parmigiano-reggiano-24-mois-dop",
+    "origan"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-charcutiere",
+   "name": "La Charcutière",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1500,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "gorgonzola-dop"
+   ],
+   "apres": [
+    "jambon-de-parme-24-mois-dop",
+    "spianata-piccante",
+    "parmigiano-reggiano-24-mois-dop",
+    "sauce-basilic"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-spinacio",
+   "name": "La Spinacio",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1550,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "epinards-en-branches"
+   ],
+   "apres": [
+    "saumon-fume-origine-norvege",
+    "mozzarella-di-bufala",
+    "pousses-d-epinards"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-funghi-e-pollo",
+   "name": "La Funghi E Pollo",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de champignons",
+   "priceCents": 1450,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "filet-de-poulet-origine-france",
+    "oignons-rouges",
+    "sauce-persillade",
+    "olives-noires-producteur"
+   ],
+   "apres": [],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "pdm-ricotta-courgette",
+   "name": "La Pizza du Moment — Ricotta & courgette",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de ricotta",
+   "priceCents": 1750,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "courgette-rotie"
+   ],
+   "apres": [
+    "tranches-de-jambon-sec-serrano-finement-coupees",
+    "tomates-cerises",
+    "perles-de-mozzarella",
+    "feuilles-de-basilic-frais",
+    "sauce-basilic"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "pdm-gorgonzola-serrano",
+   "name": "La Pizza du Moment — Gorgonzola & Serrano",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1700,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "gorgonzola"
+   ],
+   "apres": [
+    "fines-tranches-de-jambon-sec-serrano",
+    "mache",
+    "noisettes-concassees",
+    "filet-d-huile-d-olive-producteur"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "pdm-potimarron",
+   "name": "La Pizza du Moment — Potimarron & coppa",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de potimarron",
+   "priceCents": 1700,
+   "avant": [
+    "mozzarella-fior-di-latte"
+   ],
+   "apres": [
+    "coppa",
+    "mache",
+    "noix-concassees",
+    "creme-balsamique"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "pdm-mortadelle-pistache",
+   "name": "La Pizza du Moment — Mortadelle & pistache",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1750,
+   "avant": [
+    "mozzarella-fior-di-latte"
+   ],
+   "apres": [
+    "mortadelle",
+    "eclats-de-pistache",
+    "stracciatella",
+    "feuilles-de-basilic-frais"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-sud-ouest",
+   "name": "La Sud-Ouest",
+   "baseKind": "creme",
+   "baseLabel": "Crème fraîche",
+   "priceCents": 1950,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "pomme-de-terre-grenailles",
+    "confit-d-oignons-fait-maison"
+   ],
+   "apres": [
+    "magret-de-canard-seche-fait-maison-au-torchon-origine-france",
+    "foie-gras-de-canard-origine-france"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  },
+  {
+   "slug": "la-tartufo",
+   "name": "La Tartufo",
+   "baseKind": "speciale",
+   "baseLabel": "Crème de champignons",
+   "priceCents": 1950,
+   "avant": [
+    "mozzarella-fior-di-latte",
+    "chiffonnade-de-jambon-cuit-a-la-truffe"
+   ],
+   "apres": [
+    "burrata-a-la-truffe",
+    "mache",
+    "filet-d-huile-d-olive-artisanale-a-la-truffe"
+   ],
+   "extraAllergens": [],
+   "archived": true
+  }
+ ],
+ "menus": [
+  {
+   "slug": "automne-hiver-2026",
+   "name": "Automne-Hiver 2026",
+   "status": "active",
+   "items": [
+    {
+     "pizza": "la-margherita",
+     "section": "rouges",
+     "position": 0
+    },
+    {
+     "pizza": "la-pizza-de-bufflonne",
+     "section": "rouges",
+     "position": 1
+    },
+    {
+     "pizza": "la-prosciutto",
+     "section": "rouges",
+     "position": 2
+    },
+    {
+     "pizza": "la-regina",
+     "section": "rouges",
+     "position": 3
+    },
+    {
+     "pizza": "la-vegetariana",
+     "section": "rouges",
+     "position": 4
+    },
+    {
+     "pizza": "la-pepperoni-d-hiver",
+     "section": "rouges",
+     "position": 5
+    },
+    {
+     "pizza": "la-capricciosa",
+     "section": "rouges",
+     "position": 6
+    },
+    {
+     "pizza": "la-carnee",
+     "section": "rouges",
+     "position": 7
+    },
+    {
+     "pizza": "l-italia",
+     "section": "rouges",
+     "position": 8
+    },
+    {
+     "pizza": "la-4-formaggi",
+     "section": "blanches",
+     "position": 0
+    },
+    {
+     "pizza": "la-biquette",
+     "section": "blanches",
+     "position": 1
+    },
+    {
+     "pizza": "la-montagna",
+     "section": "blanches",
+     "position": 2
+    },
+    {
+     "pizza": "la-camembert-de-bufflonne",
+     "section": "blanches",
+     "position": 3
+    },
+    {
+     "pizza": "la-carbonara",
+     "section": "speciales",
+     "position": 0
+    },
+    {
+     "pizza": "la-zucca",
+     "section": "speciales",
+     "position": 1
+    },
+    {
+     "pizza": "la-pesto-d-inverno",
+     "section": "speciales",
+     "position": 2
+    }
+   ]
+  },
+  {
+   "slug": "hiver-2024-2025",
+   "name": "Hiver 2024-2025",
+   "status": "archived",
+   "items": [
+    {
+     "pizza": "la-margherita",
+     "section": "rouges",
+     "position": 0
+    },
+    {
+     "pizza": "la-pizza-de-bufflonne",
+     "section": "rouges",
+     "position": 1
+    },
+    {
+     "pizza": "la-prosciutto",
+     "section": "rouges",
+     "position": 2
+    },
+    {
+     "pizza": "la-regina",
+     "section": "rouges",
+     "position": 3
+    },
+    {
+     "pizza": "le-calzone-de-sestini",
+     "section": "rouges",
+     "position": 4
+    },
+    {
+     "pizza": "l-italienne-d-hiver",
+     "section": "rouges",
+     "position": 5
+    },
+    {
+     "pizza": "la-piccante",
+     "section": "rouges",
+     "position": 6
+    },
+    {
+     "pizza": "la-napoletana",
+     "section": "rouges",
+     "position": 7
+    },
+    {
+     "pizza": "l-auvergna",
+     "section": "rouges",
+     "position": 8
+    },
+    {
+     "pizza": "la-bolognaise",
+     "section": "rouges",
+     "position": 9
+    },
+    {
+     "pizza": "la-capricciosa",
+     "section": "rouges",
+     "position": 10
+    },
+    {
+     "pizza": "la-4-formaggi",
+     "section": "blanches",
+     "position": 0
+    },
+    {
+     "pizza": "la-biquette",
+     "section": "blanches",
+     "position": 1
+    },
+    {
+     "pizza": "la-charcutiere",
+     "section": "blanches",
+     "position": 2
+    },
+    {
+     "pizza": "la-camembert-de-bufflonne",
+     "section": "blanches",
+     "position": 3
+    },
+    {
+     "pizza": "la-montagna",
+     "section": "blanches",
+     "position": 4
+    },
+    {
+     "pizza": "la-spinacio",
+     "section": "speciales",
+     "position": 0
+    },
+    {
+     "pizza": "la-funghi-e-pollo",
+     "section": "speciales",
+     "position": 1
+    }
+   ]
+  }
+ ],
+ "featured": [
+  {
+   "pizza": "pdm-ricotta-courgette",
+   "title": "La Pizza du Moment",
+   "period": "Printemps-Été 2026"
+  },
+  {
+   "pizza": "pdm-gorgonzola-serrano",
+   "title": "La Pizza du Moment",
+   "period": "Hiver 2025"
+  },
+  {
+   "pizza": "pdm-potimarron",
+   "title": "La Pizza du Moment",
+   "period": "Automne 2025"
+  },
+  {
+   "pizza": "pdm-mortadelle-pistache",
+   "title": "La Pizza du Moment",
+   "period": "Printemps 2025"
+  },
+  {
+   "pizza": "la-sud-ouest",
+   "title": "La Sud-Ouest",
+   "period": "Fêtes 2024"
+  },
+  {
+   "pizza": "la-tartufo",
+   "title": "La Tartufo",
+   "period": "Fêtes 2024"
+  }
+ ],
+ "drinks": [
+  {
+   "name": "Ice Tea",
+   "volume": "33cl",
+   "category": "soft",
+   "priceCents": 250,
+   "position": 0
+  },
+  {
+   "name": "Coca Cola",
+   "volume": "33cl",
+   "category": "soft",
+   "priceCents": 250,
+   "position": 1
+  },
+  {
+   "name": "Cola Italien",
+   "volume": "27,5cl",
+   "category": "soft",
+   "priceCents": 400,
+   "position": 2
+  },
+  {
+   "name": "Eau",
+   "volume": "50cl",
+   "category": "eau",
+   "priceCents": 200,
+   "position": 3
+  },
+  {
+   "name": "Limonade Italienne",
+   "volume": "27,5cl",
+   "category": "soft",
+   "priceCents": 400,
+   "position": 4
+  },
+  {
+   "name": "Bière Italienne",
+   "volume": "33cl",
+   "category": "biere",
+   "priceCents": 400,
+   "position": 5
+  },
+  {
+   "name": "Vin Rouge Local",
+   "volume": "75cl",
+   "category": "vin",
+   "priceCents": 950,
+   "position": 6
+  },
+  {
+   "name": "Vin Rosé Local",
+   "volume": "75cl",
+   "category": "vin",
+   "priceCents": 950,
+   "position": 7
+  }
+ ],
+ "supplements": [
+  {
+   "label": "Feuilles de basilic frais, Filet d'huile d'olive producteur, Sauce tomate, Crème fraîche, Poivre noir, Herbes de Provence",
+   "priceCents": 50,
+   "position": 0
+  },
+  {
+   "label": "Olives noires producteur, Miel producteur, Sauce basilic",
+   "priceCents": 100,
+   "position": 1
+  },
+  {
+   "label": "Jaune d'œuf coulant (plein air origine Hérault), Noix, Filet de crème balsamique",
+   "priceCents": 150,
+   "position": 2
+  },
+  {
+   "label": "Légumes, Crème de potimarron, Crème de pesto, Amandes effilées",
+   "priceCents": 200,
+   "position": 3
+  },
+  {
+   "label": "Fromages, Charcuteries, Viandes",
+   "priceCents": 300,
+   "position": 4
+  },
+  {
+   "label": "Tomates semi-séchées, Reblochon de Savoie au lait cru AOP",
+   "priceCents": 350,
+   "position": 5
+  },
+  {
+   "label": "Guanciale, Artichaut mariné, Camembert au lait de Bufflonne, Mozzarella di Bufala Campana DOP",
+   "priceCents": 400,
+   "position": 6
+  }
+ ]
+}

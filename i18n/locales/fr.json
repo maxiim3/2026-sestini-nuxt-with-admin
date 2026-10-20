@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "menu": "La carte",
+    "findUs": "Nous trouver",
+    "call": "Appeler",
+    "callFull": "Appeler pour commander",
+    "language": "Langue",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "skip": "Aller au contenu"
+  },
+  "brand": {
+    "tagline": "La pizza au feu de bois",
+    "pitch": "Pâte maison reposée plusieurs jours, produits frais, locaux et de saison, cuite au feu de bois devant vous.",
+    "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
+  },
+  "tonight": {
+    "label": "Ce soir",
+    "openNow": "Ouvert maintenant",
+    "opensAt": "Ouvre à {time}",
+    "from": "dès {time}",
+    "closedToday": "Fermé aujourd'hui",
+    "closedNow": "C'est fini pour ce soir",
+    "nextOpen": "Prochaine ouverture : {day} à {place}",
+    "weAreAt": "On est à {place}",
+    "itinerary": "Itinéraire",
+    "orderByPhone": "Commande par téléphone, retrait sur place"
+  },
+  "days": {
+    "today": "Aujourd'hui",
+    "tomorrow": "Demain"
+  },
+  "menu": {
+    "title": "La carte",
+    "subtitle": "Pizzas au feu de bois, à emporter",
+    "categories": {
+      "pizzas": "Pizzas",
+      "drinks": "Boissons",
+      "desserts": "Desserts",
+      "supplements": "Suppléments"
+    },
+    "sections": {
+      "rouges": "Les rouges",
+      "blanches": "Les blanches",
+      "speciales": "Les spéciales"
+    },
+    "sectionsHint": {
+      "rouges": "Base sauce tomate",
+      "blanches": "Base crème fraîche",
+      "speciales": "Bases du moment"
+    },
+    "filters": {
+      "title": "Filtrer",
+      "all": "Tout",
+      "tomate": "Base tomate",
+      "creme": "Base crème",
+      "speciale": "Base spéciale",
+      "sans": "Sans base",
+      "vegetarian": "Végétarien",
+      "meat": "Avec viande",
+      "fish": "Avec poisson",
+      "reset": "Réinitialiser",
+      "empty": "Aucune pizza ne correspond à ces filtres."
+    },
+    "afterBaking": "Après cuisson",
+    "base": "Base",
+    "allergens": "Allergènes",
+    "allergensNote": "La pâte contient du gluten. Signalez toute allergie au moment de la commande.",
+    "featured": "Pizza du moment",
+    "supplementsNote": "Ajoutez ce qui vous fait envie, au prix indiqué par ingrédient.",
+    "pricesNote": "Prix TTC. Paiement sur place.",
+    "count": "{n} pizza | {n} pizzas"
+  },
+  "findUs": {
+    "title": "Nous trouver",
+    "subtitle": "Un camion, trois villages, toute la semaine",
+    "thisWeek": "Les 14 prochains jours",
+    "typicalWeek": "Semaine type",
+    "closed": "Fermé",
+    "exception": "Exceptionnel",
+    "openInMaps": "Ouvrir dans Maps",
+    "mapTitle": "Carte de l'emplacement : {place}"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaces": "Crustacés",
+    "oeufs": "Œufs",
+    "poissons": "Poissons",
+    "arachides": "Arachides",
+    "soja": "Soja",
+    "lait": "Lait",
+    "fruits-a-coque": "Fruits à coque",
+    "celeri": "Céleri",
+    "moutarde": "Moutarde",
+    "sesame": "Sésame",
+    "sulfites": "Sulfites",
+    "lupin": "Lupin",
+    "mollusques": "Mollusques"
+  },
+  "drinks": {
+    "soft": "Softs",
+    "eau": "Eaux",
+    "biere": "Bières",
+    "vin": "Vins"
+  },
+  "modal": {
+    "close": "Fermer"
+  },
+  "reviews": {
+    "title": "Ils en parlent",
+    "rating": "{rating} sur 5 · {count} avis Google",
+    "seeAll": "Voir les avis"
+  },
+  "footer": {
+    "contact": "Contact",
+    "follow": "Suivez-nous",
+    "legal": "Mentions légales",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Pizza au feu de bois près de Montpellier"
+  },
+  "home": {
+    "heroTitle": "La pizza au feu de bois",
+    "heroLead": "Une pâte qui prend son temps, un four qui chante, des produits d'ici.",
+    "seeMenu": "Voir la carte",
+    "findUs": "Où sommes-nous ?"
+  },
+  "legal": {
+    "title": "Mentions légales"
+  }
+}
