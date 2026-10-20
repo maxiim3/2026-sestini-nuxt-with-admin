@@ -1,6 +1,6 @@
 {
   "name": "sestini-pizza",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "Sestini Pizza : site Nuxt, admin pilotable par IA (MCP), PWA",
