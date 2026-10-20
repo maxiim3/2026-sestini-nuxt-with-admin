@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/compare/v0.1.0...v0.2.0) (2026-10-20)
+
+
+### Nouveautés
+
+* **atelier:** pizza du moment, ingrédients, boissons, horaires, messages, réglages ([2225946](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/222594678572c21accac2514884b44efeadc4051))
+* **impression:** carte, flyers et affiches A5/A4/A3 en PDF, depuis l'atelier et le MCP ([5e73028](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/5e73028996e6f26bb0c5d251e8194683b9dffc30))
+
 ## 0.1.0 (2026-10-20)
 
 
