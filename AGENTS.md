@@ -5,8 +5,8 @@ Guide pour les agents (Claude Code, Codex…) qui travaillent sur ce dépôt.
 ## Le projet
 
 Site de **Sestini Pizza**, camion pizza au feu de bois près de Montpellier.
-Commande par téléphone uniquement, retrait sur place. Le cahier des charges
-complet est dans [`docs/CDC.md`](docs/CDC.md).
+Commande par téléphone ou directement au camion, retrait et paiement sur
+place, ni commande ni paiement en ligne. Le cahier des charges complet est dans [`docs/CDC.md`](docs/CDC.md).
 
 **Le contenu (carte, horaires, messages) ne se modifie pas dans le code.** Il
 vit en base et se pilote depuis l'admin (`/atelier`) ou le serveur MCP
