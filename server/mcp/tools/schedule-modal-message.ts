@@ -4,7 +4,7 @@ import { modalCtaInput, translationsSchema } from '../../../shared/schemas'
 
 export default defineMcpTool({
   name: 'schedule_modal_message',
-  description: 'Programme un message dans la modale d\'accueil (fermeture, vacances, nouvelle carte, événement, info). Le message s\'affiche automatiquement entre startsAt et endsAt ; le plus prioritaire gagne (message permanent de la carte : priorité 10 ; une annonce ponctuelle : 50 à 100). Pensez à fournir les traductions en, es, it.',
+  description: 'Programme un message dans le bandeau du site (fermeture, vacances, nouvelle carte, événement, info). Le message s\'affiche automatiquement entre startsAt et endsAt ; le plus prioritaire gagne (message permanent de la carte : priorité 10 ; une annonce ponctuelle : 50 à 100). Pensez à fournir les traductions en, es, it.',
   inputSchema: {
     kind: z.enum(MODAL_KINDS),
     title: z.string(),
@@ -19,7 +19,7 @@ export default defineMcpTool({
   },
   handler: async input => mcpCall('schedule_modal_message', input, 'write', async (ctx) => {
     const iso = (v?: string) => (v ? new Date(v).toISOString() : null)
-    return mcpWrite(ctx, `Message de la modale : ${input.title}`, [{
+    return mcpWrite(ctx, `Message du bandeau : ${input.title}`, [{
       op: 'create',
       entity: 'modalMessage',
       data: { kind: input.kind, title: input.title, body: input.body, ctas: input.ctas, startsAt: iso(input.startsAt), endsAt: iso(input.endsAt), priority: input.priority, imageUrl: input.imageUrl ?? null, enabled: true, i18n: input.i18n ?? null },

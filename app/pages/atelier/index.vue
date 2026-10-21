@@ -64,7 +64,7 @@ const maxDaily = computed(() => Math.max(1, ...(data.value?.analytics.daily.map(
           {{ data.featured[0]?.pizza ?? 'Aucune' }}
         </p>
         <p class="text-sm text-stone-500">
-          Modale : {{ data.modal?.title ?? 'aucun message' }}
+          Bandeau : {{ data.modal?.title ?? 'aucun message' }}
         </p>
       </UCard>
       <UCard :class="data.draftCount ? 'ring-2 ring-braise-400' : ''">
