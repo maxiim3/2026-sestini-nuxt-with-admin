@@ -1,93 +1,149 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale, locales } = useI18n()
 const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
 const contact = useContact()
 const year = new Date().getFullYear()
+
+function changeLocale(event: Event) {
+  navigateTo(switchLocalePath((event.target as HTMLSelectElement).value as typeof locale.value))
+}
 </script>
 
 <template>
-  <footer class="grain border-t border-white/5 bg-charbon-950 pb-28 pt-16 text-farine-200 md:pb-12">
-    <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
-      <div class="space-y-5">
-        <img
-          src="/brand/logo.svg"
-          alt="Sestini Pizza, la pizza au feu de bois"
-          width="220"
-          height="97"
-          class="h-auto w-52"
-          loading="lazy"
-        >
-        <p class="max-w-sm text-sm leading-relaxed text-farine-200/70">
-          {{ t('brand.pitch') }}
-        </p>
-      </div>
-
-      <div>
-        <h2 class="eyebrow mb-4 text-braise-300">
-          {{ t('footer.contact') }}
-        </h2>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <a
-              :href="contact.phoneHref"
-              class="hover:text-braise-300"
-              data-track="call_clicked"
-              data-track-source="footer"
-            >{{ contact.phone }}</a>
-          </li>
-          <li>
-            <a
-              :href="`mailto:${contact.email}`"
-              class="hover:text-braise-300"
-            >{{ contact.email }}</a>
-          </li>
-          <li class="text-farine-200/60">
-            {{ t('brand.area') }}
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h2 class="eyebrow mb-4 text-braise-300">
-          {{ t('footer.follow') }}
-        </h2>
-        <div class="flex gap-3">
-          <a
-            :href="contact.instagram"
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-            class="grid size-11 place-items-center rounded-full border border-white/10 hover:border-braise-300 hover:text-braise-300"
+  <footer class="border-t border-nero-line bg-nero pb-[calc(4.25rem+env(safe-area-inset-bottom))] text-[14.5px] leading-relaxed text-fumo-dark md:pb-0">
+    <div class="mx-auto max-w-[1200px] px-5 lg:px-10">
+      <div class="grid gap-9 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:gap-14 md:py-18">
+        <div>
+          <NuxtLink
+            :to="localePath('index')"
+            class="flex items-center gap-2.5 text-crema"
+            aria-label="Sestini Pizza"
           >
-            <UIcon
-              name="i-simple-icons-instagram"
-              class="size-5"
-            />
-          </a>
+            <img
+              src="/brand/emblem.svg"
+              alt=""
+              width="44"
+              height="26"
+              class="h-8 w-auto"
+              loading="lazy"
+            >
+            <span class="font-display text-[22px] font-semibold leading-none">Sestini<small class="ml-1 text-[0.72em] tracking-[0.06em]">PIZZA</small></span>
+          </NuxtLink>
+          <p class="mt-3 max-w-[30ch]">
+            {{ t('brand.pitch') }}
+          </p>
+          <div class="mt-5 flex gap-2.5">
+            <a
+              :href="contact.facebook"
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook"
+              class="grid size-10 place-items-center border border-nero-line text-crema transition hover:border-abricot"
+            >
+              <UIcon
+                name="i-simple-icons-facebook"
+                class="size-4"
+              />
+            </a>
+            <a
+              :href="contact.instagram"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              class="grid size-10 place-items-center border border-nero-line text-crema transition hover:border-abricot"
+            >
+              <UIcon
+                name="i-simple-icons-instagram"
+                class="size-4"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="kicker mb-2.5 text-crema">
+            {{ t('footer.order') }}
+          </h2>
           <a
-            :href="contact.facebook"
-            target="_blank"
-            rel="noopener"
-            aria-label="Facebook"
-            class="grid size-11 place-items-center rounded-full border border-white/10 hover:border-braise-300 hover:text-braise-300"
-          >
-            <UIcon
-              name="i-simple-icons-facebook"
-              class="size-5"
-            />
-          </a>
+            :href="contact.phoneHref"
+            class="mb-1 inline-block font-title text-[26px] leading-tight text-crema tabular-nums"
+            data-track="call_clicked"
+            data-track-source="footer"
+          >{{ contact.phone }}</a>
+          <p>{{ t('footer.orderText') }}</p>
+        </div>
+
+        <div>
+          <h2 class="kicker mb-2.5 text-crema">
+            {{ t('footer.findUs') }}
+          </h2>
+          <p>{{ t('brand.area') }}</p>
+          <p class="mt-2">
+            <NuxtLink
+              :to="localePath('nous-trouver')"
+              class="text-crema"
+            >
+              {{ t('footer.planning') }} →
+            </NuxtLink>
+          </p>
         </div>
       </div>
-    </div>
 
-    <div class="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-white/5 px-4 pt-6 text-xs text-farine-200/50 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
-      <p>© {{ year }} Sestini Pizza · {{ t('footer.madeWith') }}</p>
-      <NuxtLink
-        :to="localePath('mentions-legales')"
-        class="hover:text-farine-100"
-      >
-        {{ t('footer.legal') }}
-      </NuxtLink>
+      <div class="grid gap-3 border-t border-nero-line pb-7 pt-5 text-[13px] md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8">
+        <div class="flex flex-wrap gap-x-4.5 gap-y-1.5">
+          <span>© {{ year }} Sestini Pizza</span>
+          <span v-if="contact.company">{{ contact.company }}</span>
+          <NuxtLink
+            :to="localePath('mentions-legales')"
+            class="text-crema"
+          >
+            {{ t('footer.legal') }}
+          </NuxtLink>
+        </div>
+        <span class="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+          <span>{{ t('footer.design') }} : <b class="font-semibold text-crema">Maxime Tamburrini</b>, Digital Solution Studio</span>
+          <span class="inline-flex gap-2">
+            <a
+              href="https://github.com/maxiim3"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub de Maxime Tamburrini"
+              class="opacity-70 transition hover:text-crema hover:opacity-100"
+            >
+              <UIcon
+                name="i-simple-icons-github"
+                class="size-4"
+              />
+            </a>
+            <!-- TODO : lien LinkedIn de Maxime à fournir -->
+            <a
+              href="#"
+              aria-label="LinkedIn de Maxime Tamburrini"
+              class="opacity-70 transition hover:text-crema hover:opacity-100"
+            >
+              <UIcon
+                name="i-simple-icons-linkedin"
+                class="size-4"
+              />
+            </a>
+          </span>
+        </span>
+        <label class="inline-flex items-center gap-2">
+          {{ t('nav.language') }}
+          <select
+            :value="locale"
+            class="border border-nero-line bg-nero-2 px-2 py-1 text-crema"
+            @change="changeLocale"
+          >
+            <option
+              v-for="l in locales"
+              :key="l.code"
+              :value="l.code"
+            >{{ l.name }}</option>
+          </select>
+        </label>
+      </div>
     </div>
   </footer>
 </template>
