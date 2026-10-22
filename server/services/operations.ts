@@ -136,7 +136,10 @@ async function applyOne(ctx: Context, op: Operation, created: Record<string, str
     case 'update': {
       const { table } = TABLES[op.entity]
       const before = await findRow(ctx, op.entity, op.id)
-      const data = ENTITY_SCHEMAS[op.entity].partial().parse(resolveRefs(ctx, op.data))
+      const input = resolveRefs(ctx, op.data)
+      const parsed = ENTITY_SCHEMAS[op.entity].partial().parse(input) as Record<string, unknown>
+      // Zod 4 applique les .default() même sous .partial() : on ne garde que les champs envoyés
+      const data = Object.fromEntries(Object.entries(parsed).filter(([k]) => k in input))
       const [after] = await ctx.tx.update(table).set(data as any).where(eq((table as any).id, before.id)).returning()
       await record(ctx, op.entity, before.id, 'update', before, after)
       return
