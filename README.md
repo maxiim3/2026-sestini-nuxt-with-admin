@@ -22,10 +22,9 @@ connexion s'affiche à l'écran (aucun e-mail n'est envoyé).
 
 | Partie | Où | Notes |
 |---|---|---|
-| Site public | `app/pages`, `app/components/site`, `app/components/menu` | FR / EN / ES / IT, SSR |
-| Landings | `app/components/landing` | `four` (3D), `ce-soir` (éditoriale), `tournee` (carte) — choix dans Réglages, aperçu `/?variante=…` |
+| Site public | `app/pages`, `app/components/site`, `app/components/menu` | FR / EN / ES / IT, SSR, design « Crema & Nero » (voir `docs/CDC.md` § 4) |
 | Atelier | `app/pages/atelier`, `app/components/admin` | Nuxt UI, connexion par lien magique |
-| Domaine | `shared/` | Planning en couches, modale programmée, schémas Zod des opérations |
+| Domaine | `shared/` | Planning en couches, messages programmés (bandeau), schémas Zod des opérations |
 | Base | `server/database` | Drizzle + libSQL (fichier local ou Turso) |
 | Écritures | `server/services/operations.ts` | Transactions, révisions, brouillons |
 | API | `server/api` | `public/*` (site), `admin/*` (session), `auth/*` |
