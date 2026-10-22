@@ -57,8 +57,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="mb-4 mt-3.5 max-w-[10ch] font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em]">
-          {{ t('home.heroTitleStart') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
+        <h1 class="mb-4 mt-3.5 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em]">
+          {{ t('home.heroTitleStart') }}<br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
         </h1>
         <p class="max-w-[42ch] text-[17px] text-crema/85 md:text-[19px]">
           {{ t('home.heroLead') }}
