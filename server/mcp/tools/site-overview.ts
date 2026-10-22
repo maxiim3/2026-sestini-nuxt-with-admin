@@ -4,7 +4,7 @@ import { loadPublicSnapshot } from '../../services/catalog'
 
 export default defineMcpTool({
   name: 'site_overview',
-  description: 'Vue d\'ensemble de ce qui est en ligne : ce soir (lieu, statut), les 14 prochains jours, la carte active, la pizza du moment, le message de la modale, les brouillons en attente. À appeler en premier.',
+  description: 'Vue d\'ensemble de ce qui est en ligne : ce soir (lieu, statut), les 14 prochains jours, la carte active, la pizza du moment, le message du bandeau, les brouillons en attente. À appeler en premier.',
   inputSchema: {},
   annotations: { readOnlyHint: true },
   handler: async () => mcpCall('site_overview', {}, 'read', async ({ db }) => {

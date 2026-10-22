@@ -111,7 +111,7 @@ export function llmsTxt(snap: PublicSnapshot, siteUrl: string) {
   const featured = snap.featured.map(f => `- ${f.title} : ${f.pizza.name} (${formatPrice(f.pizza.priceCents)})`).join('\n')
   return `# Sestini Pizza
 
-> Camion pizza au feu de bois près de Montpellier. Pâte maison, produits frais, locaux et de saison. Pizzas à emporter, commande uniquement par téléphone au ${phoneE164(snap)}, retrait au camion, paiement sur place.
+> Camion pizza au feu de bois près de Montpellier. Pâte maison, produits frais, locaux et de saison. Pizzas à emporter, commande par téléphone au ${phoneE164(snap)} ou directement au camion, retrait et paiement sur place.
 
 ## Où et quand (semaine type, ouverture dès 18h)
 ${week}

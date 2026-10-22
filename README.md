@@ -22,10 +22,9 @@ connexion s'affiche à l'écran (aucun e-mail n'est envoyé).
 
 | Partie | Où | Notes |
 |---|---|---|
-| Site public | `app/pages`, `app/components/site`, `app/components/menu` | FR / EN / ES / IT, SSR |
-| Landings | `app/components/landing` | `four` (3D), `ce-soir` (éditoriale), `tournee` (carte) — choix dans Réglages, aperçu `/?variante=…` |
+| Site public | `app/pages`, `app/components/site`, `app/components/menu` | FR / EN / ES / IT, SSR, design « Crema & Nero » (voir `docs/CDC.md` § 4) |
 | Atelier | `app/pages/atelier`, `app/components/admin` | Nuxt UI, connexion par lien magique |
-| Domaine | `shared/` | Planning en couches, modale programmée, schémas Zod des opérations |
+| Domaine | `shared/` | Planning en couches, messages programmés (bandeau), schémas Zod des opérations |
 | Base | `server/database` | Drizzle + libSQL (fichier local ou Turso) |
 | Écritures | `server/services/operations.ts` | Transactions, révisions, brouillons |
 | API | `server/api` | `public/*` (site), `admin/*` (session), `auth/*` |
@@ -42,7 +41,7 @@ Toutes facultatives : chaque service a un mode dégradé pour le développement.
 | `NUXT_SESSION_PASSWORD` | Chiffrement des sessions (≥ 32 caractères) | Générée en dev ; **obligatoire en production** |
 | `NUXT_RESEND_API_KEY` | Envoi des liens de connexion | Lien affiché dans les logs |
 | `NUXT_RESEND_FROM` | Expéditeur (domaine vérifié chez Resend) | `Sestini Pizza <atelier@sestini-pizza.fr>` |
-| `NUXT_BLOB_TOKEN` | Vercel Blob (photos) | — |
+| `NUXT_BLOB_TOKEN` | Vercel Blob (photos), store **public** ; `BLOB_READ_WRITE_TOKEN` (créée par Vercel) est aussi lue | Photos sur le disque, perdues sur Vercel |
 | `NUXT_PUBLIC_POSTHOG_KEY`, `NUXT_PUBLIC_POSTHOG_HOST` | Mesure d'audience (sans cookie) | Pas de mesure |
 | `NUXT_POSTHOG_PERSONAL_API_KEY`, `NUXT_POSTHOG_PROJECT_ID` | Stats dans l'atelier et via MCP | Données de démo, signalées comme telles |
 

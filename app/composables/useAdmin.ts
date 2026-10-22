@@ -56,6 +56,7 @@ export const ADMIN_NAV = [
   { label: 'Brouillons', icon: 'i-lucide-file-pen', to: '/atelier/brouillons' },
   { label: 'Historique', icon: 'i-lucide-history', to: '/atelier/historique' },
   { label: 'IA & MCP', icon: 'i-lucide-bot', to: '/atelier/ia' },
+  { label: 'Sauvegarde', icon: 'i-lucide-database-backup', to: '/atelier/sauvegarde' },
   { label: 'Réglages', icon: 'i-lucide-settings', to: '/atelier/reglages' },
 ]
 

@@ -18,7 +18,7 @@ pour que les propriétaires confient les mises à jour à leur agent IA.
 
 | Outil | Portée | Rôle |
 |---|---|---|
-| `site_overview` | read | Ce soir, 14 jours, carte, PDM, modale, brouillons |
+| `site_overview` | read | Ce soir, 14 jours, carte, PDM, bandeau, brouillons |
 | `get_menu` | read | Carte détaillée ou liste des cartes |
 | `search_catalog` | read | Pizzas, ingrédients, boissons, suppléments, desserts (archives comprises) |
 | `get_schedule` | read | Lieux, saisons, exceptions, calendrier résolu |
@@ -30,7 +30,7 @@ pour que les propriétaires confient les mises à jour à leur agent IA.
 | `set_pizza_du_moment` | write | Nouvelle PDM (existante ou à créer) |
 | `upsert_pizza` | write | Créer / modifier une pizza, l'ajouter à une carte |
 | `add_schedule_exception` | write | Fermeture, vacances, lieu ponctuel, horaires spéciaux |
-| `schedule_modal_message` | write | Message de modale programmé |
+| `schedule_modal_message` | write | Message du bandeau programmé |
 | `apply_operations` | write | Opérations génériques (transaction) |
 | `decide_draft` | write / publish | Rejeter / publier un brouillon |
 
