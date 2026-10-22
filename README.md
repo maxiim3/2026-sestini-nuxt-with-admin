@@ -41,7 +41,7 @@ Toutes facultatives : chaque service a un mode dégradé pour le développement.
 | `NUXT_SESSION_PASSWORD` | Chiffrement des sessions (≥ 32 caractères) | Générée en dev ; **obligatoire en production** |
 | `NUXT_RESEND_API_KEY` | Envoi des liens de connexion | Lien affiché dans les logs |
 | `NUXT_RESEND_FROM` | Expéditeur (domaine vérifié chez Resend) | `Sestini Pizza <atelier@sestini-pizza.fr>` |
-| `NUXT_BLOB_TOKEN` | Vercel Blob (photos) | — |
+| `NUXT_BLOB_TOKEN` | Vercel Blob (photos), store **public** ; `BLOB_READ_WRITE_TOKEN` (créée par Vercel) est aussi lue | Photos sur le disque, perdues sur Vercel |
 | `NUXT_PUBLIC_POSTHOG_KEY`, `NUXT_PUBLIC_POSTHOG_HOST` | Mesure d'audience (sans cookie) | Pas de mesure |
 | `NUXT_POSTHOG_PERSONAL_API_KEY`, `NUXT_POSTHOG_PROJECT_ID` | Stats dans l'atelier et via MCP | Données de démo, signalées comme telles |
 
