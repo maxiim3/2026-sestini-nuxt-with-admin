@@ -64,6 +64,26 @@ describe('moteur d’écriture', () => {
     expect(pizza?.priceCents).toBe(1150)
   })
 
+  it('une mise à jour partielle ne touche pas aux autres champs', async () => {
+    const [margherita] = await db.select().from(schema.pizzas).where(eq(schema.pizzas.slug, 'la-margherita'))
+    await commitOperations(db, 'Préparation', [
+      { op: 'create', entity: 'drink', data: { name: 'Bière test', category: 'biere', priceCents: 400, position: 3 } },
+      { op: 'create', entity: 'featured', data: { pizzaId: margherita!.id, title: 'Coup de cœur', showOnHome: false, showInModal: true, priority: 5 } },
+    ], actor)
+    const [drinkBefore] = await db.select().from(schema.drinks).where(eq(schema.drinks.name, 'Bière test'))
+    const [featuredBefore] = await db.select().from(schema.featuredPizzas).where(eq(schema.featuredPizzas.title, 'Coup de cœur'))
+
+    await applyOperations(db, [
+      { op: 'update', entity: 'drink', id: drinkBefore!.id, data: { position: 0 } },
+      { op: 'update', entity: 'featured', id: featuredBefore!.id, data: { showOnMenu: false } },
+    ], actor)
+
+    const [drink] = await db.select().from(schema.drinks).where(eq(schema.drinks.id, drinkBefore!.id))
+    expect(drink).toMatchObject({ category: 'biere', priceCents: 400, position: 0 })
+    const [featured] = await db.select().from(schema.featuredPizzas).where(eq(schema.featuredPizzas.id, featuredBefore!.id))
+    expect(featured).toMatchObject({ title: 'Coup de cœur', showOnHome: false, showOnMenu: false, showInModal: true, priority: 5 })
+  })
+
   it('annule tout si une opération échoue', async () => {
     await expect(applyOperations(db, [
       { op: 'update', entity: 'pizza', id: 'la-margherita', data: { priceCents: 999 } },
