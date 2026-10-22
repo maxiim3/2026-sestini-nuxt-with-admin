@@ -22,6 +22,9 @@ const today = computed(() => data.value?.tonight.today.date ?? '')
 
 const pizzaCount = computed(() => data.value?.menu?.sections.reduce((n, s) => n + s.pizzas.length, 0) ?? 0)
 
+/** Sans photos : les deux premières pizzas de chaque section de la carte */
+const highlights = computed(() => (data.value?.menu?.sections ?? []).flatMap(s => s.pizzas.slice(0, 2)).slice(0, 6))
+
 /** Les pizzas de la carte qui ont une photo (4 au plus), chacune menant à sa fiche sur la carte */
 const tiles = computed(() => (data.value?.menu?.sections ?? [])
   .flatMap(s => s.pizzas)
@@ -178,7 +181,10 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             {{ t('menu.count', { n: pizzaCount }, pizzaCount) }} <span>→</span>
           </NuxtLink>
         </div>
-        <div class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div
+          v-if="tiles.length"
+          class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4"
+        >
           <NuxtLink
             v-for="(p, i) in tiles"
             :key="p.id"
@@ -210,12 +216,52 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <NuxtLink
             :to="localePath('la-carte')"
             class="flex aspect-square flex-col justify-end rounded-[10px] bg-nero p-4 text-crema md:p-5.5"
-            :class="!tiles.length && 'col-span-2 aspect-auto py-10 md:col-span-4'"
           >
             <span class="font-title text-[26px] leading-tight md:text-[32px]">{{ t('home.allPizzas') }}</span>
             <span class="mt-1.5 text-sm font-semibold text-abricot">{{ t('home.allPizzasHint') }} →</span>
           </NuxtLink>
         </div>
+
+        <!-- Sans photos : quelques pizzas de la saison, en texte, comme sur la carte -->
+        <template v-else>
+          <ul class="mt-8 grid border-t border-nero md:grid-cols-3 md:gap-x-12">
+            <li
+              v-for="p in highlights"
+              :key="p.id"
+              class="border-b border-pietra"
+            >
+              <NuxtLink
+                :to="`${localePath('la-carte')}#${p.slug}`"
+                class="group block py-5"
+              >
+                <span class="flex items-baseline gap-2.5">
+                  <span class="inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] transition-colors group-hover:text-rosso">
+                    {{ tr(p, 'name') }}
+                    <UIcon
+                      v-if="p.tags.vegetarian"
+                      name="i-lucide-leaf"
+                      class="size-4 text-oliva"
+                    />
+                  </span>
+                  <span
+                    class="leader"
+                    aria-hidden="true"
+                  />
+                  <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(p.priceCents) }}</span>
+                </span>
+                <span class="mt-1.5 block text-[15px] leading-normal">
+                  <b class="font-semibold text-oro-ink">{{ tr(p, 'baseLabel') }}</b><template v-if="p.avant.length"> · {{ p.avant.map(i => tr(i, 'name')).join(', ') }}</template>
+                </span>
+              </NuxtLink>
+            </li>
+          </ul>
+          <NuxtLink
+            :to="localePath('la-carte')"
+            class="link-arrow mt-8"
+          >
+            {{ t('home.allPizzas') }} <span>→</span>
+          </NuxtLink>
+        </template>
       </div>
     </section>
 
