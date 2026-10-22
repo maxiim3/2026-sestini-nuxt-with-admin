@@ -47,78 +47,82 @@ const sections = computed(() => (data.value?.menu?.sections ?? [])
   }))
   .filter(s => s.pizzas.length))
 
+const availableDiets = computed(() => {
+  const all = data.value?.menu?.sections.flatMap(s => s.pizzas) ?? []
+  return (['vegetarian', 'meat', 'fish'] as const).filter(d => all.some(p => p.tags[d]))
+})
+
 const featured = computed(() => data.value?.featured.filter(f => f.showOnMenu) ?? [])
 const drinkGroups = computed(() => {
   const groups = new Map<string, NonNullable<typeof data.value>['drinks']>()
   for (const d of data.value?.drinks ?? []) groups.set(d.category, [...(groups.get(d.category) ?? []), d])
   return [...groups.entries()]
 })
+
+const { hash } = useRoute()
+/** Arrivée depuis une tuile de l'accueil (#slug) : on amène la pizza à l'écran et on la met en évidence */
+onMounted(() => {
+  if (!hash) return
+  const el = document.getElementById(decodeURIComponent(hash.slice(1)))
+  if (!el) return
+  el.scrollIntoView({ block: 'start' })
+  el.classList.add('bg-lino')
+  setTimeout(() => el.classList.remove('bg-lino'), 2500)
+})
 </script>
 
 <template>
-  <div class="grain min-h-dvh overflow-x-clip bg-charbon-950">
-    <section class="relative overflow-hidden pb-10 pt-32 lg:pt-40">
-      <div
-        class="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[900px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(224,170,62,0.18),transparent)]"
-        aria-hidden="true"
-      />
-      <div class="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
+  <div class="overflow-x-clip">
+    <section class="mx-auto grid max-w-[1200px] gap-2.5 px-5 pb-7 pt-9 md:grid-cols-[1fr_auto] md:items-end md:pb-10 md:pt-16 lg:px-10">
+      <div>
         <p
           v-if="data?.menu"
-          class="eyebrow text-braise-300"
+          class="kicker text-rosso"
         >
           {{ tr(data.menu, 'name') }}
         </p>
-        <h1 class="mt-4 font-display text-5xl font-semibold tracking-wider text-farine-50 sm:text-7xl">
+        <h1 class="mt-2.5 font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
           {{ t('menu.title') }}
         </h1>
-        <p
-          v-if="data?.menu?.tagline"
-          class="mx-auto mt-5 max-w-xl font-serif text-lg italic text-farine-200/75"
-        >
-          {{ tr(data.menu, 'tagline') }}
-        </p>
-        <div class="mt-8 flex justify-center">
-          <SiteTonightPill />
-        </div>
       </div>
+      <p
+        v-if="data?.menu?.tagline"
+        class="max-w-[34ch] font-title text-xl italic text-fumo md:text-right md:text-[22px]"
+      >
+        {{ tr(data.menu, 'tagline') }}
+      </p>
     </section>
 
-    <nav
-      class="sticky top-16 z-30 border-y border-white/5 bg-charbon-950/85 backdrop-blur-xl lg:top-20"
-      :aria-label="t('menu.title')"
-    >
-      <div class="mx-auto flex max-w-5xl gap-1 overflow-x-auto px-4 py-2 sm:justify-center sm:px-6">
-        <button
-          v-for="c in categories"
-          :key="c.id"
-          class="flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors"
-          :class="category === c.id ? 'bg-farine-50 text-charbon-950' : 'text-farine-200/75 hover:bg-white/5 hover:text-farine-50'"
-          :aria-pressed="category === c.id"
-          @click="category = c.id"
-        >
-          <UIcon
-            :name="c.icon"
-            class="size-4"
-          />
-          {{ t(`menu.categories.${c.id}`) }}
-        </button>
-      </div>
-    </nav>
-
-    <div class="mx-auto max-w-5xl px-4 pb-24 sm:px-6">
-      <!-- Pizzas -->
-      <div v-show="category === 'pizzas'">
+    <div class="border-y border-b-pietra border-t-nero bg-crema md:sticky md:top-19 md:z-30">
+      <div class="mx-auto max-w-[1200px] px-5 lg:px-10">
         <div
-          class="flex flex-wrap items-center justify-center gap-2 py-8"
+          class="flex gap-7"
+          role="tablist"
+          :aria-label="t('menu.title')"
+        >
+          <button
+            v-for="c in categories"
+            :key="c.id"
+            role="tab"
+            :aria-selected="category === c.id"
+            class="-mb-px border-b-2 pb-3.5 pt-4 text-[15px] font-semibold transition-colors"
+            :class="category === c.id ? 'border-nero text-nero' : 'border-transparent text-fumo hover:text-nero'"
+            @click="category = c.id"
+          >
+            {{ t(`menu.categories.${c.id}`) }}
+          </button>
+        </div>
+        <div
+          v-show="category === 'pizzas'"
+          class="-mx-5 flex gap-2 overflow-x-auto px-5 pb-3.5 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0 md:pb-4"
           role="group"
           :aria-label="t('menu.filters.title')"
         >
           <button
             v-for="b in availableBases"
             :key="b"
-            class="rounded-full border px-3.5 py-1.5 text-sm transition-colors"
-            :class="bases.includes(b) ? 'border-braise-300 bg-braise-300/15 text-braise-200' : 'border-white/10 text-farine-200/70 hover:border-white/25'"
+            class="shrink-0 border px-3.5 py-1.5 text-[13px] font-medium transition-colors"
+            :class="bases.includes(b) ? 'border-nero bg-nero text-crema' : 'border-pietra hover:border-fumo'"
             :aria-pressed="bases.includes(b)"
             data-track="menu_filter_toggled"
             :data-track-filter="b"
@@ -127,62 +131,81 @@ const drinkGroups = computed(() => {
             {{ t(`menu.filters.${b}`) }}
           </button>
           <span
-            class="mx-1 hidden h-5 w-px bg-white/10 sm:block"
+            class="mx-1 my-1 w-px shrink-0 bg-pietra"
             aria-hidden="true"
           />
           <button
-            v-for="d in (['vegetarian', 'meat', 'fish'] as const)"
+            v-for="d in availableDiets"
             :key="d"
-            class="rounded-full border px-3.5 py-1.5 text-sm transition-colors"
-            :class="diet === d ? 'border-braise-300 bg-braise-300/15 text-braise-200' : 'border-white/10 text-farine-200/70 hover:border-white/25'"
+            class="inline-flex shrink-0 items-center gap-1.5 border px-3.5 py-1.5 text-[13px] font-medium transition-colors"
+            :class="diet === d ? 'border-nero bg-nero text-crema' : 'border-pietra hover:border-fumo'"
             :aria-pressed="diet === d"
             data-track="menu_filter_toggled"
             :data-track-filter="d"
             @click="diet = diet === d ? null : d"
           >
+            <UIcon
+              v-if="d === 'vegetarian'"
+              name="i-lucide-leaf"
+              class="size-3.5"
+            />
             {{ t(`menu.filters.${d}`) }}
           </button>
+          <!-- Toujours présent, pour que les filtres ne bougent pas quand il apparaît -->
           <button
-            v-if="bases.length || diet"
-            class="px-2 text-sm text-farine-200/60 underline underline-offset-4 hover:text-farine-50"
+            class="shrink-0 px-2 text-[13px] text-rosso underline underline-offset-3"
+            :class="{ invisible: !bases.length && !diet }"
+            :tabindex="bases.length || diet ? 0 : -1"
             @click="bases = []; diet = null"
           >
             {{ t('menu.filters.reset') }}
           </button>
         </div>
+      </div>
+    </div>
 
-        <section
-          v-for="f in featured"
-          :key="f.id"
-          class="relative mb-12 overflow-hidden rounded-3xl border border-braise-400/30 bg-gradient-to-br from-braise-950/60 via-charbon-900 to-charbon-900 px-6 py-2 sm:px-10"
-        >
-          <p class="eyebrow pt-6 text-braise-300">
-            <UIcon
-              name="i-lucide-flame"
-              class="mr-1 inline size-4 align-[-3px]"
-            />
-            {{ tr(f, 'title') }}
-          </p>
-          <MenuPizza
-            :pizza="f.pizza"
-            featured
-          />
-        </section>
+    <div class="mx-auto max-w-[1200px] px-5 pb-18 lg:px-10">
+      <!-- Pizzas -->
+      <div v-show="category === 'pizzas'">
+        <p class="max-w-[70ch] pt-4 text-sm text-fumo">
+          {{ t('menu.allergensNote') }}
+        </p>
+
+        <template v-if="!bases.length && !diet">
+          <section
+            v-for="f in featured"
+            :key="f.id"
+            class="mt-7 grid gap-5 bg-lino p-4.5 md:mt-10 md:gap-9 md:p-5.5"
+            :class="f.pizza.imageUrl ? 'md:grid-cols-[300px_1fr] md:items-center' : ''"
+            :aria-label="tr(f, 'title')"
+          >
+            <img
+              v-if="f.pizza.imageUrl"
+              :src="f.pizza.imageUrl"
+              :alt="f.pizza.imageAlt ?? tr(f.pizza, 'name')"
+              class="aspect-[16/10] w-full rounded-[10px] object-cover md:aspect-square"
+              loading="lazy"
+            >
+            <div>
+              <p class="kicker text-rosso">
+                {{ tr(f, 'title') }}
+              </p>
+              <MenuPizza :pizza="f.pizza" />
+            </div>
+          </section>
+        </template>
 
         <section
           v-for="section in sections"
           :key="section.section"
-          class="mb-14"
         >
-          <header class="mb-2 text-center">
-            <h2 class="ruled font-display text-2xl font-semibold uppercase tracking-[0.2em] text-farine-50 sm:text-3xl">
+          <header class="flex flex-wrap items-baseline gap-x-4 gap-y-1.5 border-b border-nero pb-3.5 pt-11 md:pt-18">
+            <h2 class="font-title text-[clamp(38px,8vw,56px)] leading-none">
               {{ t(`menu.sections.${section.section}`) }}
             </h2>
-            <p class="mt-2 font-serif text-sm italic text-farine-200/55">
-              {{ t(`menu.sectionsHint.${section.section}`) }}
-            </p>
+            <span class="ml-auto text-[13px] text-fumo">{{ t('menu.count', { n: section.pizzas.length }, section.pizzas.length) }}</span>
           </header>
-          <div class="grid gap-x-14 divide-y divide-white/5 md:grid-cols-2 md:divide-y-0">
+          <div class="grid md:grid-cols-2 md:gap-x-18">
             <MenuPizza
               v-for="pizza in section.pizzas"
               :key="pizza.id"
@@ -193,77 +216,78 @@ const drinkGroups = computed(() => {
 
         <p
           v-if="!sections.length"
-          class="py-16 text-center text-farine-200/60"
+          class="py-12 font-title text-[26px] text-fumo"
         >
           {{ t('menu.filters.empty') }}
         </p>
 
-        <p class="mx-auto max-w-xl border-t border-white/5 pt-6 text-center text-sm text-farine-200/55">
-          {{ t('menu.allergensNote') }} {{ t('menu.pricesNote') }}
+        <p class="pt-9 text-[13px] text-fumo">
+          {{ t('menu.pricesNote') }}
         </p>
       </div>
 
       <!-- Boissons -->
-      <div
-        v-show="category === 'drinks'"
-        class="grid gap-12 py-12 md:grid-cols-2"
-      >
+      <div v-show="category === 'drinks'">
         <section
           v-for="[cat, items] in drinkGroups"
           :key="cat"
         >
-          <h2 class="eyebrow mb-4 text-braise-300">
+          <h2 class="border-b border-nero pb-3.5 pt-11 font-title text-[clamp(34px,6vw,48px)] leading-none">
             {{ t(`drinks.${cat}`) }}
           </h2>
-          <ul class="divide-y divide-white/5">
+          <ul>
             <li
               v-for="d in items"
               :key="d.id"
-              class="flex items-baseline gap-3 py-3"
+              class="flex items-baseline gap-2.5 border-b border-pietra py-4"
             >
-              <span class="text-farine-50">{{ tr(d, 'name') }}</span>
-              <span class="text-sm text-farine-200/50">{{ d.volume }}</span>
-              <span class="flex-1 border-b border-dotted border-farine-200/20" />
-              <span class="font-deco font-bold text-braise-300">{{ price(d.priceCents) }}</span>
+              <span class="font-title text-2xl">{{ tr(d, 'name') }}</span>
+              <span class="text-[13px] text-fumo">{{ d.volume }}</span>
+              <span
+                class="leader"
+                aria-hidden="true"
+              />
+              <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(d.priceCents) }}</span>
             </li>
           </ul>
         </section>
       </div>
 
       <!-- Suppléments -->
-      <div
-        v-show="category === 'supplements'"
-        class="mx-auto max-w-2xl py-12"
-      >
-        <p class="mb-8 text-center font-serif italic text-farine-200/70">
+      <div v-show="category === 'supplements'">
+        <p class="pt-6 text-fumo">
           {{ t('menu.supplementsNote') }}
         </p>
-        <ul class="divide-y divide-white/5">
+        <ul class="mt-4 border-t border-nero">
           <li
             v-for="s in data?.supplements"
             :key="s.id"
-            class="flex items-start gap-5 py-4"
+            class="flex items-baseline gap-2.5 border-b border-pietra py-4"
           >
-            <span class="w-16 shrink-0 font-deco text-lg font-bold text-braise-300">+{{ price(s.priceCents) }}</span>
-            <span class="text-farine-100/90">{{ tr(s, 'label') }}</span>
+            <span class="max-w-[52ch] text-[15px]">{{ tr(s, 'label') }}</span>
+            <span
+              class="leader"
+              aria-hidden="true"
+            />
+            <span class="whitespace-nowrap font-semibold tabular-nums">+{{ price(s.priceCents) }}</span>
           </li>
         </ul>
       </div>
 
       <!-- Desserts -->
-      <div
-        v-show="category === 'desserts'"
-        class="mx-auto max-w-2xl py-12"
-      >
-        <ul class="divide-y divide-white/5">
+      <div v-show="category === 'desserts'">
+        <ul class="mt-6 border-t border-nero">
           <li
             v-for="d in data?.desserts"
             :key="d.id"
-            class="flex items-baseline gap-3 py-4"
+            class="flex items-baseline gap-2.5 border-b border-pietra py-4"
           >
-            <span class="text-farine-50">{{ tr(d, 'name') }}</span>
-            <span class="flex-1 border-b border-dotted border-farine-200/20" />
-            <span class="font-deco font-bold text-braise-300">{{ price(d.priceCents) }}</span>
+            <span class="font-title text-2xl">{{ tr(d, 'name') }}</span>
+            <span
+              class="leader"
+              aria-hidden="true"
+            />
+            <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(d.priceCents) }}</span>
           </li>
         </ul>
       </div>

@@ -73,8 +73,5 @@ export type ExceptionKind = (typeof EXCEPTION_KINDS)[number]
 export const MODAL_KINDS = ['menu', 'featured', 'closure', 'event', 'info'] as const
 export type ModalKind = (typeof MODAL_KINDS)[number]
 
-export const LANDING_VARIANTS = ['four', 'ce-soir', 'tournee'] as const
-export type LandingVariant = (typeof LANDING_VARIANTS)[number]
-
-/** Pâte à pizza : toujours du gluten */
-export const DOUGH_ALLERGENS: Allergen[] = ['gluten']
+/** Commun à toutes les pizzas, d'après la carte de Sestini : « Toutes nos pizzas contiennent du soja, du gluten et du lait » */
+export const DOUGH_ALLERGENS: Allergen[] = ['soja', 'gluten', 'lait']

@@ -53,8 +53,8 @@ export const SITE_SETTINGS = {
     email: 'sestini.pizza@gmail.com',
     instagram: 'https://www.instagram.com/sestini.pizza',
     facebook: 'https://www.facebook.com/sestini.pizza',
+    company: 'SARL 10558442XD',
   },
-  'site.landing': { variant: 'four' },
   'site.features': { desserts: false, reviews: true, featuredOnHome: true },
   'site.pitch': {
     title: 'La pizza au feu de bois',

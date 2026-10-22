@@ -105,7 +105,7 @@ export default defineNuxtConfig({
       id: '/',
       name: 'Sestini Pizza · La pizza au feu de bois',
       short_name: 'Sestini',
-      description: 'Camion pizza au feu de bois près de Montpellier : la carte, où nous trouver ce soir, commande par téléphone.',
+      description: 'Camion pizza au feu de bois près de Montpellier : la carte, où nous trouver ce soir, commande par téléphone ou au camion.',
       lang: 'fr',
       dir: 'ltr',
       start_url: '/?source=pwa',

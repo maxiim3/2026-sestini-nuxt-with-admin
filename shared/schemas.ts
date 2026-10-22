@@ -72,13 +72,19 @@ export const ingredientInput = z.object({
   i18n: translationsSchema,
 })
 
+/** Image : adresse complète (Vercel Blob…) ou chemin du site (/images/…, /media/… en local et en démo) */
+export const imageUrl = z.string().refine(
+  v => /^https?:\/\/\S+$/.test(v) || /^\/(?!\/)\S*$/.test(v),
+  'Adresse d\'image invalide : https://… ou /chemin/du/site',
+)
+
 export const pizzaInput = z.object({
   slug,
   name: z.string().min(1),
   baseKind: z.enum(BASE_KINDS),
   baseLabel: z.string().min(1).describe('Libellé de la base, ex. « Crème de potimarron »'),
   priceCents: cents,
-  imageUrl: z.string().url().nullable().optional(),
+  imageUrl: imageUrl.nullable().optional(),
   imageAlt: z.string().nullable().optional(),
   extraAllergens: z.array(z.enum(ALLERGENS)).default([]),
   notes: z.string().nullable().optional(),

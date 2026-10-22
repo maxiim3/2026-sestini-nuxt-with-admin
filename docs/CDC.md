@@ -9,8 +9,8 @@
 ## 1. Contexte
 
 Sestini Pizza est un camion pizza au feu de bois qui tourne autour de Montpellier
-(Pignan, Vic-la-Gardiole, Villeneuve-lès-Maguelone). Commande **uniquement par
-téléphone**, retrait sur place, **pas de paiement en ligne**.
+(Pignan, Vic-la-Gardiole, Villeneuve-lès-Maguelone). Commande **par téléphone ou
+directement au camion**, retrait et paiement sur place, **ni commande ni paiement en ligne**.
 
 ### 1.1 Comment le site est mis à jour aujourd'hui
 
@@ -42,7 +42,7 @@ lieu », réécrit à chaque saison, vacances ou événement.
 
 1. Porter le site sur **Nuxt 4** (dernière stable : 4.6.x) sans perte de SEO.
 2. Une **administration simple** dont **tout est pilotable par IA** (serveur MCP + skill).
-3. **Trois landing pages** ambitieuses (3D, scrollytelling), départagées par test A/B.
+3. **Un accueil** centré sur la pizza, au design « Crema & Nero » (voir § 4).
 4. Une **PWA** complète et professionnelle.
 5. Un **atelier d'impression** : flyers, menus, annonces en PDF A4/A3.
 6. Un site **multilingue** : FR (défaut), EN, ES, IT.
@@ -54,7 +54,7 @@ lieu », réécrit à chaque saison, vacances ou événement.
 
 | Page | Route FR | Contenu |
 |---|---|---|
-| Accueil | `/` | Landing (variante A, B ou C), « Ce soir on est à… », pizza du moment, avis Google, CTA Appeler |
+| Accueil | `/` | Photo et semaine, pizza du moment, mosaïque de la carte, commander, avis Google |
 | La carte | `/la-carte` | Catégories (pizzas, boissons ; desserts désactivables), filtres (base tomate / crème / sans base, viande, poisson, végétarien), suppléments, allergènes |
 | Nous trouver | `/nous-trouver` | Semaine type, lieu par jour, carte, exceptions à venir |
 | Mentions légales | `/mentions-legales` | Obligatoire |
@@ -62,7 +62,7 @@ lieu », réécrit à chaque saison, vacances ou événement.
 
 - Les URLs historiques `/la-carte` et `/nous-trouver` sont **conservées** (SEO).
 - Les autres langues sont préfixées : `/en/menu`, `/es/carta`, `/it/menu`, etc.
-- **Modale d'accueil** : affiche le message programmé actif le plus prioritaire
+- **Bandeau de message** : affiche le message programmé actif le plus prioritaire
   (carte de saison, pizza du moment, fermeture, vacances, événement exceptionnel).
   Fermeture mémorisée par message (on ne la remontre pas pour le même message).
 - **Appel** : barre d'appel fixe sur mobile, `tel:` partout. Événements PostHog
@@ -90,14 +90,14 @@ lieu », réécrit à chaque saison, vacances ou événement.
   une et programmer sa date d'activation. Dupliquer une carte = point de départ
   de la suivante.
 - **Pizza du moment** : une ou plusieurs pizzas mises en avant, avec dates,
-  visibles sur l'accueil, la carte et/ou la modale (choix par case à cocher).
+  visibles sur l'accueil, la carte et/ou le bandeau (choix par case à cocher).
 - **Suppléments** : groupes de prix (0,50 €, 1 €…) avec leurs ingrédients.
 - **Boissons** : nom, contenance, prix, catégorie, actif.
 - **Desserts** : modèle prêt mais catégorie **désactivée** pour l'instant.
-- **Messages de modale** : type, titre, texte riche, image, CTA, début, fin,
+- **Messages du bandeau** : type, titre, texte riche, image, CTA, début, fin,
   priorité, traductions.
 - **Avis Google** : **mockés** pour l'instant (adaptateur), branchement Places API plus tard.
-- **Réglages** : variante de landing active, modules visibles.
+- **Réglages** : coordonnées (dont la société), accroche, modules visibles.
 
 ### 3.3 Historique, brouillons, archivage
 
@@ -173,29 +173,33 @@ lieu », réécrit à chaque saison, vacances ou événement.
 
 - PostHog (projet existant), mode **sans cookies** (pas de bandeau), proxy
   first-party pour éviter les bloqueurs.
-- Feature flag `landing-variant` pour l'A/B test des trois landings, objectif :
-  clic sur « Appeler » et consultation de la carte.
+- Objectifs suivis : clic sur « Appeler » et consultation de la carte.
 - Résumé 7 jours dans l'admin et via MCP (adaptateur mocké tant que la clé
   API PostHog n'est pas fournie).
 
-## 4. Les trois landing pages
+## 4. L'accueil et le design
 
-Toutes partagent : CTA Appeler visible en permanence, « ce soir on est à… »
-dans le premier écran, pizza du moment, respect de `prefers-reduced-motion`,
-3D chargée **après** l'affichage (LCP non bloqué), repli statique sans WebGL.
+Les trois landings du départ (3D « Le Four », « Ce soir », « La Tournée ») ont
+été abandonnées après revue (octobre 2026) au profit d'**un seul accueil**, et
+le site public a adopté le design system « Crema & Nero » (maquettes et bilan
+de la revue : `public/_maquette/`, non versionné).
 
-| | A — « Le Four » | B — « Ce soir » | C — « La Tournée » |
-|---|---|---|---|
-| Idée | Scène 3D : l'arche du logo extrudée, la flamme s'allume, une pizza s'assemble au défilement (pâton → garniture → four) | Page éditoriale, typographie géante, très rapide ; tout tourne autour de « ce soir » | Récit autour d'une carte stylisée de la semaine : le camion voyage de village en village |
-| Techno | TresJS (Three.js) + GSAP ScrollTrigger | CSS scroll-driven animations + GSAP léger | SVG animé + GSAP, MapLibre en option |
-| Force | Effet « wow », mémorable | Conversion, perf maximale | Ancrage local, utile |
-
-Sélection finale : test A/B PostHog, ou choix manuel via Réglages / MCP.
+- **Design** : fonds crème et noir en alternance, un seul accent rouge (appel),
+  or en touche rare, Instrument Serif pour les titres et les noms de pizzas,
+  Hanken Grotesk pour le texte, Cinzel uniquement pour le logo (en texte).
+  Pas de dégradé décoratif, pas de motif ; la photo fait le décor.
+- **Accueil** : photo plein écran avec la semaine en bas, pizza du moment
+  (composition), mosaïque des pizzas qui ont une photo (chaque tuile mène à la
+  pizza sur la carte), « Commander » (téléphone ou camion), avis Google.
+- **En-tête** : pastille d'état calculée d'après le planning (vert : ouvert,
+  abricot : ce soir, gris : fermé), lien d'appel. **Barre d'appel** fixe en
+  bas sur mobile (La carte, Nous trouver, Appeler).
+- **Messages** : affichés en **bandeau** sous l'en-tête (plus de modale).
 
 ## 5. Exigences non fonctionnelles
 
 - **Performance** : Lighthouse mobile ≥ 95 (perf, a11y, SEO, bonnes pratiques)
-  sur les pages internes ; ≥ 90 sur la landing 3D. LCP < 2,0 s en 4G.
+  sur toutes les pages publiques. LCP < 2,0 s en 4G.
 - **Accessibilité** : WCAG 2.2 AA, navigation clavier, contrastes, `reduced-motion`.
 - **SEO** : rendu serveur des pages publiques, schema.org (`Restaurant`,
   `Menu`, `OpeningHoursSpecification`, `FoodEstablishment`), sitemap, robots,
@@ -223,7 +227,6 @@ Sélection finale : test A/B PostHog, ou choix manuel via Réglages / MCP.
 | E-mail | Resend (adaptateur ; console en dev) | Validé |
 | Médias | Vercel Blob (adaptateur ; disque local en dev) | Validé |
 | MCP | `@nuxtjs/mcp-toolkit` | Outils définis dans Nuxt, partagent la logique métier |
-| 3D / animation | TresJS, GSAP | Intégration Vue native |
 | i18n | `@nuxtjs/i18n` v10 | FR / EN / ES / IT |
 | SEO | `@nuxtjs/seo` (sitemap, robots, schema.org, OG image) | Standard Nuxt |
 | PWA | `@vite-pwa/nuxt` | Manifeste, service worker, raccourcis |

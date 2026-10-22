@@ -3,7 +3,8 @@ defineProps<{ title: string, description?: string }>()
 </script>
 
 <template>
-  <UDashboardPanel :ui="{ body: 'gap-6 sm:gap-8' }">
+  <!-- Les blocs ne rétrécissent pas (sinon le dernier est écrasé et coupé) : c'est le corps qui défile -->
+  <UDashboardPanel :ui="{ body: 'gap-6 sm:gap-8 *:shrink-0' }">
     <template #header>
       <UDashboardNavbar
         :title="title"

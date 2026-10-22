@@ -15,7 +15,7 @@ export function useContact() {
   const { data } = useSite()
   return computed(() => {
     const settings = (data.value?.settings ?? {}) as Record<string, unknown>
-    const contact = (settings['site.contact'] ?? {}) as { phone?: string, email?: string, instagram?: string, facebook?: string }
+    const contact = (settings['site.contact'] ?? {}) as { phone?: string, email?: string, instagram?: string, facebook?: string, company?: string }
     const phone = contact.phone ?? '07 88 52 91 78'
     return {
       phone,
@@ -23,6 +23,7 @@ export function useContact() {
       email: contact.email ?? 'sestini.pizza@gmail.com',
       instagram: contact.instagram ?? 'https://www.instagram.com/sestini.pizza',
       facebook: contact.facebook ?? 'https://www.facebook.com/sestini.pizza',
+      company: contact.company ?? '',
     }
   })
 }

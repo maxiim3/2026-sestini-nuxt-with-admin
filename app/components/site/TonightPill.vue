@@ -1,53 +1,55 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ tone?: 'dark' | 'light' }>(), { tone: 'dark' })
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { data } = useSite()
 const { hour, relativeDay } = useLocalized()
 
+/** Ouvert (vert), ce soir plus tard (abricot) ou fermé (gris), avec une version courte pour le mobile */
 const state = computed(() => {
   const tonight = data.value?.tonight
   if (!tonight) return null
   const { today, status, next } = tonight
   if (today.open && today.location && status !== 'closed-now') {
-    return {
-      live: status === 'open-now',
-      title: status === 'open-now' ? t('tonight.openNow') : t('tonight.from', { time: hour(today.opensAt) }),
-      place: today.location.city,
+    const city = today.location.city
+    if (status === 'open-now') {
+      return { tone: 'open', long: `${t('tonight.openNowLong')} · ${city}`, short: `${t('tonight.openShort')} · ${city}` }
     }
+    const from = t('tonight.tonightFrom', { time: hour(today.opensAt) })
+    return { tone: 'later', long: `${from} · ${city}`, short: `${from} · ${city}` }
   }
-  if (next?.location) {
-    return {
-      live: false,
-      title: status === 'closed-now' ? t('tonight.closedNow') : t('tonight.closedToday'),
-      place: `${relativeDay(next.date, today.date)} · ${next.location.city}`,
-    }
+  const back = next?.location ? t('tonight.backOn', { day: relativeDay(next.date, today.date), place: next.location.city }) : ''
+  return {
+    tone: 'closed',
+    long: back ? `${t('tonight.closedTonight')} · ${back}` : t('tonight.closedTonight'),
+    short: t('tonight.closedShort'),
   }
-  return { live: false, title: t('tonight.closedToday'), place: '' }
 })
 </script>
 
 <template>
   <ClientOnly>
-    <div
+    <NuxtLink
       v-if="state"
-      class="inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm backdrop-blur"
-      :class="props.tone === 'dark' ? 'border-white/10 bg-white/5 text-farine-100' : 'border-charbon-950/10 bg-charbon-950/5 text-charbon-900'"
+      :to="localePath('nous-trouver')"
+      class="inline-flex min-w-0 items-center gap-2.5 text-[13px] font-medium text-crema"
     >
-      <span class="relative flex size-2.5">
+      <span
+        class="relative flex size-2 shrink-0"
+        aria-hidden="true"
+      >
         <span
-          v-if="state.live"
-          class="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75"
+          v-if="state.tone === 'open'"
+          class="absolute inline-flex size-full animate-ping rounded-full bg-ouvert opacity-60 motion-reduce:hidden"
         />
         <span
-          class="relative inline-flex size-2.5 rounded-full"
-          :class="state.live ? 'bg-emerald-400' : 'bg-braise-400'"
+          class="relative inline-flex size-2 rounded-full"
+          :class="{ 'bg-ouvert': state.tone === 'open', 'bg-abricot': state.tone === 'later', 'bg-fumo-dark': state.tone === 'closed' }"
         />
       </span>
-      <span class="font-medium">{{ state.title }}</span>
-      <span
-        v-if="state.place"
-        class="opacity-70"
-      >{{ state.place }}</span>
-    </div>
+      <span class="min-w-0 truncate">
+        <span class="hidden lg:inline">{{ state.long }}</span>
+        <span class="lg:hidden">{{ state.short }}</span>
+      </span>
+    </NuxtLink>
   </ClientOnly>
 </template>

@@ -8,6 +8,8 @@ const t = computed(() => props.text)
 const closure = computed(() => props.data.closure)
 const message = computed(() => props.data.message)
 const reopening = computed(() => props.data.reopening)
+/** Une affiche s'imprime dès qu'il y a des dates, un message ou un titre / texte saisi à la main */
+const hasContent = computed(() => Boolean(closure.value || message.value || props.overrides?.title || props.overrides?.body))
 
 const days = computed(() => {
   if (!closure.value) return 0
@@ -56,7 +58,7 @@ const rangeParts = computed(() => t.value.raw('range').split(/(\{\w+\})/).filter
     </div>
 
     <p
-      v-if="!closure"
+      v-if="!hasContent"
       class="pr-empty"
     >
       {{ t.t('empty') }}
@@ -73,7 +75,10 @@ const rangeParts = computed(() => t.value.raw('range').split(/(\{\w+\})/).filter
       <h1 class="pr-poster__title">
         {{ title }}
       </h1>
-      <p class="pr-closure__intro">
+      <p
+        v-if="dates"
+        class="pr-closure__intro"
+      >
         {{ t.t('closedOn') }}
       </p>
       <p

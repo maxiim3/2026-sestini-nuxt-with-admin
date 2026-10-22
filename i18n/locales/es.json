@@ -1,13 +1,10 @@
 {
   "nav": {
-    "home": "Inicio",
     "menu": "La carta",
     "findUs": "Dónde estamos",
     "call": "Llamar",
     "callFull": "Llamar para pedir",
     "language": "Idioma",
-    "openMenu": "Abrir el menú",
-    "closeMenu": "Cerrar el menú",
     "skip": "Ir al contenido"
   },
   "brand": {
@@ -16,16 +13,15 @@
     "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
   },
   "tonight": {
-    "label": "Esta noche",
-    "openNow": "Abierto ahora",
-    "opensAt": "Abre a las {time}",
     "from": "desde las {time}",
-    "closedToday": "Cerrado hoy",
-    "closedNow": "Por esta noche hemos terminado",
-    "nextOpen": "Próxima apertura: {day} en {place}",
-    "weAreAt": "Estamos en {place}",
     "itinerary": "Cómo llegar",
-    "orderByPhone": "Pedidos por teléfono, recogida en el local"
+    "orderByPhone": "Pedidos por teléfono o en el camión, recogida en el sitio",
+    "openShort": "Abierto",
+    "openNowLong": "Abierto ahora",
+    "tonightFrom": "Esta noche desde las {time}",
+    "closedTonight": "Cerrado esta noche",
+    "closedShort": "Cerrado",
+    "backOn": "volvemos {day} en {place}"
   },
   "days": {
     "today": "Hoy",
@@ -41,14 +37,9 @@
       "supplements": "Extras"
     },
     "sections": {
-      "rouges": "Las rojas",
-      "blanches": "Las blancas",
-      "speciales": "Las especiales"
-    },
-    "sectionsHint": {
-      "rouges": "Base de salsa de tomate",
-      "blanches": "Base de crème fraîche",
-      "speciales": "Bases de temporada"
+      "rouges": "Pizzas con base de tomate",
+      "blanches": "Pizzas con crema fresca",
+      "speciales": "Nuestras pizzas especiales"
     },
     "filters": {
       "title": "Filtrar",
@@ -64,23 +55,23 @@
       "empty": "Ninguna pizza coincide con estos filtros."
     },
     "afterBaking": "Tras la cocción",
-    "base": "Base",
     "allergens": "Alérgenos",
-    "allergensNote": "La masa contiene gluten. Indique cualquier alergia al hacer su pedido.",
-    "featured": "Pizza del momento",
+    "allergensNote": "Todas nuestras pizzas contienen soja, gluten y leche. Los demás alérgenos se indican pizza por pizza. Avísenos de cualquier alergia al pedir.",
     "supplementsNote": "Añada lo que le apetezca, al precio indicado por ingrediente.",
     "pricesNote": "Precios con impuestos incluidos. Pago en el local.",
-    "count": "{n} pizza | {n} pizzas"
+    "count": "{n} pizza | {n} pizzas",
+    "allergensMore": "además"
   },
   "findUs": {
     "title": "Dónde estamos",
-    "subtitle": "Un camión, tres pueblos, toda la semana",
-    "thisWeek": "Los próximos 14 días",
-    "typicalWeek": "Semana tipo",
+    "subtitle": "Dónde encontrar el camión Sestini esta noche y los próximos días",
+    "thisWeek": "Próximas noches",
     "closed": "Cerrado",
-    "exception": "Excepcional",
-    "openInMaps": "Abrir en Maps",
-    "mapTitle": "Mapa de la ubicación: {place}"
+    "mapTitle": "Mapa de la ubicación: {place}",
+    "rest": "el horno descansa",
+    "more": "Ver las dos semanas siguientes",
+    "less": "Ocultar",
+    "fromTime": "desde las {time}"
   },
   "allergens": {
     "gluten": "Gluten",
@@ -104,28 +95,41 @@
     "biere": "Cervezas",
     "vin": "Vinos"
   },
-  "modal": {
-    "close": "Cerrar"
-  },
-  "reviews": {
-    "title": "Lo que dicen de nosotros",
-    "rating": "{rating} sobre 5 · {count} opiniones en Google",
-    "seeAll": "Ver las opiniones"
-  },
   "footer": {
-    "contact": "Contacto",
-    "follow": "Síguenos",
     "legal": "Aviso legal",
-    "rights": "Todos los derechos reservados.",
-    "madeWith": "Pizza al horno de leña cerca de Montpellier"
+    "order": "Pedir",
+    "orderText": "Por teléfono o directamente en el camión. Recogida y pago allí mismo.",
+    "findUs": "Encuéntranos",
+    "planning": "Ver el calendario",
+    "design": "Diseño y desarrollo"
   },
   "home": {
-    "heroTitle": "Pizza al horno de leña",
-    "heroLead": "Una masa que se toma su tiempo, un horno que canta, productos de aquí.",
+    "heroLead": "Productos frescos, locales y de temporada, sobre una masa casera madurada de 24 a 72 horas.",
     "seeMenu": "Ver la carta",
-    "findUs": "¿Dónde estamos?"
+    "heroKicker": "Pizza al horno de leña · cerca de Montpellier",
+    "heroTitleStart": "La pizza",
+    "heroTitleMiddle": "al horno de",
+    "heroTitleEnd": "leña",
+    "seasonTitle": "En la carta esta temporada",
+    "allPizzas": "Toda la carta",
+    "allPizzasHint": "Base de tomate, crema fresca y especiales",
+    "orderTitle": "Pedir",
+    "order1": "Llame o venga al camión",
+    "order1Text": "Al {phone}, o directamente allí.",
+    "order2": "Al horno",
+    "order2Text": "Al horno de leña, al momento.",
+    "order3": "Recogida en el camión",
+    "order3Text": "Pago allí mismo.",
+    "compoBase": "Base",
+    "compoOven": "Al horno",
+    "compoAfter": "Después de hornear",
+    "tonight": "esta noche",
+    "rest": "Descanso"
   },
   "legal": {
     "title": "Aviso legal"
+  },
+  "notice": {
+    "close": "Cerrar el mensaje"
   }
 }

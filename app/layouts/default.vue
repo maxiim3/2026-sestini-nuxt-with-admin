@@ -9,13 +9,13 @@ useHead(() => ({
 </script>
 
 <template>
-  <div class="min-h-dvh bg-charbon-950 font-sans text-farine-100 antialiased">
+  <div class="min-h-dvh bg-crema font-body text-nero antialiased">
     <SiteHeader />
+    <SiteNotice />
     <main id="contenu">
       <slot />
     </main>
     <SiteFooter />
     <SiteCallBar />
-    <SiteWelcomeModal />
   </div>
 </template>
