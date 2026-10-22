@@ -12,6 +12,9 @@ interface Summary {
 }
 
 const toast = useToast()
+const { user } = useUserSession()
+/** L'import peut archiver toute la carte : il est réservé au propriétaire */
+const isOwner = computed(() => user.value?.role === 'owner')
 const file = ref<File | null>(null)
 const input = useTemplateRef<HTMLInputElement>('input')
 const summary = ref<Summary | null>(null)
@@ -138,7 +141,7 @@ async function confirmImport() {
         </div>
       </UCard>
 
-      <UCard>
+      <UCard v-if="isOwner">
         <template #header>
           <h2 class="font-display text-lg font-semibold tracking-wide">
             Importer
@@ -177,6 +180,14 @@ async function confirmImport() {
           </p>
         </div>
       </UCard>
+      <UAlert
+        v-else
+        icon="i-lucide-lock"
+        color="neutral"
+        variant="subtle"
+        title="Import réservé au propriétaire"
+        description="Un import peut modifier ou archiver toute la carte. Demandez au propriétaire de l'atelier de l'effectuer."
+      />
     </div>
 
     <UAlert
