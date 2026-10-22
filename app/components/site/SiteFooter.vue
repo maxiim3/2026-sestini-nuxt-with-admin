@@ -116,9 +116,10 @@ function changeLocale(event: Event) {
                 class="size-4"
               />
             </a>
-            <!-- TODO : lien LinkedIn de Maxime à fournir -->
             <a
-              href="#"
+              href="https://www.linkedin.com/in/maximetamburrini/"
+              target="_blank"
+              rel="noopener"
               aria-label="LinkedIn de Maxime Tamburrini"
               class="opacity-70 transition hover:text-crema hover:opacity-100"
             >
