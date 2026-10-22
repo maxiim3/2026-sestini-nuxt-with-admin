@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { LANDING_VARIANTS, type LandingVariant } from '~~/shared/domain/constants'
 import type { Operation } from '~~/shared/schemas'
 
 definePageMeta({ layout: 'admin', middleware: 'admin', i18n: false })
@@ -12,8 +11,7 @@ const { data: users, refresh: refreshUsers } = await useFetch('/api/admin/users'
 const { apply, pending } = useAdminWrite()
 
 interface Form {
-  contact: { phone: string, email: string, instagram: string, facebook: string }
-  landing: { variant: LandingVariant }
+  contact: { phone: string, email: string, instagram: string, facebook: string, company: string }
   features: { desserts: boolean, reviews: boolean, featuredOnHome: boolean }
   pitch: { title: string, text: string }
 }
@@ -23,12 +21,10 @@ function read<T extends object>(key: string): Partial<T> {
 }
 function fromSettings(): Form {
   const contact = read<Form['contact']>('site.contact')
-  const landing = read<Form['landing']>('site.landing')
   const features = read<Form['features']>('site.features')
   const pitch = read<Form['pitch']>('site.pitch')
   return {
-    contact: { phone: contact.phone ?? '', email: contact.email ?? '', instagram: contact.instagram ?? '', facebook: contact.facebook ?? '' },
-    landing: { variant: landing.variant ?? 'four' },
+    contact: { phone: contact.phone ?? '', email: contact.email ?? '', instagram: contact.instagram ?? '', facebook: contact.facebook ?? '', company: contact.company ?? '' },
     features: { desserts: features.desserts ?? false, reviews: features.reviews ?? true, featuredOnHome: features.featuredOnHome ?? true },
     pitch: { title: pitch.title ?? '', text: pitch.text ?? '' },
   }
@@ -39,18 +35,12 @@ watch(settings, () => {
   form.value = fromSettings()
 })
 
-const KEYS = { contact: 'site.contact', landing: 'site.landing', features: 'site.features', pitch: 'site.pitch' } as const
+const KEYS = { contact: 'site.contact', features: 'site.features', pitch: 'site.pitch' } as const
 type Section = keyof typeof KEYS
 const changed = computed(() => {
   const base = fromSettings()
   return (Object.keys(KEYS) as Section[]).filter(k => JSON.stringify(form.value[k]) !== JSON.stringify(base[k]))
 })
-
-const LANDINGS: Record<LandingVariant, { label: string, description: string, icon: string }> = {
-  'four': { label: 'Le Four', description: 'Scène 3D : la flamme s\'allume, la pizza se prépare en défilant.', icon: 'i-lucide-flame' },
-  'ce-soir': { label: 'Ce soir', description: 'Page éditoriale, très rapide, centrée sur « ce soir ».', icon: 'i-lucide-moon' },
-  'tournee': { label: 'La Tournée', description: 'Une carte animée de la semaine : le camion voyage de village en village.', icon: 'i-lucide-map' },
-}
 
 const FEATURES = [
   { key: 'featuredOnHome', label: 'Pizza du moment sur l\'accueil', description: 'Met en avant la pizza du moment en page d\'accueil.' },
@@ -168,6 +158,16 @@ async function addUser() {
                 class="w-full"
               />
             </UFormField>
+            <UFormField
+              label="Société"
+              help="Affiché en bas du site, par exemple « SARL 10558442XD »."
+            >
+              <UInput
+                v-model="form.contact.company"
+                icon="i-lucide-building-2"
+                class="w-full"
+              />
+            </UFormField>
           </div>
         </UCard>
 
@@ -195,52 +195,6 @@ async function addUser() {
                 class="w-full"
               />
             </UFormField>
-          </div>
-        </UCard>
-
-        <UCard class="xl:col-span-2">
-          <template #header>
-            <h2 class="font-display text-lg font-semibold tracking-wide">
-              Page d'accueil
-            </h2>
-            <p class="text-xs text-stone-500">
-              Choisissez la version du site que voient les visiteurs. Vous pouvez les comparer avant de décider.
-            </p>
-          </template>
-          <div class="grid gap-3 md:grid-cols-3">
-            <label
-              v-for="v in LANDING_VARIANTS"
-              :key="v"
-              class="flex cursor-pointer flex-col gap-2 rounded-xl border p-4 transition-colors"
-              :class="form.landing.variant === v ? 'border-braise-500 bg-braise-50 ring-1 ring-braise-500' : 'border-stone-200 hover:bg-stone-50'"
-            >
-              <span class="flex items-center gap-2">
-                <input
-                  v-model="form.landing.variant"
-                  type="radio"
-                  name="landing"
-                  :value="v"
-                  class="size-4 accent-braise-600"
-                >
-                <UIcon
-                  :name="LANDINGS[v].icon"
-                  class="size-4 text-braise-700"
-                />
-                <span class="font-semibold">{{ LANDINGS[v].label }}</span>
-              </span>
-              <span class="text-sm text-stone-600">{{ LANDINGS[v].description }}</span>
-              <UButton
-                size="xs"
-                color="neutral"
-                variant="outline"
-                icon="i-lucide-external-link"
-                label="Voir un aperçu"
-                class="self-start"
-                :to="`/?variante=${v}`"
-                target="_blank"
-                @click.stop
-              />
-            </label>
           </div>
         </UCard>
 

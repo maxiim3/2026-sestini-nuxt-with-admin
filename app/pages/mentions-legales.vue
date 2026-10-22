@@ -8,28 +8,38 @@ useSeoMeta({ title: () => `${t('legal.title')} · Sestini Pizza`, robots: 'noind
 </script>
 
 <template>
-  <div class="mx-auto max-w-3xl px-4 pb-24 pt-36 sm:px-6">
-    <h1 class="font-display text-4xl font-semibold tracking-wide text-farine-50">
+  <div class="mx-auto max-w-3xl px-5 pb-24 pt-10 md:pt-16">
+    <h1 class="font-title text-[clamp(48px,10vw,80px)] leading-[0.95]">
       {{ t('legal.title') }}
     </h1>
-    <div class="mt-10 space-y-6 leading-relaxed text-farine-200/80">
+    <div class="mt-10 space-y-7 leading-relaxed">
       <section>
-        <h2 class="eyebrow mb-2 text-braise-300">
+        <h2 class="kicker mb-2 text-rosso">
           Éditeur
         </h2>
-        <p>Sestini Pizza, camion pizza au feu de bois. Téléphone : {{ contact.phone }}. E-mail : {{ contact.email }}.</p>
-        <p class="text-sm text-farine-200/50">
-          Raison sociale, SIRET et adresse du siège à compléter.
+        <p>
+          Sestini Pizza, camion pizza au feu de bois<template v-if="contact.company">
+            , {{ contact.company }}
+          </template>. Téléphone : {{ contact.phone }}. E-mail : {{ contact.email }}.
+        </p>
+        <p class="text-sm text-fumo">
+          Adresse du siège à compléter.
         </p>
       </section>
       <section>
-        <h2 class="eyebrow mb-2 text-braise-300">
+        <h2 class="kicker mb-2 text-rosso">
           Hébergement
         </h2>
         <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</p>
       </section>
       <section>
-        <h2 class="eyebrow mb-2 text-braise-300">
+        <h2 class="kicker mb-2 text-rosso">
+          Crédits
+        </h2>
+        <p>Design et développement : Maxime Tamburrini, Digital Solution Studio. Photo d'accueil provisoire : Unsplash.</p>
+      </section>
+      <section>
+        <h2 class="kicker mb-2 text-rosso">
           Données personnelles
         </h2>
         <p>Ce site ne dépose aucun cookie publicitaire. La mesure d'audience (PostHog) fonctionne sans cookie et sans identifiant persistant.</p>

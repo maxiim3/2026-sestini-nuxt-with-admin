@@ -3,7 +3,7 @@ import * as s from '../../database/schema'
 
 export default defineMcpTool({
   name: 'list_modal_messages',
-  description: 'Messages de la modale d\'accueil (programmés, actifs, expirés, archivés). Le message affiché est le plus prioritaire parmi ceux actifs dans leur fenêtre de dates.',
+  description: 'Messages du bandeau affiché sous l\'en-tête du site (programmés, actifs, expirés, archivés). Le message affiché est le plus prioritaire parmi ceux actifs dans leur fenêtre de dates.',
   inputSchema: {},
   annotations: { readOnlyHint: true },
   handler: async () => mcpCall('list_modal_messages', {}, 'read', async ({ db }) => {

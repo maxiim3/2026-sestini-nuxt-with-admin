@@ -1,13 +1,10 @@
 {
   "nav": {
-    "home": "Home",
     "menu": "Menu",
     "findUs": "Find us",
     "call": "Call",
     "callFull": "Call to order",
     "language": "Language",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
     "skip": "Skip to content"
   },
   "brand": {
@@ -16,16 +13,15 @@
     "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
   },
   "tonight": {
-    "label": "Tonight",
-    "openNow": "Open now",
-    "opensAt": "Opens at {time}",
     "from": "from {time}",
-    "closedToday": "Closed today",
-    "closedNow": "That's all for tonight",
-    "nextOpen": "Next opening: {day} in {place}",
-    "weAreAt": "We're in {place}",
     "itinerary": "Directions",
-    "orderByPhone": "Order by phone, pickup on site"
+    "orderByPhone": "Order by phone or at the truck, pickup on site",
+    "openShort": "Open",
+    "openNowLong": "Open right now",
+    "tonightFrom": "Tonight from {time}",
+    "closedTonight": "Closed tonight",
+    "closedShort": "Closed",
+    "backOn": "back {day} in {place}"
   },
   "days": {
     "today": "Today",
@@ -41,14 +37,9 @@
       "supplements": "Extras"
     },
     "sections": {
-      "rouges": "The reds",
-      "blanches": "The whites",
-      "speciales": "The specials"
-    },
-    "sectionsHint": {
-      "rouges": "Tomato sauce base",
-      "blanches": "Crème fraîche base",
-      "speciales": "Seasonal bases"
+      "rouges": "Tomato-base pizzas",
+      "blanches": "Crème fraîche pizzas",
+      "speciales": "Our special pizzas"
     },
     "filters": {
       "title": "Filter",
@@ -64,23 +55,23 @@
       "empty": "No pizza matches these filters."
     },
     "afterBaking": "After baking",
-    "base": "Base",
     "allergens": "Allergens",
-    "allergensNote": "The dough contains gluten. Please mention any allergy when you order.",
-    "featured": "Pizza of the moment",
+    "allergensNote": "All our pizzas contain soy, gluten and milk. Other allergens are listed pizza by pizza. Please mention any allergy when you order.",
     "supplementsNote": "Add whatever you fancy, priced per ingredient as shown.",
     "pricesNote": "Prices include tax. Payment on site.",
-    "count": "{n} pizza | {n} pizzas"
+    "count": "{n} pizza | {n} pizzas",
+    "allergensMore": "also"
   },
   "findUs": {
     "title": "Find us",
-    "subtitle": "One truck, three villages, all week long",
-    "thisWeek": "Next 14 days",
-    "typicalWeek": "Typical week",
+    "subtitle": "Where to find the Sestini truck tonight and in the days ahead",
+    "thisWeek": "Upcoming evenings",
     "closed": "Closed",
-    "exception": "Special date",
-    "openInMaps": "Open in Maps",
-    "mapTitle": "Map of the location: {place}"
+    "mapTitle": "Map of the location: {place}",
+    "rest": "the oven is resting",
+    "more": "Show the next two weeks",
+    "less": "Hide",
+    "fromTime": "from {time}"
   },
   "allergens": {
     "gluten": "Gluten",
@@ -104,28 +95,40 @@
     "biere": "Beers",
     "vin": "Wines"
   },
-  "modal": {
-    "close": "Close"
-  },
-  "reviews": {
-    "title": "What people say",
-    "rating": "{rating} out of 5 · {count} Google reviews",
-    "seeAll": "See all reviews"
-  },
   "footer": {
-    "contact": "Contact",
-    "follow": "Follow us",
     "legal": "Legal notice",
-    "rights": "All rights reserved.",
-    "madeWith": "Wood-fired pizza near Montpellier"
+    "order": "Order",
+    "orderText": "By phone or directly at the truck. Pick-up and payment on site.",
+    "findUs": "Find us",
+    "planning": "See the schedule",
+    "design": "Design and development"
   },
   "home": {
-    "heroTitle": "Wood-fired pizza",
-    "heroLead": "Dough that takes its time, an oven that sings, ingredients from around here.",
+    "heroLead": "Fresh, local, seasonal produce on a homemade dough matured for 24 to 72 hours.",
     "seeMenu": "See the menu",
-    "findUs": "Where are we?"
+    "heroKicker": "Wood-fired pizza · near Montpellier",
+    "heroTitleStart": "Pizza fired over",
+    "heroTitleEnd": "wood",
+    "seasonTitle": "On the menu this season",
+    "allPizzas": "The full menu",
+    "allPizzasHint": "Tomato base, crème fraîche and specials",
+    "orderTitle": "Ordering",
+    "order1": "Call or come to the truck",
+    "order1Text": "On {phone}, or directly on site.",
+    "order2": "Into the oven",
+    "order2Text": "Wood-fired, made to order.",
+    "order3": "Pick up at the truck",
+    "order3Text": "Payment on site.",
+    "compoBase": "Base",
+    "compoOven": "In the oven",
+    "compoAfter": "After baking",
+    "tonight": "tonight",
+    "rest": "Closed"
   },
   "legal": {
     "title": "Legal notice"
+  },
+  "notice": {
+    "close": "Close the message"
   }
 }

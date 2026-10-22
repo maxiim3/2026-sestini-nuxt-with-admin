@@ -238,7 +238,7 @@ const SITE = {
 
 const PRINT = {
   fr: {
-    orderByPhone: 'Commande par téléphone',
+    orderByPhone: 'Commande par téléphone ou au camion',
     pickup: 'Retrait au camion · Paiement sur place',
     whereToFind: 'Où nous trouver',
     dayOff: 'Repos',
@@ -264,7 +264,7 @@ const PRINT = {
     perIngredient: 'Prix par ingrédient',
   },
   en: {
-    orderByPhone: 'Order by phone',
+    orderByPhone: 'Order by phone or at the truck',
     pickup: 'Pick up at the truck · Pay on site',
     whereToFind: 'Where to find us',
     dayOff: 'Day off',
@@ -290,7 +290,7 @@ const PRINT = {
     perIngredient: 'Price per ingredient',
   },
   es: {
-    orderByPhone: 'Pedidos por teléfono',
+    orderByPhone: 'Pedidos por teléfono o en el camión',
     pickup: 'Recogida en el camión · Pago en el sitio',
     whereToFind: 'Dónde encontrarnos',
     dayOff: 'Descanso',
@@ -316,7 +316,7 @@ const PRINT = {
     perIngredient: 'Precio por ingrediente',
   },
   it: {
-    orderByPhone: 'Ordina per telefono',
+    orderByPhone: 'Ordina per telefono o al furgone',
     pickup: 'Ritiro al furgone · Pagamento sul posto',
     whereToFind: 'Dove trovarci',
     dayOff: 'Riposo',

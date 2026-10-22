@@ -174,7 +174,7 @@ async function save(mode: 'publish' | 'draft') {
 }
 
 async function toggle(f: Featured, key: 'showOnHome' | 'showOnMenu' | 'showInModal', value: boolean) {
-  await apply(`Pizza du moment : ${key === 'showOnHome' ? 'accueil' : key === 'showOnMenu' ? 'carte' : 'modale'}`, [
+  await apply(`Pizza du moment : ${key === 'showOnHome' ? 'accueil' : key === 'showOnMenu' ? 'carte' : 'bandeau'}`, [
     { op: 'update', entity: 'featured', id: f.id, data: { [key]: value } },
   ], { silent: true })
 }
@@ -203,7 +203,7 @@ async function endNow(f: Featured) {
 <template>
   <AdminPage
     title="Pizza du moment"
-    description="Mettez une pizza en avant sur l'accueil, la carte ou à l'ouverture du site, pour les dates de votre choix."
+    description="Mettez une pizza en avant sur l'accueil, la carte ou dans le bandeau du site, pour les dates de votre choix."
   >
     <template #actions>
       <UButton
@@ -332,7 +332,7 @@ async function endNow(f: Featured) {
               />
             </label>
             <label class="flex items-center justify-between gap-2 rounded-lg border border-stone-200 px-3 py-2 text-sm">
-              Modale
+              Bandeau
               <USwitch
                 :model-value="f.showInModal"
                 @update:model-value="v => toggle(f, 'showInModal', v)"
@@ -568,7 +568,7 @@ async function endNow(f: Featured) {
               <USwitch v-model="form.showOnMenu" />
             </label>
             <label class="flex items-center justify-between rounded-lg border border-stone-200 px-3 py-2 text-sm">
-              Dans la fenêtre d'accueil (modale)
+              Dans le bandeau du site
               <USwitch v-model="form.showInModal" />
             </label>
           </div>

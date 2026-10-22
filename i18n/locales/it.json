@@ -1,13 +1,10 @@
 {
   "nav": {
-    "home": "Home",
     "menu": "Il menù",
     "findUs": "Dove siamo",
     "call": "Chiama",
     "callFull": "Chiama per ordinare",
     "language": "Lingua",
-    "openMenu": "Apri il menù",
-    "closeMenu": "Chiudi il menù",
     "skip": "Vai al contenuto"
   },
   "brand": {
@@ -16,16 +13,15 @@
     "area": "Pignan · Vic-la-Gardiole · Villeneuve-lès-Maguelone"
   },
   "tonight": {
-    "label": "Stasera",
-    "openNow": "Aperto ora",
-    "opensAt": "Apre alle {time}",
     "from": "dalle {time}",
-    "closedToday": "Chiuso oggi",
-    "closedNow": "Per stasera abbiamo finito",
-    "nextOpen": "Prossima apertura: {day} a {place}",
-    "weAreAt": "Siamo a {place}",
     "itinerary": "Indicazioni",
-    "orderByPhone": "Ordini al telefono, ritiro sul posto"
+    "orderByPhone": "Ordini al telefono o al furgone, ritiro sul posto",
+    "openShort": "Aperto",
+    "openNowLong": "Aperto ora",
+    "tonightFrom": "Stasera dalle {time}",
+    "closedTonight": "Chiuso stasera",
+    "closedShort": "Chiuso",
+    "backOn": "di nuovo {day} a {place}"
   },
   "days": {
     "today": "Oggi",
@@ -41,14 +37,9 @@
       "supplements": "Aggiunte"
     },
     "sections": {
-      "rouges": "Le rosse",
-      "blanches": "Le bianche",
-      "speciales": "Le speciali"
-    },
-    "sectionsHint": {
-      "rouges": "Base di salsa di pomodoro",
-      "blanches": "Base di crème fraîche",
-      "speciales": "Basi del momento"
+      "rouges": "Pizze base pomodoro",
+      "blanches": "Pizze alla panna",
+      "speciales": "Le nostre pizze speciali"
     },
     "filters": {
       "title": "Filtra",
@@ -64,23 +55,23 @@
       "empty": "Nessuna pizza corrisponde a questi filtri."
     },
     "afterBaking": "Dopo la cottura",
-    "base": "Base",
     "allergens": "Allergeni",
-    "allergensNote": "L'impasto contiene glutine. Segnalate eventuali allergie al momento dell'ordine.",
-    "featured": "Pizza del momento",
+    "allergensNote": "Tutte le nostre pizze contengono soia, glutine e latte. Gli altri allergeni sono indicati pizza per pizza. Segnalate ogni allergia al momento dell'ordine.",
     "supplementsNote": "Aggiungete ciò che vi va, al prezzo indicato per ingrediente.",
     "pricesNote": "Prezzi IVA inclusa. Pagamento sul posto.",
-    "count": "{n} pizza | {n} pizze"
+    "count": "{n} pizza | {n} pizze",
+    "allergensMore": "inoltre"
   },
   "findUs": {
     "title": "Dove siamo",
-    "subtitle": "Un furgone, tre paesi, tutta la settimana",
-    "thisWeek": "I prossimi 14 giorni",
-    "typicalWeek": "Settimana tipo",
+    "subtitle": "Dove trovare il furgone Sestini stasera e nei prossimi giorni",
+    "thisWeek": "Prossime serate",
     "closed": "Chiuso",
-    "exception": "Eccezionale",
-    "openInMaps": "Apri in Maps",
-    "mapTitle": "Mappa della posizione: {place}"
+    "mapTitle": "Mappa della posizione: {place}",
+    "rest": "il forno riposa",
+    "more": "Vedi le due settimane successive",
+    "less": "Nascondi",
+    "fromTime": "dalle {time}"
   },
   "allergens": {
     "gluten": "Glutine",
@@ -104,28 +95,40 @@
     "biere": "Birre",
     "vin": "Vini"
   },
-  "modal": {
-    "close": "Chiudi"
-  },
-  "reviews": {
-    "title": "Dicono di noi",
-    "rating": "{rating} su 5 · {count} recensioni Google",
-    "seeAll": "Vedi le recensioni"
-  },
   "footer": {
-    "contact": "Contatti",
-    "follow": "Seguici",
     "legal": "Note legali",
-    "rights": "Tutti i diritti riservati.",
-    "madeWith": "Pizza al forno a legna vicino a Montpellier"
+    "order": "Ordinare",
+    "orderText": "Al telefono o direttamente al furgone. Ritiro e pagamento sul posto.",
+    "findUs": "Dove siamo",
+    "planning": "Vedi il calendario",
+    "design": "Design e sviluppo"
   },
   "home": {
-    "heroTitle": "La pizza al forno a legna",
-    "heroLead": "Un impasto che si prende il suo tempo, un forno che canta, prodotti di qui.",
+    "heroLead": "Prodotti freschi, locali e di stagione, su un impasto fatto in casa maturato da 24 a 72 ore.",
     "seeMenu": "Vedi il menù",
-    "findUs": "Dove siamo?"
+    "heroKicker": "Pizza al forno a legna · vicino a Montpellier",
+    "heroTitleStart": "La pizza cotta a",
+    "heroTitleEnd": "legna",
+    "seasonTitle": "In carta questa stagione",
+    "allPizzas": "Tutto il menù",
+    "allPizzasHint": "Base pomodoro, panna e speciali",
+    "orderTitle": "Ordinare",
+    "order1": "Chiamate o venite al furgone",
+    "order1Text": "Al {phone}, o direttamente sul posto.",
+    "order2": "In forno",
+    "order2Text": "Nel forno a legna, al momento.",
+    "order3": "Ritiro al furgone",
+    "order3Text": "Pagamento sul posto.",
+    "compoBase": "Base",
+    "compoOven": "In forno",
+    "compoAfter": "Dopo la cottura",
+    "tonight": "stasera",
+    "rest": "Riposo"
   },
   "legal": {
     "title": "Note legali"
+  },
+  "notice": {
+    "close": "Chiudi il messaggio"
   }
 }

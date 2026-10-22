@@ -95,7 +95,7 @@ const TEMPLATES: { label: string, icon: string, form: Partial<Form> }[] = [
     form: {
       kind: 'event',
       title: 'Retrouvez-nous à [lieu]',
-      body: '**[Date]** : le camion s\'installe à **[lieu]**.\n\nCarte réduite, commande par téléphone.',
+      body: '**[Date]** : le camion s\'installe à **[lieu]**.\n\nCarte réduite, commande par téléphone ou au camion.',
       priority: 12,
       ctas: [{ label: 'Nous trouver', href: '/nous-trouver', variant: 'primary' }, { label: 'Appeler', href: 'tel:', variant: 'secondary' }],
     },
@@ -226,7 +226,7 @@ async function restore(m: Message) {
 <template>
   <AdminPage
     title="Messages"
-    description="La fenêtre qui s'ouvre à l'arrivée sur le site : fermeture, nouvelle carte, événement… Un seul message s'affiche à la fois, le plus prioritaire."
+    description="Le bandeau affiché sous l'en-tête du site : fermeture, nouvelle carte, événement… Un seul message s'affiche à la fois, le plus prioritaire."
   >
     <template #actions>
       <UButton
@@ -394,7 +394,7 @@ async function restore(m: Message) {
     <USlideover
       v-model:open="open"
       :title="form.id ? 'Modifier le message' : 'Nouveau message'"
-      description="L'aperçu montre la fenêtre telle que vos visiteurs la verront."
+      description="L'aperçu montre le bandeau tel que vos visiteurs le verront."
       :ui="{ content: 'sm:max-w-5xl' }"
     >
       <template #body>
