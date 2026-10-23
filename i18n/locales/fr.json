@@ -115,6 +115,7 @@
     "allPizzas": "Toute la carte",
     "allPizzasHint": "Base tomate, crème fraîche et spéciales",
     "orderTitle": "Commander",
+    "orderHeading": "Par téléphone ou au camion",
     "order1": "Appelez ou venez au camion",
     "order1Text": "Au {phone}, ou directement sur place.",
     "order2": "On enfourne",

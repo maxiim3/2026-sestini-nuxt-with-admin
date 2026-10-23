@@ -267,57 +267,65 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
       </div>
     </section>
 
-    <!-- Commander -->
-    <section class="py-10 md:py-11">
-      <div class="mx-auto grid max-w-[1200px] gap-4.5 px-5 md:grid-cols-[auto_1fr_1fr_1fr] md:items-start md:gap-10 lg:px-10">
-        <h2 class="kicker text-rosso">
-          {{ t('home.orderTitle') }}
-        </h2>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">1</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order1') }}
-            </p>
-            <i18n-t
-              keypath="home.order1Text"
-              tag="p"
-              class="text-[14.5px] text-fumo"
-              scope="global"
-            >
-              <template #phone>
-                <a
-                  :href="contact.phoneHref"
-                  class="font-semibold text-nero underline underline-offset-3"
-                  data-track="call_clicked"
-                  data-track-source="home-order"
-                >{{ contact.phone }}</a>
-              </template>
-            </i18n-t>
-          </div>
+    <!-- Commander : trois étapes à la verticale, avec l'appel en évidence -->
+    <section class="py-18 md:py-30">
+      <div class="mx-auto grid max-w-[1200px] gap-9 px-5 md:grid-cols-[1fr_1.1fr] md:items-start md:gap-18 lg:px-10">
+        <div>
+          <p class="kicker text-rosso">
+            {{ t('home.orderTitle') }}
+          </p>
+          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            {{ t('home.orderHeading') }}
+          </h2>
+          <a
+            :href="contact.phoneHref"
+            class="btn mt-7 bg-nero text-crema hover:bg-nero-2"
+            data-track="call_clicked"
+            data-track-source="home-order"
+          >
+            <UIcon
+              name="i-lucide-phone"
+              class="size-4"
+            />
+            <span class="tabular-nums">{{ contact.phone }}</span>
+          </a>
         </div>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">2</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order2') }}
-            </p>
-            <p class="text-[14.5px] text-fumo">
-              {{ t('home.order2Text') }}
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">3</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order3') }}
-            </p>
-            <p class="text-[14.5px] text-fumo">
-              {{ t('home.order3Text') }}
-            </p>
-          </div>
-        </div>
+        <ol class="border-t border-nero">
+          <li
+            v-for="n in 3"
+            :key="n"
+            class="grid grid-cols-[52px_1fr] items-baseline gap-4 border-b border-pietra py-6 md:grid-cols-[64px_1fr] md:py-7"
+          >
+            <span class="font-title text-[44px] leading-none text-rosso md:text-[52px]">{{ n }}</span>
+            <div>
+              <p class="text-lg font-semibold md:text-xl">
+                {{ t(`home.order${n}`) }}
+              </p>
+              <i18n-t
+                v-if="n === 1"
+                keypath="home.order1Text"
+                tag="p"
+                class="mt-1 text-[15px] text-fumo"
+                scope="global"
+              >
+                <template #phone>
+                  <a
+                    :href="contact.phoneHref"
+                    class="font-semibold text-nero underline underline-offset-3"
+                    data-track="call_clicked"
+                    data-track-source="home-order"
+                  >{{ contact.phone }}</a>
+                </template>
+              </i18n-t>
+              <p
+                v-else
+                class="mt-1 text-[15px] text-fumo"
+              >
+                {{ t(`home.order${n}Text`) }}
+              </p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
   </div>

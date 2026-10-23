@@ -115,6 +115,7 @@
     "allPizzas": "The full menu",
     "allPizzasHint": "Tomato base, crème fraîche and specials",
     "orderTitle": "Ordering",
+    "orderHeading": "By phone or at the truck",
     "order1": "Call or come to the truck",
     "order1Text": "On {phone}, or directly on site.",
     "order2": "Into the oven",
