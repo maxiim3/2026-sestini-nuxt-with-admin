@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.3.0](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/compare/v0.2.0...v0.3.0) (2026-10-23)
+
+
+### Nouveautés
+
+* **accueil:** section Commander repensée ([c060b4c](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/c060b4cc52d3a22100bdfed983e4cadb4b9e6429))
+* **atelier:** messages en bandeau, champ « Société » dans les réglages ([d3f47ef](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/d3f47ef739e7fd26b833da9047802ffe332b570a))
+* **atelier:** sauvegarde du contenu, export et import en JSON et Excel ([bc0f836](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/bc0f836b8149878b3a3614d0e6da665de226e437))
+* **atelier:** sauvegarde du contenu, export et import en JSON et Excel ([62ffb5b](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/62ffb5b46f6f779b4ca3d47a601b14b77b883685))
+* **nous-trouver:** la carte s'ouvre sous la soirée choisie sur mobile ([331a732](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/331a73228122068fed90083071933a2bedb541e6))
+* **site:** bouton d'essai pour la police des titres ([5b9a9b0](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/5b9a9b0020048defe019557a52b0b86364cab9ef))
+* **site:** lettrage et logo rond du site d'origine ([a876e13](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/a876e132d1f2ec8a0f57ad8a5a7a5fd4a5b8c320))
+* **site:** mode hybride par défaut pour les titres ([066c90d](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/066c90d1317dab4ee0290e920c759cb501dc2cea))
+* **site:** niveaux de titres et mode hybride pour l'essai Cinzel ([cae492e](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/cae492eb3d805065a8d26badd15d6e82b2fa121f))
+* **site:** photos provisoires des pizzas et lien LinkedIn ([ba8e1b8](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/ba8e1b86a2a2356c19641f4c1636e43f14a36b20))
+* **site:** police des titres hybride, définitive ([a8289ad](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/a8289adc4dcecf4f4bc03f44024ec4282d0587d6))
+* **site:** refonte « Crema & Nero » et accueil unique ([74507bd](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/74507bd6e88065a2a37cf5675f0877ab3ce25f7c))
+* **site:** refonte « Crema & Nero » et accueil unique ([8f953b9](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/8f953b959890a51d0000ada7e57ffa6ce65bd6e1))
+
+
+### Corrections
+
+* **accueil:** photo d'accueil à la bonne hauteur sur mobile ([7494411](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/74944113eedffaf1826566370c02ba0137821461))
+* **atelier:** import de sauvegarde réservé au propriétaire ([0bf8251](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/0bf8251fe2a51994b4f604eb3a3043974d55ac03))
+* **atelier:** les pages de l'atelier défilent au lieu d'écraser leurs blocs ([af97a38](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/af97a38d7c4719a44dd2d58e93ff6ba6cd264ba4))
+* **atelier:** une mise à jour partielle n'écrase plus les autres champs ([8f5f557](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/8f5f5577adf90eb57fb19dcdc4be4c4d190ef015))
+* **atelier:** une mise à jour partielle n'écrase plus les autres champs ([5069211](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/5069211eb84227ae0c5198a04029cfafe0ac9889))
+* **impression:** l'affiche de fermeture s'imprime avec un texte saisi ([250b1f4](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/250b1f4abcbfa796a65c81be8245fb3b19544891))
+* la commande se fait par téléphone ou directement au camion ([9e142a6](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/9e142a6098edabec43c3a3bd50b505a6543dc8d1))
+* **medias:** lit aussi BLOB_READ_WRITE_TOKEN créé par Vercel ([d138f6d](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/d138f6da10c307eea82e9459998bab417509cc93))
+* **site:** accueil sans photos de pizzas ([2e1f759](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/2e1f759f1e2726b4a6e44d7dc8723a1505917b02))
+* **site:** logo « Sestini PIZZA » entier dans l'en-tête et le pied de page ([7e1d1e3](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/7e1d1e312b56c7e37343b162d2ec6c5ce3eb0499))
+* une image de pizza peut être un chemin du site ([bdf7a6a](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/bdf7a6aab3fd6e4ceccb44457bc255487548c3fd))
+
+
+### Contenu
+
+* **accueil:** commander par téléphone ou sur place ([802eadf](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/802eadf75f6f19f07d2aa1ba9579ac6d66ecbca0))
+
+
+### Documentation
+
+* bilan des retours sur la bêta du 23 octobre 2026 ([9c54d41](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/9c54d418618d5514030b2e58c56f25212d76342b))
+* **cdc:** un seul accueil et le design « Crema & Nero » ([372fd6c](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/372fd6c5ce29b2b3f8847836c02edff6be6f2e0d))
+* **readme:** retire les landings et la modale ([bbfea88](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/commit/bbfea8880402fea6248f0a1a81d51b8af852bde8))
+
 ## [0.2.0](https://github.com/maxiim3/2026-sestini-nuxt-with-admin/compare/v0.1.0...v0.2.0) (2026-10-20)
 
 
