@@ -59,8 +59,14 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="title-display mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
-          <SiteDecoText :text="t('home.heroTitleStart')" /><br><SiteDecoText :text="t('home.heroTitleMiddle')" /> <i class="text-abricot"><SiteDecoText :text="t('home.heroTitleEnd')" /></i>.
+        <h1 class="title-hero mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
+          <SiteDecoText
+            :text="t('home.heroTitleStart')"
+            letters="first"
+          /><br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot"><SiteDecoText
+            :text="t('home.heroTitleEnd')"
+            letters="last"
+          /></i>.
         </h1>
         <p class="max-w-[42ch] text-[15.5px] leading-relaxed text-crema/85 md:text-[19px] md:leading-normal">
           {{ t('home.heroLead') }}
@@ -119,8 +125,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <p class="kicker text-rosso">
             {{ tr(featured, 'title') }}
           </p>
-          <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-            <SiteDecoText :text="tr(featured.pizza, 'name')" />
+          <h2 class="title-item mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            {{ tr(featured.pizza, 'name') }}
           </h2>
           <dl class="mt-5.5 border-t border-pietra">
             <div class="grid grid-cols-[110px_1fr] gap-3 border-b border-pietra py-3 text-[15px]">

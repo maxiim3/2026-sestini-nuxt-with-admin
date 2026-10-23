@@ -1,12 +1,13 @@
 <script setup lang="ts">
 /**
- * Essai (bêta) : police des titres. « Instrument » (refonte), « Hybride » (noms de pizzas et de lieux en Cinzel)
- * ou « Cinzel » (tous les titres comme sur le site d'origine). Les niveaux de titres sont décrits dans main.css.
+ * Essai (bêta) : police des titres. « Hybride » par défaut (titres de page et noms en Cinzel),
+ * « Instrument » (refonte) ou « Cinzel » (tout comme le site d'origine). Les niveaux de titres sont décrits dans main.css.
  * Le choix est gardé dans le navigateur ; `?titres=instrument|hybride|cinzel` dans l'adresse le force.
  */
 type TitleFont = 'instrument' | 'hybride' | 'cinzel'
 const STORAGE_KEY = 'sestini:titres'
 const MODES: TitleFont[] = ['instrument', 'hybride', 'cinzel']
+const DEFAULT_MODE: TitleFont = 'hybride'
 const LABELS: Record<TitleFont, string> = { instrument: 'Instrument', hybride: 'Hybride', cinzel: 'Cinzel' }
 
 // Appliqué avant l'affichage, pour éviter de voir les titres changer de police au chargement
@@ -14,11 +15,11 @@ useHead({
   script: [{
     key: 'sestini-titres',
     tagPosition: 'head',
-    innerHTML: `try{var m=${JSON.stringify(MODES)},q=new URLSearchParams(location.search).get('titres');if(m.indexOf(q)>-1)localStorage.setItem('${STORAGE_KEY}',q);var v=localStorage.getItem('${STORAGE_KEY}');if(v!=='instrument'&&m.indexOf(v)>-1)document.documentElement.dataset.titres=v}catch(e){}`,
+    innerHTML: `try{var m=${JSON.stringify(MODES)},q=new URLSearchParams(location.search).get('titres');if(m.indexOf(q)>-1)localStorage.setItem('${STORAGE_KEY}',q);var v=localStorage.getItem('${STORAGE_KEY}');if(m.indexOf(v)<0)v='${DEFAULT_MODE}';if(v!=='instrument')document.documentElement.dataset.titres=v}catch(e){}`,
   }],
 })
 
-const font = ref<TitleFont>('instrument')
+const font = ref<TitleFont>(DEFAULT_MODE)
 onMounted(() => {
   const current = document.documentElement.dataset.titres as TitleFont | undefined
   font.value = current && MODES.includes(current) ? current : 'instrument'

@@ -82,7 +82,10 @@ onMounted(() => {
           {{ tr(data.menu, 'name') }}
         </p>
         <h1 class="title-display mt-2.5 font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
-          <SiteDecoText :text="t('menu.title')" />
+          <SiteDecoText
+            :text="t('menu.title')"
+            letters="ends"
+          />
         </h1>
       </div>
       <p
@@ -199,11 +202,12 @@ onMounted(() => {
           v-for="section in sections"
           :key="section.section"
         >
-          <header class="flex flex-wrap items-baseline gap-x-4 gap-y-1.5 border-b border-nero pb-3.5 pt-11 md:pt-18">
-            <h2 class="title-section font-title text-[clamp(38px,8vw,56px)] leading-none">
+          <!-- Le nombre de pizzas suit la dernière ligne du titre quand celui-ci passe à la ligne -->
+          <header class="flex items-baseline-last gap-x-4 border-b border-nero pb-3.5 pt-11 md:pt-18">
+            <h2 class="title-section min-w-0 font-title text-[clamp(38px,8vw,56px)] leading-none">
               <SiteDecoText :text="t(`menu.sections.${section.section}`)" />
             </h2>
-            <span class="ml-auto text-[13px] text-fumo">{{ t('menu.count', { n: section.pizzas.length }, section.pizzas.length) }}</span>
+            <span class="ml-auto shrink-0 text-[13px] text-fumo">{{ t('menu.count', { n: section.pizzas.length }, section.pizzas.length) }}</span>
           </header>
           <div class="grid md:grid-cols-2 md:gap-x-18">
             <MenuPizza

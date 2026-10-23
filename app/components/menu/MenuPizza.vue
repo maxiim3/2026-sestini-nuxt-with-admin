@@ -18,15 +18,16 @@ const extra = computed(() => props.pizza.allergens.filter(a => !DOUGH_ALLERGENS.
     class="scroll-mt-40 border-b border-pietra py-5.5 transition-colors duration-700"
     :aria-labelledby="`pizza-${pizza.slug}`"
   >
+    <!-- Nom long sur deux lignes : la feuille suit le nom, le prix reste en face de la première ligne -->
     <header class="flex items-baseline gap-2.5">
       <h3
         :id="`pizza-${pizza.slug}`"
-        class="title-item inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] md:text-[30px]"
+        class="title-item min-w-0 font-title text-[27px] leading-[1.05] md:text-[30px]"
       >
         {{ tr(pizza, 'name') }}
         <span
           v-if="pizza.tags.vegetarian"
-          class="text-oliva"
+          class="ml-1.5 inline-block text-oliva"
           :title="t('menu.filters.vegetarian')"
         >
           <UIcon
