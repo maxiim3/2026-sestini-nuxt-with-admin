@@ -329,9 +329,31 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
               >
                 {{ t(`home.order${n}Text`) }}
               </p>
+              <p
+                v-if="n === 3"
+                class="mt-1.5 text-[13px] text-fumo"
+              >
+                {{ t('home.order3Note') }}
+              </p>
             </div>
           </li>
         </ol>
+      </div>
+      <!-- Le camion change de village selon le soir : on le rappelle avant que le client ne se déplace -->
+      <div class="mx-auto mt-8 max-w-[1200px] px-5 md:mt-10 lg:px-10">
+        <p class="flex items-start gap-3 border-l-2 border-rosso bg-lino px-4 py-3.5 text-[15px] md:items-center">
+          <UIcon
+            name="i-lucide-map-pin"
+            class="mt-0.5 size-4 shrink-0 text-rosso md:mt-0"
+          />
+          <span>
+            {{ t('home.orderPlace') }}
+            <NuxtLink
+              :to="localePath('nous-trouver')"
+              class="ml-1 whitespace-nowrap font-semibold underline underline-offset-3"
+            >{{ t('home.orderPlaceLink') }} →</NuxtLink>
+          </span>
+        </p>
       </div>
     </section>
   </div>
