@@ -84,6 +84,22 @@
   }
 }
 
+/* Essai (bêta) : les titres dans la police du site en ligne, Cinzel, première lettre en Cinzel Decorative.
+   Mêmes tailles déclarées : font-size-adjust aligne la hauteur des minuscules (petites capitales chez Cinzel)
+   sur celle d'Instrument Serif, sinon Cinzel, bien plus large, déborde partout.
+   Pas d'italique chez Cinzel ni de crénage serré : on garde le romain et l'approche normale. */
+:root[data-titres="cinzel"] {
+  --font-title: "Cinzel", ui-serif, Georgia, serif;
+}
+:root[data-titres="cinzel"] .font-title {
+  font-size-adjust: ex-height 0.45;
+  font-synthesis: none;
+  letter-spacing: normal;
+}
+:root[data-titres="cinzel"] .font-title::first-letter {
+  font-family: var(--font-deco);
+}
+
 @layer components {
   /* ---------- Site public ---------- */
   /* Petite étiquette en capitales espacées */
