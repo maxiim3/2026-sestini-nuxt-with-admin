@@ -33,7 +33,9 @@ test('la carte : sections, filtres et allergènes', async ({ page }) => {
   await page.getByRole('button', { name: 'Réinitialiser' }).click()
   await page.getByRole('button', { name: 'Végétarien' }).click()
   expect(await pizzas.count()).toBeLessThan(16)
-  await expect(page.getByText(/soja, gluten, lait/).first()).toBeVisible()
+  // Les allergènes de la pâte sont rappelés une fois en tête de carte, pas sur chaque pizza
+  await expect(page.getByText(/contiennent du soja, du gluten et du lait/)).toBeVisible()
+  await expect(page.getByText(/soja, gluten, lait/)).toHaveCount(0)
 })
 
 test('versions traduites', async ({ page }) => {

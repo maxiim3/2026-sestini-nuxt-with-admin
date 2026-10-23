@@ -9,8 +9,8 @@ useSeoMeta({ title: () => `${t('legal.title')} · Sestini Pizza`, robots: 'noind
 
 <template>
   <div class="mx-auto max-w-3xl px-5 pb-24 pt-10 md:pt-16">
-    <h1 class="font-title text-[clamp(48px,10vw,80px)] leading-[0.95]">
-      {{ t('legal.title') }}
+    <h1 class="title-display font-title text-[clamp(48px,10vw,80px)] leading-[0.95]">
+      <SiteDecoText :text="t('legal.title')" />
     </h1>
     <div class="mt-10 space-y-7 leading-relaxed">
       <section>

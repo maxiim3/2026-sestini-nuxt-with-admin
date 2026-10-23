@@ -28,7 +28,13 @@ const links = computed(() => [
           height="26"
           class="h-6.5 w-auto lg:h-8"
         >
-        <span class="font-display text-[19px] font-semibold leading-none tracking-[0.02em] lg:text-[22px]">Sestini<small class="ml-1 text-[0.72em] tracking-[0.06em]">PIZZA</small></span>
+        <img
+          src="/brand/wordmark.svg"
+          alt=""
+          width="160"
+          height="23"
+          class="h-[23px] w-auto lg:h-[27px]"
+        >
       </NuxtLink>
 
       <nav

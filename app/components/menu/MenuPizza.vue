@@ -8,8 +8,7 @@ const { tr, price } = useLocalized()
 
 const avant = computed(() => props.pizza.avant.map(i => tr(i, 'name')))
 const apres = computed(() => props.pizza.apres.map(i => tr(i, 'name')))
-/** Les allergènes communs à toutes les pizzas d'abord, puis ceux en plus */
-const common = computed(() => DOUGH_ALLERGENS.map(a => t(`allergens.${a}`).toLowerCase()).join(', '))
+/** Les allergènes de la pâte (soja, gluten, lait) sont rappelés une fois en tête de carte : ici, seulement ceux en plus */
 const extra = computed(() => props.pizza.allergens.filter(a => !DOUGH_ALLERGENS.includes(a)).map(a => t(`allergens.${a}`).toLowerCase()))
 </script>
 
@@ -19,15 +18,16 @@ const extra = computed(() => props.pizza.allergens.filter(a => !DOUGH_ALLERGENS.
     class="scroll-mt-40 border-b border-pietra py-5.5 transition-colors duration-700"
     :aria-labelledby="`pizza-${pizza.slug}`"
   >
+    <!-- Nom long sur deux lignes : la feuille suit le nom, le prix reste en face de la première ligne -->
     <header class="flex items-baseline gap-2.5">
       <h3
         :id="`pizza-${pizza.slug}`"
-        class="inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] md:text-[30px]"
+        class="title-item min-w-0 font-title text-[27px] leading-[1.05] md:text-[30px]"
       >
         {{ tr(pizza, 'name') }}
         <span
           v-if="pizza.tags.vegetarian"
-          class="text-oliva"
+          class="ml-1.5 inline-block text-oliva"
           :title="t('menu.filters.vegetarian')"
         >
           <UIcon
@@ -44,23 +44,22 @@ const extra = computed(() => props.pizza.allergens.filter(a => !DOUGH_ALLERGENS.
       <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(pizza.priceCents) }}</span>
     </header>
 
+    <!-- Une seule couleur et un seul accent : les intitulés en gras, comme sur la carte d'origine -->
     <p class="mt-1.5 text-[15px] leading-normal">
-      <b class="font-semibold text-oro-ink">{{ tr(pizza, 'baseLabel') }}</b>
-      <template v-if="avant.length">
-        · {{ avant.join(', ') }}
-      </template>
+      <b class="font-semibold">{{ tr(pizza, 'baseLabel') }}</b>{{ avant.length ? `, ${avant.join(', ')}` : '' }}
     </p>
     <p
       v-if="apres.length"
       class="mt-0.5 text-[15px] leading-normal"
     >
-      <span class="text-fumo">{{ t('menu.afterBaking') }} —</span> <i>{{ apres.join(', ') }}</i>
+      <b class="font-semibold">{{ t('menu.afterBaking') }}{{ t('menu.colon') }}</b> {{ apres.join(', ') }}
     </p>
 
-    <p class="mt-2 text-[12.5px] text-fumo">
-      {{ t('menu.allergens') }} : {{ common }}<template v-if="extra.length">
-        · <b class="font-semibold text-nero">{{ t('menu.allergensMore') }} : {{ extra.join(', ') }}</b>
-      </template>
+    <p
+      v-if="extra.length"
+      class="mt-1.5 text-[13px] text-fumo"
+    >
+      {{ t('menu.allergens') }} {{ t('menu.allergensMore') }}{{ t('menu.colon') }} {{ extra.join(', ') }}
     </p>
   </article>
 </template>

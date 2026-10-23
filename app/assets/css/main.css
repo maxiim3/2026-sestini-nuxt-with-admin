@@ -84,6 +84,42 @@
   }
 }
 
+/* ---------- Titres : Instrument Serif et Cinzel ----------
+   Les titres sont en Instrument Serif (font-title), sauf deux niveaux, toujours traités en bloc :
+   - .title-display, titre de page (La carte, Nous trouver) : Cinzel en capitales, première et dernière lettre
+     en Cinzel Decorative comme le logo (SiteDecoText) ;
+   - .title-item, un nom dans une liste (pizza, boisson, lieu) : Cinzel en capitales et en gras.
+   Le grand titre de l'accueil, les titres de section, les prix et les accroches restent en Instrument Serif.
+   font-size-adjust ramène Cinzel, bien plus large, à la carrure d'Instrument Serif sans toucher aux tailles
+   déclarées ; il se cale sur la hauteur des capitales, commune à Cinzel et Cinzel Decorative. */
+.title-display,
+.title-item {
+  font-family: var(--font-display);
+  font-size-adjust: cap-height 0.46;
+  font-synthesis: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+/* Capitales accentuées : un interligne serré les ferait toucher la ligne du dessus */
+.title-display {
+  line-height: 1.02;
+}
+.title-display .deco-letter {
+  font-family: var(--font-deco);
+}
+.title-item {
+  font-weight: 700;
+}
+/* Le nom du lieu sous une ville (« Parking… ») reste un texte courant */
+.title-item small {
+  font-family: var(--font-body);
+  font-size-adjust: none;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 @layer components {
   /* ---------- Site public ---------- */
   /* Petite étiquette en capitales espacées */
@@ -211,6 +247,12 @@
     background: color-mix(in oklab, currentColor 8%, transparent);
     border-color: color-mix(in oklab, currentColor 55%, transparent);
   }
+}
+
+/* Tiroir qui se déplie (carte du jour sur « Nous trouver », mobile) */
+@keyframes drawer-in {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(-6px); }
+  to { opacity: 1; clip-path: inset(0); transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
