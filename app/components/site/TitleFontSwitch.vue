@@ -1,29 +1,33 @@
 <script setup lang="ts">
 /**
- * Essai (bêta) : bascule la police des titres entre Instrument Serif et Cinzel, celle du site en ligne.
- * Le choix est gardé dans le navigateur ; `?titres=cinzel` ou `?titres=instrument` dans l'adresse le force.
+ * Essai (bêta) : police des titres. « Instrument » (refonte), « Hybride » (noms de pizzas et de lieux en Cinzel)
+ * ou « Cinzel » (tous les titres comme sur le site d'origine). Les niveaux de titres sont décrits dans main.css.
+ * Le choix est gardé dans le navigateur ; `?titres=instrument|hybride|cinzel` dans l'adresse le force.
  */
-type TitleFont = 'instrument' | 'cinzel'
+type TitleFont = 'instrument' | 'hybride' | 'cinzel'
 const STORAGE_KEY = 'sestini:titres'
+const MODES: TitleFont[] = ['instrument', 'hybride', 'cinzel']
+const LABELS: Record<TitleFont, string> = { instrument: 'Instrument', hybride: 'Hybride', cinzel: 'Cinzel' }
 
 // Appliqué avant l'affichage, pour éviter de voir les titres changer de police au chargement
 useHead({
   script: [{
     key: 'sestini-titres',
     tagPosition: 'head',
-    innerHTML: `try{var q=new URLSearchParams(location.search).get('titres');if(q==='cinzel'||q==='instrument')localStorage.setItem('${STORAGE_KEY}',q);if(localStorage.getItem('${STORAGE_KEY}')==='cinzel')document.documentElement.dataset.titres='cinzel'}catch(e){}`,
+    innerHTML: `try{var m=${JSON.stringify(MODES)},q=new URLSearchParams(location.search).get('titres');if(m.indexOf(q)>-1)localStorage.setItem('${STORAGE_KEY}',q);var v=localStorage.getItem('${STORAGE_KEY}');if(v!=='instrument'&&m.indexOf(v)>-1)document.documentElement.dataset.titres=v}catch(e){}`,
   }],
 })
 
 const font = ref<TitleFont>('instrument')
 onMounted(() => {
-  font.value = document.documentElement.dataset.titres === 'cinzel' ? 'cinzel' : 'instrument'
+  const current = document.documentElement.dataset.titres as TitleFont | undefined
+  font.value = current && MODES.includes(current) ? current : 'instrument'
 })
 
 function choose(next: TitleFont) {
   font.value = next
-  if (next === 'cinzel') document.documentElement.dataset.titres = 'cinzel'
-  else delete document.documentElement.dataset.titres
+  if (next === 'instrument') delete document.documentElement.dataset.titres
+  else document.documentElement.dataset.titres = next
   try {
     localStorage.setItem(STORAGE_KEY, next)
   }
@@ -33,20 +37,25 @@ function choose(next: TitleFont) {
 
 <template>
   <ClientOnly>
-    <button
-      class="fixed bottom-[calc(4.25rem+env(safe-area-inset-bottom)+0.625rem)] right-3 z-50 flex items-center gap-1.5 rounded-full border border-nero-line bg-nero/90 py-1.5 pl-2.5 pr-3 text-[11px] font-semibold text-crema shadow-lg backdrop-blur transition-colors hover:text-abricot md:bottom-4 md:right-4"
-      :aria-label="`Police des titres (essai) : ${font === 'cinzel' ? 'Cinzel' : 'Instrument Serif'}. Changer`"
-      @click="choose(font === 'cinzel' ? 'instrument' : 'cinzel')"
+    <div
+      class="fixed bottom-[calc(4.25rem+env(safe-area-inset-bottom)+0.625rem)] right-3 z-50 flex items-center gap-0.5 rounded-full border border-nero-line bg-nero/90 p-1 text-[11px] font-semibold text-crema shadow-lg backdrop-blur md:bottom-4 md:right-4"
+      role="group"
+      aria-label="Police des titres (essai)"
     >
       <UIcon
         name="i-lucide-type"
-        class="size-3.5 text-fumo-dark"
+        class="mx-1.5 size-3.5 text-fumo-dark"
       />
-      Titres : {{ font === 'cinzel' ? 'Cinzel' : 'Instrument' }}
-      <UIcon
-        name="i-lucide-arrow-left-right"
-        class="size-3 text-fumo-dark"
-      />
-    </button>
+      <button
+        v-for="m in MODES"
+        :key="m"
+        class="rounded-full px-2.5 py-1 transition-colors"
+        :class="font === m ? 'bg-crema text-nero' : 'hover:text-abricot'"
+        :aria-pressed="font === m"
+        @click="choose(m)"
+      >
+        {{ LABELS[m] }}
+      </button>
+    </div>
   </ClientOnly>
 </template>

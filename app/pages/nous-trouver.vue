@@ -77,8 +77,8 @@ function select(day: string, event: Event) {
 <template>
   <div class="bg-nero text-crema">
     <section class="mx-auto max-w-[1200px] px-5 pb-7 pt-8 md:pb-11 md:pt-15 lg:px-10">
-      <h1 class="font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
-        {{ t('findUs.title') }}
+      <h1 class="title-display font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
+        <SiteDecoText :text="t('findUs.title')" />
       </h1>
       <p class="mt-2.5 font-title text-[21px] italic text-abricot md:text-[26px]">
         {{ t('brand.area').replaceAll(' · ', ', ') }}
@@ -104,7 +104,7 @@ function select(day: string, event: Event) {
             <p class="kicker text-abricot">
               {{ relativeDay(selected.date, today) }} · {{ t('tonight.from', { time: hour(selected.opensAt) }) }}
             </p>
-            <h2 class="mt-2 font-title text-[40px] leading-none">
+            <h2 class="title-item mt-2 font-title text-[40px] leading-none">
               {{ selected.location.city }}
             </h2>
             <p class="mt-2 text-[15px] text-fumo-dark">
@@ -160,7 +160,7 @@ function select(day: string, event: Event) {
               class="grid grid-cols-[84px_1fr] items-baseline gap-3.5 border-b border-nero-line py-4.5 lg:grid-cols-[110px_1fr]"
             >
               <span class="text-[13px] text-fumo-dark"><b class="block text-sm font-semibold capitalize text-crema">{{ date(r.day.date, { weekday: 'long' }) }}</b>{{ date(r.day.date, { day: 'numeric', month: 'short' }) }}</span>
-              <span class="font-title text-[26px] leading-tight text-[#e2836f] lg:text-3xl">
+              <span class="title-item font-title text-[26px] leading-tight text-[#e2836f] lg:text-3xl">
                 {{ r.day.exception?.note ? tr(r.day.exception, 'note') : t('findUs.closed') }}
               </span>
             </div>
@@ -188,7 +188,7 @@ function select(day: string, event: Event) {
                 >{{ r.day.date === today ? t('days.today') : date(r.day.date, { weekday: 'long' }) }}</b>
                 {{ date(r.day.date, { day: 'numeric', month: 'short' }) }}
               </span>
-              <span class="font-title text-[26px] leading-tight transition-colors group-hover:text-abricot lg:text-3xl">
+              <span class="title-item font-title text-[26px] leading-tight transition-colors group-hover:text-abricot lg:text-3xl">
                 {{ r.day.location.city }}
                 <small class="mt-0.5 block font-body text-[13px] text-fumo-dark">{{ r.day.location.name }}</small>
               </span>

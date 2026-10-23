@@ -59,8 +59,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
-          {{ t('home.heroTitleStart') }}<br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
+        <h1 class="title-display mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
+          <SiteDecoText :text="t('home.heroTitleStart')" /><br><SiteDecoText :text="t('home.heroTitleMiddle')" /> <i class="text-abricot"><SiteDecoText :text="t('home.heroTitleEnd')" /></i>.
         </h1>
         <p class="max-w-[42ch] text-[15.5px] leading-relaxed text-crema/85 md:text-[19px] md:leading-normal">
           {{ t('home.heroLead') }}
@@ -89,7 +89,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
               </template>
             </p>
             <p
-              class="mt-1 font-title text-[22px] leading-tight"
+              class="title-item mt-1 font-title text-[22px] leading-tight"
               :class="!d.open && 'italic text-fumo-dark'"
             >
               {{ d.open && d.location ? d.location.city.replace(/-lès-.*$/, '') : t('home.rest') }}
@@ -119,8 +119,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <p class="kicker text-rosso">
             {{ tr(featured, 'title') }}
           </p>
-          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-            {{ tr(featured.pizza, 'name') }}
+          <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            <SiteDecoText :text="tr(featured.pizza, 'name')" />
           </h2>
           <dl class="mt-5.5 border-t border-pietra">
             <div class="grid grid-cols-[110px_1fr] gap-3 border-b border-pietra py-3 text-[15px]">
@@ -172,8 +172,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             >
               {{ tr(data.menu, 'name') }}
             </p>
-            <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-              {{ t('home.seasonTitle') }}
+            <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+              <SiteDecoText :text="t('home.seasonTitle')" />
             </h2>
           </div>
           <NuxtLink
@@ -202,7 +202,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             >
             <span class="absolute inset-x-0 bottom-0 bg-[linear-gradient(0deg,rgb(19_17_16/.85),transparent)] px-3.5 pb-3 pt-10 md:px-5 md:pb-4 md:pt-15">
               <span
-                class="flex items-baseline gap-1.5 font-title leading-tight"
+                class="title-item flex items-baseline gap-1.5 font-title leading-tight"
                 :class="i === 0 ? 'text-[34px] md:text-5xl' : 'text-[21px] md:text-[26px]'"
               >
                 {{ tr(p, 'name') }}
@@ -219,7 +219,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             :to="localePath('la-carte')"
             class="flex aspect-square flex-col justify-end rounded-[10px] bg-nero p-4 text-crema md:p-5.5"
           >
-            <span class="font-title text-[26px] leading-tight md:text-[32px]">{{ t('home.allPizzas') }}</span>
+            <span class="title-item font-title text-[26px] leading-tight md:text-[32px]">{{ t('home.allPizzas') }}</span>
             <span class="mt-1.5 text-sm font-semibold text-abricot">{{ t('home.allPizzasHint') }} →</span>
           </NuxtLink>
         </div>
@@ -237,7 +237,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
                 class="group block py-5"
               >
                 <span class="flex items-baseline gap-2.5">
-                  <span class="inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] transition-colors group-hover:text-rosso">
+                  <span class="title-item inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] transition-colors group-hover:text-rosso">
                     {{ tr(p, 'name') }}
                     <UIcon
                       v-if="p.tags.vegetarian"
@@ -274,8 +274,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <p class="kicker text-rosso">
             {{ t('home.orderTitle') }}
           </p>
-          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-            {{ t('home.orderHeading') }}
+          <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            <SiteDecoText :text="t('home.orderHeading')" />
           </h2>
           <a
             :href="contact.phoneHref"

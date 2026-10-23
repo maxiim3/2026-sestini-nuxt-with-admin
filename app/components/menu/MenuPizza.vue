@@ -21,7 +21,7 @@ const extra = computed(() => props.pizza.allergens.filter(a => !DOUGH_ALLERGENS.
     <header class="flex items-baseline gap-2.5">
       <h3
         :id="`pizza-${pizza.slug}`"
-        class="inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] md:text-[30px]"
+        class="title-item inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] md:text-[30px]"
       >
         {{ tr(pizza, 'name') }}
         <span
