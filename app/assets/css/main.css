@@ -84,21 +84,16 @@
   }
 }
 
-/* ---------- Essai (bêta) : police des titres ----------
-   Quatre niveaux de titres, toujours traités en bloc :
-   .title-hero (grand titre de l'accueil), .title-display (titre de page : La carte, Nous trouver),
-   .title-section (titre de section), .title-item (un nom : pizza, boisson, lieu).
-   Prix, chiffres et accroches restent en Instrument Serif dans tous les modes.
-   - « hybride » (par défaut) : titres de page et noms en Cinzel, l'accueil et les sections en Instrument ;
-   - « cinzel » : tout en Cinzel, comme le site d'origine ;
-   - « instrument » : tout en Instrument Serif, comme la refonte.
-   En Cinzel, certaines lettres passent en Cinzel Decorative (SiteDecoText) : première et dernière lettre des
-   titres de page et de l'accueil, comme le logo (S…A) ; initiale de chaque mot des sections (site d'origine).
-   Tailles déclarées inchangées : font-size-adjust ramène Cinzel, bien plus large, à la carrure
-   d'Instrument Serif. Il se cale sur la hauteur des capitales, commune à Cinzel et Cinzel Decorative
-   (sur la hauteur des minuscules, les initiales ornées sortaient plus petites). Pas d'italique chez Cinzel. */
-:root[data-titres="cinzel"] :is(.title-hero, .title-display, .title-section, .title-item),
-:root[data-titres="hybride"] :is(.title-display, .title-item) {
+/* ---------- Titres : Instrument Serif et Cinzel ----------
+   Les titres sont en Instrument Serif (font-title), sauf deux niveaux, toujours traités en bloc :
+   - .title-display, titre de page (La carte, Nous trouver) : Cinzel en capitales, première et dernière lettre
+     en Cinzel Decorative comme le logo (SiteDecoText) ;
+   - .title-item, un nom dans une liste (pizza, boisson, lieu) : Cinzel en capitales et en gras.
+   Le grand titre de l'accueil, les titres de section, les prix et les accroches restent en Instrument Serif.
+   font-size-adjust ramène Cinzel, bien plus large, à la carrure d'Instrument Serif sans toucher aux tailles
+   déclarées ; il se cale sur la hauteur des capitales, commune à Cinzel et Cinzel Decorative. */
+.title-display,
+.title-item {
   font-family: var(--font-display);
   font-size-adjust: cap-height 0.46;
   font-synthesis: none;
@@ -107,26 +102,22 @@
   text-transform: uppercase;
 }
 /* Capitales accentuées : un interligne serré les ferait toucher la ligne du dessus */
-:root[data-titres="cinzel"] :is(.title-hero, .title-display, .title-section),
-:root[data-titres="hybride"] .title-display {
+.title-display {
   line-height: 1.02;
 }
-:root[data-titres="cinzel"] .title-item,
-:root[data-titres="hybride"] .title-item {
+.title-display .deco-letter {
+  font-family: var(--font-deco);
+}
+.title-item {
   font-weight: 700;
 }
 /* Le nom du lieu sous une ville (« Parking… ») reste un texte courant */
-:root[data-titres="cinzel"] .title-item small,
-:root[data-titres="hybride"] .title-item small {
+.title-item small {
   font-family: var(--font-body);
   font-size-adjust: none;
   font-weight: 400;
   letter-spacing: normal;
   text-transform: none;
-}
-:root[data-titres="cinzel"] .deco-letter,
-:root[data-titres="hybride"] .title-display .deco-letter {
-  font-family: var(--font-deco);
 }
 
 @layer components {

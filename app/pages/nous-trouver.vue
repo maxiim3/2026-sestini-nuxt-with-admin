@@ -78,10 +78,7 @@ function select(day: string, event: Event) {
   <div class="bg-nero text-crema">
     <section class="mx-auto max-w-[1200px] px-5 pb-7 pt-8 md:pb-11 md:pt-15 lg:px-10">
       <h1 class="title-display font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
-        <SiteDecoText
-          :text="t('findUs.title')"
-          letters="ends"
-        />
+        <SiteDecoText :text="t('findUs.title')" />
       </h1>
       <p class="mt-2.5 font-title text-[21px] italic text-abricot md:text-[26px]">
         {{ t('brand.area').replaceAll(' · ', ', ') }}

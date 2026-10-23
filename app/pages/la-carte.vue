@@ -82,10 +82,7 @@ onMounted(() => {
           {{ tr(data.menu, 'name') }}
         </p>
         <h1 class="title-display mt-2.5 font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
-          <SiteDecoText
-            :text="t('menu.title')"
-            letters="ends"
-          />
+          <SiteDecoText :text="t('menu.title')" />
         </h1>
       </div>
       <p
@@ -204,8 +201,8 @@ onMounted(() => {
         >
           <!-- Le nombre de pizzas suit la dernière ligne du titre quand celui-ci passe à la ligne -->
           <header class="flex items-baseline-last gap-x-4 border-b border-nero pb-3.5 pt-11 md:pt-18">
-            <h2 class="title-section min-w-0 font-title text-[clamp(38px,8vw,56px)] leading-none">
-              <SiteDecoText :text="t(`menu.sections.${section.section}`)" />
+            <h2 class="min-w-0 font-title text-[clamp(38px,8vw,56px)] leading-none">
+              {{ t(`menu.sections.${section.section}`) }}
             </h2>
             <span class="ml-auto shrink-0 text-[13px] text-fumo">{{ t('menu.count', { n: section.pizzas.length }, section.pizzas.length) }}</span>
           </header>
@@ -236,8 +233,8 @@ onMounted(() => {
           v-for="[cat, items] in drinkGroups"
           :key="cat"
         >
-          <h2 class="title-section border-b border-nero pb-3.5 pt-11 font-title text-[clamp(34px,6vw,48px)] leading-none">
-            <SiteDecoText :text="t(`drinks.${cat}`)" />
+          <h2 class="border-b border-nero pb-3.5 pt-11 font-title text-[clamp(34px,6vw,48px)] leading-none">
+            {{ t(`drinks.${cat}`) }}
           </h2>
           <ul>
             <li

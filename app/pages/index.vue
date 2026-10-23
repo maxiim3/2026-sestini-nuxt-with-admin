@@ -59,14 +59,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="title-hero mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
-          <SiteDecoText
-            :text="t('home.heroTitleStart')"
-            letters="first"
-          /><br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot"><SiteDecoText
-            :text="t('home.heroTitleEnd')"
-            letters="last"
-          /></i>.
+        <h1 class="mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
+          {{ t('home.heroTitleStart') }}<br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
         </h1>
         <p class="max-w-[42ch] text-[15.5px] leading-relaxed text-crema/85 md:text-[19px] md:leading-normal">
           {{ t('home.heroLead') }}
@@ -178,8 +172,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             >
               {{ tr(data.menu, 'name') }}
             </p>
-            <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-              <SiteDecoText :text="t('home.seasonTitle')" />
+            <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+              {{ t('home.seasonTitle') }}
             </h2>
           </div>
           <NuxtLink
@@ -280,8 +274,8 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <p class="kicker text-rosso">
             {{ t('home.orderTitle') }}
           </p>
-          <h2 class="title-section mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
-            <SiteDecoText :text="t('home.orderHeading')" />
+          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            {{ t('home.orderHeading') }}
           </h2>
           <a
             :href="contact.phoneHref"

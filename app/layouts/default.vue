@@ -17,6 +17,5 @@ useHead(() => ({
     </main>
     <SiteFooter />
     <SiteCallBar />
-    <SiteTitleFontSwitch />
   </div>
 </template>
