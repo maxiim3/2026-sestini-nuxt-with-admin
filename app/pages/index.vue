@@ -35,7 +35,9 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
 <template>
   <div>
     <!-- Photo plein écran et semaine -->
-    <section class="relative flex min-h-[calc(100svh-3.75rem-4.25rem-4rem)] flex-col justify-end overflow-hidden bg-nero text-crema md:min-h-[720px]">
+    <!-- Sur mobile, la photo et la semaine tiennent pile entre l'en-tête (et le bandeau) et la barre d'appel,
+         mesuré sur le plus petit écran (svh : barre de Safari visible) ; quand elle se replie, la section suivante affleure -->
+    <section class="relative flex min-h-[calc(100svh-3.75rem-4.25rem-env(safe-area-inset-bottom)-var(--notice-h,0px))] flex-col justify-end overflow-hidden bg-nero text-crema md:min-h-[720px]">
       <img
         src="/images/accueil-four.jpg"
         alt=""
@@ -46,40 +48,40 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
         class="absolute inset-0 bg-[linear-gradient(0deg,rgb(19_17_16/.96)_8%,rgb(19_17_16/.55)_50%,rgb(19_17_16/.15)_100%)] md:bg-[linear-gradient(90deg,rgb(19_17_16/.92)_0%,rgb(19_17_16/.6)_40%,rgb(19_17_16/.05)_78%),linear-gradient(0deg,rgb(19_17_16/.9)_0%,transparent_35%)]"
         aria-hidden="true"
       />
-      <div class="relative mx-auto w-full max-w-[1200px] px-5 pb-6 pt-30 md:pb-12 lg:px-10">
-        <p class="kicker flex items-center gap-2.5 text-abricot">
+      <div class="relative mx-auto w-full max-w-[1200px] px-5 pb-5 pt-14 md:pb-12 md:pt-30 lg:px-10">
+        <p class="kicker flex items-center gap-2.5 text-[0.66rem] tracking-[0.14em] text-abricot md:text-[0.72rem] md:tracking-[0.18em]">
           <img
             src="/brand/emblem.svg"
             alt=""
             width="30"
             height="18"
-            class="h-[1.6em] w-auto"
+            class="hidden h-[1.6em] w-auto md:block"
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="mb-4 mt-3.5 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em]">
+        <h1 class="mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
           {{ t('home.heroTitleStart') }}<br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
         </h1>
-        <p class="max-w-[42ch] text-[17px] text-crema/85 md:text-[19px]">
+        <p class="max-w-[42ch] text-[15.5px] leading-relaxed text-crema/85 md:text-[19px] md:leading-normal">
           {{ t('home.heroLead') }}
         </p>
         <NuxtLink
           :to="localePath('la-carte')"
-          class="link-arrow mt-6"
+          class="link-arrow mt-4 md:mt-6"
         >
           {{ t('home.seeMenu') }} <span>→</span>
         </NuxtLink>
       </div>
       <div class="relative mx-auto w-full max-w-[1200px] px-5 lg:px-10">
-        <ol class="grid auto-cols-[minmax(118px,1fr)] grid-flow-col overflow-x-auto border-t border-nero-line [scrollbar-width:none]">
+        <ol class="grid auto-cols-[minmax(136px,1fr)] grid-flow-col overflow-x-auto border-t border-nero-line [scrollbar-width:none]">
           <li
             v-for="(d, i) in week"
             :key="d.date"
-            class="pb-5 pr-4 pt-4"
+            class="pb-4 pr-4 pt-3.5 md:pb-5 md:pt-4"
             :class="i > 0 && 'border-l border-nero-line pl-4'"
           >
             <p
-              class="kicker"
+              class="kicker whitespace-nowrap"
               :class="d.date === today ? 'text-abricot' : 'text-fumo-dark'"
             >
               {{ date(d.date, { weekday: 'short' }) }}<template v-if="d.date === today">
