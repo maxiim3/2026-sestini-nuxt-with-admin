@@ -1,5 +1,5 @@
 // Génère les icônes PWA et les images de partage (Open Graph) à partir du logo vectoriel.
-// Usage : node scripts/generate-brand-assets.mjs  (CHROMIUM_PATH pour un Chromium précis)
+// Usage : node scripts/generate-brand-assets.mjs [--icons-only | --og-only]  (CHROMIUM_PATH pour un Chromium précis)
 import { readFile } from 'node:fs/promises'
 import { chromium } from '@playwright/test'
 
@@ -7,7 +7,7 @@ const root = new URL('..', import.meta.url)
 const read = path => readFile(new URL(path, root), 'utf8')
 const fontData = async path => `data:font/woff2;base64,${(await readFile(new URL(path, root))).toString('base64')}`
 
-const emblem = await read('public/brand/emblem.svg')
+const emblemRond = await read('public/brand/emblem-rond.svg')
 const logo = await read('public/brand/logo.svg')
 const cinzel = await fontData('node_modules/@fontsource/cinzel/files/cinzel-latin-600-normal.woff2')
 const fraunces = await fontData('node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-italic.woff2')
@@ -33,16 +33,22 @@ async function render(html, width, height, out) {
   console.log('✓', out)
 }
 
-// Icônes : emblème centré sur fond charbon avec une lueur de braise
+// Icônes : le logo rond du site d'origine (four dans sa couronne de briques), centré sur fond charbon
 const icon = (size, scale) => `
-  <div style="width:${size}px;height:${size}px;display:grid;place-items:center;background:radial-gradient(circle at 50% 62%, rgba(224,170,62,.28), transparent 62%), #0e1011">
-    <div style="width:${Math.round(size * scale)}px">${emblem.replace('<svg', '<svg width="100%" height="100%"')}</div>
+  <div style="width:${size}px;height:${size}px;display:grid;place-items:center;background:#0e1011">
+    <div style="width:${Math.round(size * scale)}px;height:${Math.round(size * scale)}px">${emblemRond.replace('<svg', '<svg width="100%" height="100%"')}</div>
   </div>`
 
-for (const size of [192, 512]) await render(icon(size, 0.72), size, size, `public/icons/icon-${size}.png`)
-await render(icon(512, 0.56), 512, 512, 'public/icons/maskable-512.png')
-await render(icon(180, 0.68), 180, 180, 'public/apple-touch-icon.png')
-await render(icon(48, 0.8), 48, 48, 'public/icons/favicon-48.png')
+if (!process.argv.includes('--og-only')) {
+  for (const size of [192, 512]) await render(icon(size, 0.8), size, size, `public/icons/icon-${size}.png`)
+  await render(icon(512, 0.66), 512, 512, 'public/icons/maskable-512.png')
+  await render(icon(180, 0.78), 180, 180, 'public/apple-touch-icon.png')
+  await render(icon(48, 0.92), 48, 48, 'public/icons/favicon-48.png')
+}
+if (process.argv.includes('--icons-only')) {
+  await browser.close()
+  process.exit(0)
+}
 
 // Images de partage 1200×630, par page et par langue
 const COPY = {

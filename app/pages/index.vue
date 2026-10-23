@@ -35,7 +35,9 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
 <template>
   <div>
     <!-- Photo plein écran et semaine -->
-    <section class="relative flex min-h-[calc(100svh-3.75rem-4.25rem-4rem)] flex-col justify-end overflow-hidden bg-nero text-crema md:min-h-[720px]">
+    <!-- Sur mobile, la photo et la semaine tiennent pile entre l'en-tête (et le bandeau) et la barre d'appel,
+         mesuré sur le plus petit écran (svh : barre de Safari visible) ; quand elle se replie, la section suivante affleure -->
+    <section class="relative flex min-h-[calc(100svh-3.75rem-4.25rem-env(safe-area-inset-bottom)-var(--notice-h,0px))] flex-col justify-end overflow-hidden bg-nero text-crema md:min-h-[720px]">
       <img
         src="/images/accueil-four.jpg"
         alt=""
@@ -46,40 +48,40 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
         class="absolute inset-0 bg-[linear-gradient(0deg,rgb(19_17_16/.96)_8%,rgb(19_17_16/.55)_50%,rgb(19_17_16/.15)_100%)] md:bg-[linear-gradient(90deg,rgb(19_17_16/.92)_0%,rgb(19_17_16/.6)_40%,rgb(19_17_16/.05)_78%),linear-gradient(0deg,rgb(19_17_16/.9)_0%,transparent_35%)]"
         aria-hidden="true"
       />
-      <div class="relative mx-auto w-full max-w-[1200px] px-5 pb-6 pt-30 md:pb-12 lg:px-10">
-        <p class="kicker flex items-center gap-2.5 text-abricot">
+      <div class="relative mx-auto w-full max-w-[1200px] px-5 pb-5 pt-14 md:pb-12 md:pt-30 lg:px-10">
+        <p class="kicker flex items-center gap-2.5 text-[0.66rem] tracking-[0.14em] text-abricot md:text-[0.72rem] md:tracking-[0.18em]">
           <img
             src="/brand/emblem.svg"
             alt=""
             width="30"
             height="18"
-            class="h-[1.6em] w-auto"
+            class="hidden h-[1.6em] w-auto md:block"
           >
           {{ t('home.heroKicker') }}
         </p>
-        <h1 class="mb-4 mt-3.5 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em]">
+        <h1 class="mb-3 mt-3 font-title text-[clamp(52px,12vw,112px)] leading-[0.9] tracking-[-0.025em] md:mb-4 md:mt-3.5">
           {{ t('home.heroTitleStart') }}<br>{{ t('home.heroTitleMiddle') }} <i class="text-abricot">{{ t('home.heroTitleEnd') }}</i>.
         </h1>
-        <p class="max-w-[42ch] text-[17px] text-crema/85 md:text-[19px]">
+        <p class="max-w-[42ch] text-[15.5px] leading-relaxed text-crema/85 md:text-[19px] md:leading-normal">
           {{ t('home.heroLead') }}
         </p>
         <NuxtLink
           :to="localePath('la-carte')"
-          class="link-arrow mt-6"
+          class="link-arrow mt-4 md:mt-6"
         >
           {{ t('home.seeMenu') }} <span>→</span>
         </NuxtLink>
       </div>
       <div class="relative mx-auto w-full max-w-[1200px] px-5 lg:px-10">
-        <ol class="grid auto-cols-[minmax(118px,1fr)] grid-flow-col overflow-x-auto border-t border-nero-line [scrollbar-width:none]">
+        <ol class="grid auto-cols-[minmax(136px,1fr)] grid-flow-col overflow-x-auto border-t border-nero-line [scrollbar-width:none]">
           <li
             v-for="(d, i) in week"
             :key="d.date"
-            class="pb-5 pr-4 pt-4"
+            class="pb-4 pr-4 pt-3.5 md:pb-5 md:pt-4"
             :class="i > 0 && 'border-l border-nero-line pl-4'"
           >
             <p
-              class="kicker"
+              class="kicker whitespace-nowrap"
               :class="d.date === today ? 'text-abricot' : 'text-fumo-dark'"
             >
               {{ date(d.date, { weekday: 'short' }) }}<template v-if="d.date === today">
@@ -87,7 +89,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
               </template>
             </p>
             <p
-              class="mt-1 font-title text-[22px] leading-tight"
+              class="title-item mt-1 font-title text-[22px] leading-tight"
               :class="!d.open && 'italic text-fumo-dark'"
             >
               {{ d.open && d.location ? d.location.city.replace(/-lès-.*$/, '') : t('home.rest') }}
@@ -117,7 +119,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
           <p class="kicker text-rosso">
             {{ tr(featured, 'title') }}
           </p>
-          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+          <h2 class="title-item mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
             {{ tr(featured.pizza, 'name') }}
           </h2>
           <dl class="mt-5.5 border-t border-pietra">
@@ -200,7 +202,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             >
             <span class="absolute inset-x-0 bottom-0 bg-[linear-gradient(0deg,rgb(19_17_16/.85),transparent)] px-3.5 pb-3 pt-10 md:px-5 md:pb-4 md:pt-15">
               <span
-                class="flex items-baseline gap-1.5 font-title leading-tight"
+                class="title-item flex items-baseline gap-1.5 font-title leading-tight"
                 :class="i === 0 ? 'text-[34px] md:text-5xl' : 'text-[21px] md:text-[26px]'"
               >
                 {{ tr(p, 'name') }}
@@ -217,7 +219,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
             :to="localePath('la-carte')"
             class="flex aspect-square flex-col justify-end rounded-[10px] bg-nero p-4 text-crema md:p-5.5"
           >
-            <span class="font-title text-[26px] leading-tight md:text-[32px]">{{ t('home.allPizzas') }}</span>
+            <span class="title-item font-title text-[26px] leading-tight md:text-[32px]">{{ t('home.allPizzas') }}</span>
             <span class="mt-1.5 text-sm font-semibold text-abricot">{{ t('home.allPizzasHint') }} →</span>
           </NuxtLink>
         </div>
@@ -235,7 +237,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
                 class="group block py-5"
               >
                 <span class="flex items-baseline gap-2.5">
-                  <span class="inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] transition-colors group-hover:text-rosso">
+                  <span class="title-item inline-flex items-baseline gap-2 font-title text-[27px] leading-[1.05] transition-colors group-hover:text-rosso">
                     {{ tr(p, 'name') }}
                     <UIcon
                       v-if="p.tags.vegetarian"
@@ -250,7 +252,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
                   <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(p.priceCents) }}</span>
                 </span>
                 <span class="mt-1.5 block text-[15px] leading-normal">
-                  <b class="font-semibold text-oro-ink">{{ tr(p, 'baseLabel') }}</b><template v-if="p.avant.length"> · {{ p.avant.map(i => tr(i, 'name')).join(', ') }}</template>
+                  <b class="font-semibold">{{ tr(p, 'baseLabel') }}</b><template v-if="p.avant.length">, {{ p.avant.map(i => tr(i, 'name')).join(', ') }}</template>
                 </span>
               </NuxtLink>
             </li>
@@ -265,57 +267,87 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
       </div>
     </section>
 
-    <!-- Commander -->
-    <section class="py-10 md:py-11">
-      <div class="mx-auto grid max-w-[1200px] gap-4.5 px-5 md:grid-cols-[auto_1fr_1fr_1fr] md:items-start md:gap-10 lg:px-10">
-        <h2 class="kicker text-rosso">
-          {{ t('home.orderTitle') }}
-        </h2>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">1</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order1') }}
-            </p>
-            <i18n-t
-              keypath="home.order1Text"
-              tag="p"
-              class="text-[14.5px] text-fumo"
-              scope="global"
-            >
-              <template #phone>
-                <a
-                  :href="contact.phoneHref"
-                  class="font-semibold text-nero underline underline-offset-3"
-                  data-track="call_clicked"
-                  data-track-source="home-order"
-                >{{ contact.phone }}</a>
-              </template>
-            </i18n-t>
-          </div>
+    <!-- Commander : trois étapes à la verticale, avec l'appel en évidence -->
+    <section class="py-18 md:py-30">
+      <div class="mx-auto grid max-w-[1200px] gap-9 px-5 md:grid-cols-[1fr_1.1fr] md:items-start md:gap-18 lg:px-10">
+        <div>
+          <p class="kicker text-rosso">
+            {{ t('home.orderTitle') }}
+          </p>
+          <h2 class="mt-3 font-title text-[clamp(44px,9vw,96px)] leading-[0.92] tracking-[-0.02em]">
+            {{ t('home.orderHeading') }}
+          </h2>
+          <a
+            :href="contact.phoneHref"
+            class="btn mt-7 bg-nero text-crema hover:bg-nero-2"
+            data-track="call_clicked"
+            data-track-source="home-order"
+          >
+            <UIcon
+              name="i-lucide-phone"
+              class="size-4"
+            />
+            <span class="tabular-nums">{{ contact.phone }}</span>
+          </a>
         </div>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">2</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order2') }}
-            </p>
-            <p class="text-[14.5px] text-fumo">
-              {{ t('home.order2Text') }}
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-[34px_1fr] items-baseline gap-3">
-          <span class="font-title text-3xl leading-none text-rosso">3</span>
-          <div>
-            <p class="font-semibold">
-              {{ t('home.order3') }}
-            </p>
-            <p class="text-[14.5px] text-fumo">
-              {{ t('home.order3Text') }}
-            </p>
-          </div>
-        </div>
+        <ol class="border-t border-nero">
+          <li
+            v-for="n in 3"
+            :key="n"
+            class="grid grid-cols-[52px_1fr] items-baseline gap-4 border-b border-pietra py-6 md:grid-cols-[64px_1fr] md:py-7"
+          >
+            <span class="font-title text-[44px] leading-none text-rosso md:text-[52px]">{{ n }}</span>
+            <div>
+              <p class="text-lg font-semibold md:text-xl">
+                {{ t(`home.order${n}`) }}
+              </p>
+              <i18n-t
+                v-if="n === 1"
+                keypath="home.order1Text"
+                tag="p"
+                class="mt-1 text-[15px] text-fumo"
+                scope="global"
+              >
+                <template #phone>
+                  <a
+                    :href="contact.phoneHref"
+                    class="font-semibold text-nero underline underline-offset-3"
+                    data-track="call_clicked"
+                    data-track-source="home-order"
+                  >{{ contact.phone }}</a>
+                </template>
+              </i18n-t>
+              <p
+                v-else
+                class="mt-1 text-[15px] text-fumo"
+              >
+                {{ t(`home.order${n}Text`) }}
+              </p>
+              <p
+                v-if="n === 3"
+                class="mt-1.5 text-[13px] text-fumo"
+              >
+                {{ t('home.order3Note') }}
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <!-- Le camion change de village selon le soir : on le rappelle avant que le client ne se déplace -->
+      <div class="mx-auto mt-8 max-w-[1200px] px-5 md:mt-10 lg:px-10">
+        <p class="flex items-start gap-3 border-l-2 border-rosso bg-lino px-4 py-3.5 text-[15px] md:items-center">
+          <UIcon
+            name="i-lucide-map-pin"
+            class="mt-0.5 size-4 shrink-0 text-rosso md:mt-0"
+          />
+          <span>
+            {{ t('home.orderPlace') }}
+            <NuxtLink
+              :to="localePath('nous-trouver')"
+              class="ml-1 whitespace-nowrap font-semibold underline underline-offset-3"
+            >{{ t('home.orderPlaceLink') }} →</NuxtLink>
+          </span>
+        </p>
       </div>
     </section>
   </div>

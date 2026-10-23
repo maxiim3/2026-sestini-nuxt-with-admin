@@ -15,7 +15,7 @@
   "tonight": {
     "from": "dès {time}",
     "itinerary": "Itinéraire",
-    "orderByPhone": "Commande par téléphone ou au camion, retrait sur place",
+    "orderByPhone": "Commande par téléphone ou directement sur place",
     "openShort": "Ouvert",
     "openNowLong": "Ouvert en ce moment",
     "tonightFrom": "Ce soir dès {time}",
@@ -60,7 +60,8 @@
     "supplementsNote": "Ajoutez ce qui vous fait envie, au prix indiqué par ingrédient.",
     "pricesNote": "Prix TTC. Paiement sur place.",
     "count": "{n} pizza | {n} pizzas",
-    "allergensMore": "en plus"
+    "allergensMore": "en plus",
+    "colon": " :"
   },
   "findUs": {
     "title": "Nous trouver",
@@ -98,7 +99,7 @@
   "footer": {
     "legal": "Mentions légales",
     "order": "Commander",
-    "orderText": "Par téléphone ou directement au camion. Retrait et paiement sur place.",
+    "orderText": "Par téléphone ou directement sur place. Paiement en espèces ou par carte bancaire.",
     "findUs": "Nous trouver",
     "planning": "Voir le planning",
     "design": "Design et développement"
@@ -114,12 +115,16 @@
     "allPizzas": "Toute la carte",
     "allPizzasHint": "Base tomate, crème fraîche et spéciales",
     "orderTitle": "Commander",
-    "order1": "Appelez ou venez au camion",
+    "orderHeading": "Par téléphone ou sur place",
+    "order1": "Appelez ou commandez sur place",
     "order1Text": "Au {phone}, ou directement sur place.",
-    "order2": "On enfourne",
-    "order2Text": "Au feu de bois, à la commande.",
-    "order3": "Retrait au camion",
-    "order3Text": "Paiement sur place.",
+    "order2": "On prépare votre commande",
+    "order2Text": "Pâte fraîche, cuite au feu de bois.",
+    "order3": "Retrait sur place",
+    "order3Text": "Paiement en espèces ou par carte bancaire.",
+    "order3Note": "Nous ne prenons ni les chèques ni les tickets restaurant. Merci de votre compréhension.",
+    "orderPlace": "Avant de venir, vérifiez bien l’emplacement du soir : nous ne sommes pas au même endroit tous les jours.",
+    "orderPlaceLink": "Où nous trouver",
     "compoBase": "Base",
     "compoOven": "Au four",
     "compoAfter": "Après cuisson",

@@ -33,6 +33,26 @@ onMounted(() => {
   }
 })
 
+/** Hauteur du bandeau exposée en --notice-h : la photo de l'accueil la retire pour tenir dans l'écran */
+const el = useTemplateRef<HTMLElement>('el')
+let observer: ResizeObserver | undefined
+watch(el, (node) => {
+  observer?.disconnect()
+  const root = document.documentElement
+  if (!node) {
+    root.style.removeProperty('--notice-h')
+    return
+  }
+  const update = () => root.style.setProperty('--notice-h', `${node.offsetHeight}px`)
+  update()
+  observer = new ResizeObserver(update)
+  observer.observe(node)
+}, { flush: 'post' })
+onBeforeUnmount(() => {
+  observer?.disconnect()
+  document.documentElement.style.removeProperty('--notice-h')
+})
+
 function close() {
   dismissed.value = true
   try {
@@ -45,26 +65,28 @@ function close() {
 <template>
   <div
     v-if="message && !dismissed"
-    class="bg-rosso text-sm text-crema"
+    ref="el"
+    class="bg-rosso text-[13px] text-crema md:text-sm"
     role="status"
   >
-    <div class="mx-auto grid max-w-[1200px] grid-cols-[1fr_auto] items-start gap-x-3 gap-y-1.5 px-5 py-2.5 md:flex md:items-center lg:px-10">
-      <p class="md:flex-1">
+    <div class="mx-auto flex max-w-[1200px] items-center gap-x-3 px-5 py-2 md:py-2.5 lg:px-10">
+      <!-- Sur mobile, le titre et le lien seulement : le bandeau tient sur une ou deux lignes -->
+      <p class="min-w-0 flex-1">
         <b class="font-semibold">{{ tr(message, 'title') }}</b>
         <span
           v-if="summary"
-          class="ml-1 opacity-90"
+          class="ml-1 hidden opacity-90 md:inline"
         >{{ summary }}</span>
       </p>
       <NuxtLink
         v-if="link"
         :to="link.to"
-        class="col-start-1 row-start-2 w-max font-semibold underline underline-offset-3 md:shrink-0"
+        class="shrink-0 font-semibold underline underline-offset-3"
       >
         {{ link.label }} →
       </NuxtLink>
       <button
-        class="col-start-2 row-start-1 grid size-7 place-items-center"
+        class="-mr-1.5 grid size-7 shrink-0 place-items-center"
         :aria-label="t('notice.close')"
         @click="close"
       >

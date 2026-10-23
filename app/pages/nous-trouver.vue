@@ -59,20 +59,26 @@ function restLabel(list: SiteDay[]) {
   return names.length > 1 ? `${names.slice(0, -1).join(', ')} – ${names.at(-1)}` : names[0]
 }
 
-/** Choisir un jour : la ligne touchée garde sa place à l'écran (le détail d'un autre jour peut se refermer au-dessus) */
+/**
+ * Choisir un jour : la ligne touchée garde sa place à l'écran (le détail d'un autre jour peut se refermer au-dessus).
+ * Sur mobile, la carte s'ouvre sous la ligne : on la fait entrer dans l'écran si elle dépasse en bas.
+ */
 function select(day: string, event: Event) {
   const row = event.currentTarget as HTMLElement
   const before = row.getBoundingClientRect().top
   selectedDate.value = day
-  nextTick(() => window.scrollBy({ top: row.getBoundingClientRect().top - before, behavior: 'instant' }))
+  nextTick(() => {
+    window.scrollBy({ top: row.getBoundingClientRect().top - before, behavior: 'instant' })
+    row.querySelector<HTMLElement>('[data-drawer]')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  })
 }
 </script>
 
 <template>
   <div class="bg-nero text-crema">
     <section class="mx-auto max-w-[1200px] px-5 pb-7 pt-8 md:pb-11 md:pt-15 lg:px-10">
-      <h1 class="font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
-        {{ t('findUs.title') }}
+      <h1 class="title-display font-title text-[clamp(56px,14vw,104px)] leading-[0.92] tracking-[-0.02em]">
+        <SiteDecoText :text="t('findUs.title')" />
       </h1>
       <p class="mt-2.5 font-title text-[21px] italic text-abricot md:text-[26px]">
         {{ t('brand.area').replaceAll(' · ', ', ') }}
@@ -82,7 +88,7 @@ function select(day: string, event: Event) {
     <div class="mx-auto grid max-w-[1200px] gap-7 px-5 pb-18 md:pb-30 lg:grid-cols-2 lg:items-start lg:gap-16 lg:px-10">
       <aside
         v-if="selected?.location"
-        class="lg:sticky lg:top-25 lg:order-2"
+        class="hidden lg:sticky lg:top-25 lg:order-2 lg:block"
       >
         <div class="relative aspect-[4/3] border border-nero-line bg-nero-2 lg:aspect-auto lg:h-[min(420px,calc(100vh-24rem))] lg:min-h-55">
           <iframe
@@ -98,7 +104,7 @@ function select(day: string, event: Event) {
             <p class="kicker text-abricot">
               {{ relativeDay(selected.date, today) }} · {{ t('tonight.from', { time: hour(selected.opensAt) }) }}
             </p>
-            <h2 class="mt-2 font-title text-[40px] leading-none">
+            <h2 class="title-item mt-2 font-title text-[40px] leading-none">
               {{ selected.location.city }}
             </h2>
             <p class="mt-2 text-[15px] text-fumo-dark">
@@ -154,7 +160,7 @@ function select(day: string, event: Event) {
               class="grid grid-cols-[84px_1fr] items-baseline gap-3.5 border-b border-nero-line py-4.5 lg:grid-cols-[110px_1fr]"
             >
               <span class="text-[13px] text-fumo-dark"><b class="block text-sm font-semibold capitalize text-crema">{{ date(r.day.date, { weekday: 'long' }) }}</b>{{ date(r.day.date, { day: 'numeric', month: 'short' }) }}</span>
-              <span class="font-title text-[26px] leading-tight text-[#e2836f] lg:text-3xl">
+              <span class="title-item font-title text-[26px] leading-tight text-[#e2836f] lg:text-3xl">
                 {{ r.day.exception?.note ? tr(r.day.exception, 'note') : t('findUs.closed') }}
               </span>
             </div>
@@ -182,7 +188,7 @@ function select(day: string, event: Event) {
                 >{{ r.day.date === today ? t('days.today') : date(r.day.date, { weekday: 'long' }) }}</b>
                 {{ date(r.day.date, { day: 'numeric', month: 'short' }) }}
               </span>
-              <span class="font-title text-[26px] leading-tight transition-colors group-hover:text-abricot lg:text-3xl">
+              <span class="title-item font-title text-[26px] leading-tight transition-colors group-hover:text-abricot lg:text-3xl">
                 {{ r.day.location.city }}
                 <small class="mt-0.5 block font-body text-[13px] text-fumo-dark">{{ r.day.location.name }}</small>
               </span>
@@ -190,20 +196,43 @@ function select(day: string, event: Event) {
                 class="whitespace-nowrap text-[13.5px]"
                 :class="selected?.date === r.day.date ? 'text-abricot' : 'text-fumo-dark'"
               >{{ t('findUs.fromTime', { time: hour(r.day.opensAt) }) }}</span>
-              <!-- Sur mobile, le détail du jour choisi s'ouvre sur place : pas de saut vers la carte -->
-              <span
+              <!-- Sur mobile, la carte du jour choisi s'ouvre sous sa ligne, comme un tiroir : pas de saut vers le haut de page -->
+              <div
                 v-if="selected?.date === r.day.date"
-                class="col-start-2 col-end-4 mt-2 text-sm text-fumo-dark lg:hidden"
+                data-drawer
+                class="col-span-full mt-3 grid scroll-mb-[calc(4.25rem+env(safe-area-inset-bottom)+1rem)] gap-3.5 motion-safe:animate-[drawer-in_.35s_ease-out] lg:hidden"
+                @click.stop
               >
-                {{ r.day.location.address }}, {{ r.day.location.city }}
+                <div class="relative aspect-[4/3] border border-nero-line bg-nero-2">
+                  <iframe
+                    :src="osmEmbedUrl(r.day.location)"
+                    :title="t('findUs.mapTitle', { place: r.day.location.city })"
+                    class="absolute inset-0 size-full grayscale-[55%] sepia-[12%]"
+                  />
+                </div>
+                <p class="text-sm text-fumo-dark">
+                  {{ r.day.location.address }}, {{ r.day.location.zip }} {{ r.day.location.city }}
+                </p>
+                <p
+                  v-if="r.day.exception?.note"
+                  class="text-sm text-abricot"
+                >
+                  {{ tr(r.day.exception, 'note') }}
+                </p>
                 <a
                   :href="directionsUrl(r.day.location)"
                   target="_blank"
                   rel="noopener"
-                  class="mt-2 flex w-max items-center gap-1.5 border-b border-current font-semibold text-crema"
-                  @click.stop
-                >{{ t('tonight.itinerary') }} →</a>
-              </span>
+                  class="btn btn-line h-12"
+                  data-track="directions_clicked"
+                >
+                  <UIcon
+                    name="i-lucide-map-pin"
+                    class="size-4"
+                  />
+                  {{ t('tonight.itinerary') }}
+                </a>
+              </div>
             </div>
           </li>
         </ol>

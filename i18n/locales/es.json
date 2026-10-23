@@ -15,7 +15,7 @@
   "tonight": {
     "from": "desde las {time}",
     "itinerary": "Cómo llegar",
-    "orderByPhone": "Pedidos por teléfono o en el camión, recogida en el sitio",
+    "orderByPhone": "Pedidos por teléfono o directamente en el sitio",
     "openShort": "Abierto",
     "openNowLong": "Abierto ahora",
     "tonightFrom": "Esta noche desde las {time}",
@@ -60,7 +60,8 @@
     "supplementsNote": "Añada lo que le apetezca, al precio indicado por ingrediente.",
     "pricesNote": "Precios con impuestos incluidos. Pago en el local.",
     "count": "{n} pizza | {n} pizzas",
-    "allergensMore": "además"
+    "allergensMore": "además",
+    "colon": ":"
   },
   "findUs": {
     "title": "Dónde estamos",
@@ -98,7 +99,7 @@
   "footer": {
     "legal": "Aviso legal",
     "order": "Pedir",
-    "orderText": "Por teléfono o directamente en el camión. Recogida y pago allí mismo.",
+    "orderText": "Por teléfono o directamente en el sitio. Pago en efectivo o con tarjeta.",
     "findUs": "Encuéntranos",
     "planning": "Ver el calendario",
     "design": "Diseño y desarrollo"
@@ -114,12 +115,16 @@
     "allPizzas": "Toda la carta",
     "allPizzasHint": "Base de tomate, crema fresca y especiales",
     "orderTitle": "Pedir",
-    "order1": "Llame o venga al camión",
-    "order1Text": "Al {phone}, o directamente allí.",
-    "order2": "Al horno",
-    "order2Text": "Al horno de leña, al momento.",
-    "order3": "Recogida en el camión",
-    "order3Text": "Pago allí mismo.",
+    "orderHeading": "Por teléfono o en el sitio",
+    "order1": "Llame o pida en el sitio",
+    "order1Text": "Al {phone}, o directamente en el sitio.",
+    "order2": "Preparamos su pedido",
+    "order2Text": "Masa fresca, cocida al horno de leña.",
+    "order3": "Recogida en el sitio",
+    "order3Text": "Pago en efectivo o con tarjeta.",
+    "order3Note": "No aceptamos cheques ni tickets restaurante. Gracias por su comprensión.",
+    "orderPlace": "Antes de venir, compruebe la ubicación de esta noche: no estamos en el mismo sitio todos los días.",
+    "orderPlaceLink": "Dónde estamos",
     "compoBase": "Base",
     "compoOven": "Al horno",
     "compoAfter": "Después de hornear",
