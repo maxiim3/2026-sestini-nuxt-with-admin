@@ -60,7 +60,8 @@
     "supplementsNote": "Añada lo que le apetezca, al precio indicado por ingrediente.",
     "pricesNote": "Precios con impuestos incluidos. Pago en el local.",
     "count": "{n} pizza | {n} pizzas",
-    "allergensMore": "además"
+    "allergensMore": "además",
+    "colon": ":"
   },
   "findUs": {
     "title": "Dónde estamos",

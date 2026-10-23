@@ -60,7 +60,8 @@
     "supplementsNote": "Add whatever you fancy, priced per ingredient as shown.",
     "pricesNote": "Prices include tax. Payment on site.",
     "count": "{n} pizza | {n} pizzas",
-    "allergensMore": "also"
+    "allergensMore": "also",
+    "colon": ":"
   },
   "findUs": {
     "title": "Find us",

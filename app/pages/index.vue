@@ -250,7 +250,7 @@ const tiles = computed(() => (data.value?.menu?.sections ?? [])
                   <span class="whitespace-nowrap font-semibold tabular-nums">{{ price(p.priceCents) }}</span>
                 </span>
                 <span class="mt-1.5 block text-[15px] leading-normal">
-                  <b class="font-semibold text-oro-ink">{{ tr(p, 'baseLabel') }}</b><template v-if="p.avant.length"> · {{ p.avant.map(i => tr(i, 'name')).join(', ') }}</template>
+                  <b class="font-semibold">{{ tr(p, 'baseLabel') }}</b><template v-if="p.avant.length">, {{ p.avant.map(i => tr(i, 'name')).join(', ') }}</template>
                 </span>
               </NuxtLink>
             </li>

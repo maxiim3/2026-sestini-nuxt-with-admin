@@ -60,7 +60,8 @@
     "supplementsNote": "Ajoutez ce qui vous fait envie, au prix indiqué par ingrédient.",
     "pricesNote": "Prix TTC. Paiement sur place.",
     "count": "{n} pizza | {n} pizzas",
-    "allergensMore": "en plus"
+    "allergensMore": "en plus",
+    "colon": " :"
   },
   "findUs": {
     "title": "Nous trouver",

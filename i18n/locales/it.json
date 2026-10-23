@@ -60,7 +60,8 @@
     "supplementsNote": "Aggiungete ciò che vi va, al prezzo indicato per ingrediente.",
     "pricesNote": "Prezzi IVA inclusa. Pagamento sul posto.",
     "count": "{n} pizza | {n} pizze",
-    "allergensMore": "inoltre"
+    "allergensMore": "inoltre",
+    "colon": ":"
   },
   "findUs": {
     "title": "Dove siamo",
