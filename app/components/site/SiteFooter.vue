@@ -31,9 +31,9 @@ function changeLocale(event: Event) {
             <img
               src="/brand/wordmark.svg"
               alt=""
-              width="187"
-              height="21"
-              class="h-[21px] w-auto"
+              width="184"
+              height="27"
+              class="h-[27px] w-auto"
               loading="lazy"
             >
           </NuxtLink>

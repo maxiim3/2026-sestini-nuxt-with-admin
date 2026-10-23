@@ -32,8 +32,8 @@ const links = computed(() => [
           src="/brand/wordmark.svg"
           alt=""
           width="160"
-          height="18"
-          class="h-[18px] w-auto lg:h-[21px]"
+          height="23"
+          class="h-[23px] w-auto lg:h-[27px]"
         >
       </NuxtLink>
 
