@@ -28,7 +28,14 @@ function changeLocale(event: Event) {
               class="h-8 w-auto"
               loading="lazy"
             >
-            <span class="font-display text-[22px] font-semibold leading-none">Sestini<small class="ml-1 text-[0.72em] tracking-[0.06em]">PIZZA</small></span>
+            <img
+              src="/brand/wordmark.svg"
+              alt=""
+              width="187"
+              height="21"
+              class="h-[21px] w-auto"
+              loading="lazy"
+            >
           </NuxtLink>
           <p class="mt-3 max-w-[30ch]">
             {{ t('brand.pitch') }}
